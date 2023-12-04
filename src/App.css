@@ -1,0 +1,25 @@
+#root {
+  /* max-width: 1280px;
+  margin: 0 auto; */
+  text-align: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.minWidth {
+  @media (min-width: 48rem) {
+    min-width: 48rem;
+  }
+
+  @media (min-width: 64rem) {
+    min-width: 60rem;
+  }
+
+  @media (min-width: 80rem) {
+    min-width: 80rem;
+  }
+
+  @media (min-width: 120rem) {
+    min-width: 80rem;
+  }
+}

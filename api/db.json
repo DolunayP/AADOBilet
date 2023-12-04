@@ -1,0 +1,79 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "eventName": "Inna KONSERİ",
+            "eventHour": "14:00",
+            "eventDate": "15.12.2023",
+            "eventDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, esse!",
+            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+            "eventCategory": "sports",
+            "attendanceList": [
+                {
+                    "artistName": "INNA",
+                    "artistPhoto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaYkYJBJzZMuCSFpzWJGVsRj7EjK2jSqikeMjKut71ssdTdfn"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "eventName": "Sagopa KONSERİ",
+            "eventHour": "16:00",
+            "eventDate": "13.12.2023",
+            "eventDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, esse!",
+            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+            "eventCategory": "sports",
+            "attendanceList": [
+                {
+                    "artistName": "SAGOPA KAJMER",
+                    "artistPhoto": "https://cdn.powergroup.com.tr/image/500x500/powerturk/u/Contents/c/h/channels4-profile-jpeg-1625670023.jpg"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "eventName": "Shakira KONSERİ",
+            "eventHour": "18:00",
+            "eventDate": "14.12.2023",
+            "eventDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, esse!",
+            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+            "eventCategory": "music",
+            "attendanceList": [
+                {
+                    "artistName": "SHAKIRA",
+                    "artistPhoto": "https://celebmafia.com/wp-content/uploads/2018/06/shakira-performing-on-her-el-doardo-world-tour-in-london-11_thumbnail.jpg"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "eventName": "Kurt Cobain KONSERİ",
+            "eventHour": "20:00",
+            "eventDate": "15.12.2023",
+            "eventDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, esse!",
+            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+            "eventCategory": "music",
+            "attendanceList": [
+                {
+                    "artistName": "KURT COBAIN",
+                    "artistPhoto": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSrGck59Np7PCIaEmN3XqKIrPpYNGFqfkWVWmN448IK5oZWzYay"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "eventName": "XXXXX KONSERİ",
+            "eventHour": "16:00",
+            "eventDate": "2.12.2023",
+            "eventDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, esse!",
+            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+            "eventCategory": "Theatre",
+            "attendanceList": [
+                {
+                    "artistName": "SAGOPA KAJMER",
+                    "artistPhoto": "https://cdn.powergroup.com.tr/image/500x500/powerturk/u/Contents/c/h/channels4-profile-jpeg-1625670023.jpg"
+                }
+            ]
+        }
+    ]
+}
