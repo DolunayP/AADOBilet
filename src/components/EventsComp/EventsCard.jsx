@@ -9,7 +9,7 @@ const EventsCard = ({ event }) => {
     }
     return (
         <>
-            <div className='w-[23%] text-gray-100 group-hover:opacity-0 sm:group-hover:opacity-95 shadow-[10px_14px_16px_-2px_rgba(0,0,0,0.3)] gap-2 flex flex-col bg-[#32847a] rounded-lg py-8 ps-6 pe-2'>
+            <div className='w-[24%] text-gray-100 group-hover:opacity-0 sm:group-hover:opacity-95 shadow-[10px_14px_16px_-2px_rgba(0,0,0,0.3)] gap-2 flex flex-col bg-[#32847a] rounded-lg py-8 ps-6 pe-2'>
                 <div className='flex items-center justify-center'>
                     <div className='overflow-hidden w-[200px] h-[200px] object-cover rounded-full'>
                         <img src={event.attendanceList.map(attendance => {
