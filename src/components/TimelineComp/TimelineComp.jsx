@@ -5,15 +5,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../../redux/dataSlice'
 
 const TimelineComp = () => {
-    const currentDate = new Date();
-    const day = currentDate.getDate();
-    const month = currentDate.getMonth() + 1;
-    const year = currentDate.getFullYear();
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const currentDate = `${day}.${month}.${year}`;
+
     const { events } = useSelector(state => state.data)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getData());
     }, [dispatch])
+
+    const todayEvents = events.filter((event) => event.eventDate === currentDate);
+
     return (
         <div className='my-8 min-h-[600px] flex flex-col'>
             <div className='flex gap-3 sm:gap-0 flex-col sm:flex-row items-center justify-between mb-8 sm:mb-24'>
@@ -24,7 +29,7 @@ const TimelineComp = () => {
             <div className='w-full flex justify-center'>
                 <div className='sm:w-[86%] relative sm:flex justify-between sm:m-auto'>
                     <div className='w-[4px] sm:w-[90%] sm:translate-x-[-50%] bg-black bottom-[50%] sm:translate-y-0 translate-y-[50%] h-[78%] sm:h-[4px] absolute sm:bottom-20 z-0 left-[15%] sm:left-[50%]'></div>
-                    {events.map((event, i) => {
+                    {todayEvents.map((event, i) => {
                         return (<TimelineElement key={i} event={event} />
                         )
                     })}

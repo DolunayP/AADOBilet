@@ -6,23 +6,27 @@ import { getData } from '../../redux/dataSlice';
 const EventsComp = ({ events, path }) => {
     const dispatch = useDispatch();
 
-    console.log(path)
     useEffect(() => {
         dispatch(getData());
     }, [dispatch]);
 
     const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('en-GB'); 
+
     const convertToDate = (dateString) => {
         const [day, month, year] = dateString.split('.');
-        return new Date(`${year}-${month}-${day}`);
+        const formattedDate = new Date(`${year}-${month}-${day}`);
+        return formattedDate.toLocaleDateString('en-GB');
     };
+
     const filteredByDate = events.filter((event) => {
         const eventDate = convertToDate(event.eventDate);
         const isPast = () => {
             if (path === '/pastevents') {
-                return eventDate < currentDate;
+                return eventDate < formattedDate;
             } else {
-                return eventDate >= currentDate;
+                console.log(eventDate, '//', formattedDate)
+                return eventDate >= formattedDate;
             }
         }
         return isPast();

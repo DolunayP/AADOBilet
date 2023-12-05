@@ -6,15 +6,17 @@ import { useParams } from 'react-router-dom';
 
 
 const Details = () => {
+
     const { id } = useParams();
+
     return (
         <>
             <HeaderView />
             <div className='font-bold text-center text-[44px] text-[#32847a] mt-4'>
                 EVENT DETAILS
             </div>
-            <SliderComp />
             <DetailsComp id={id} />
+            <SliderComp />
         </>
     )
 }

@@ -5,7 +5,7 @@ import FilterCategories from '../components/FilterCategories/FilterCategories';
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../redux/dataSlice';
 
-const Events = () => {
+const Events = () => {    
     const { events } = useSelector((state) => state.data);
     const dispatch = useDispatch();
 

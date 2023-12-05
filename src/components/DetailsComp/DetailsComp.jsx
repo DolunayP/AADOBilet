@@ -6,11 +6,13 @@ import { getEventById } from '../../redux/dataSlice';
 const DetailsComp = ({ id }) => {
     const { eventById } = useSelector(state => state.data);
     const { eventDesc, eventHour, eventLocation, eventName, eventDate } = eventById;
+    const href = window.location.href;
+    console.log(eventById);
 
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getEventById(id))
-    }, [dispatch])
+    }, [dispatch, href])
 
     const handleFacebookShare = () => {
         // Facebook paylaşım URL'si
@@ -34,15 +36,21 @@ const DetailsComp = ({ id }) => {
     };
     return (
         <>
-            <div className='flex flex-col justify-start px-[10%]'>
-                <h2 className='text-xl text-left mb-2'>Event: <span className='font-bold'>{eventName}</span></h2>
-                <h2 className='text-xl text-left mb-2'>Event Time:<span className='font-bold'>{eventHour}</span></h2>
-                <h2 className='text-xl text-left mb-2'>Event Date:<span className='font-bold'>{eventDate}</span></h2>
-                <p className='text-justify'>{eventDesc}</p>
-                <div>
-                    Location: Google Maps Gelecek
+            <div className='text-3xl'>Sadece eventle ilgili fotoların oldugu bir Slider EKLENECEK</div>
+            <div className='flex gap-2 px-[10%] mt-12'>
+                <div className='mx-auto'>
+                    <img className='rounded-lg shadow-2xl w-[360px] h-auto' src={eventById?.attendanceList?.map(photo => { return photo.artistPhoto })} alt="" />
                 </div>
-            </div>
+                <div className='flex flex-col justify-start ps-8'>
+                    <h2 className='text-xl text-left mb-2'>Event: <span className='font-bold'>{eventName}</span></h2>
+                    <h2 className='text-xl text-left mb-2'>Event Time:<span className='font-bold'>{eventHour}</span></h2>
+                    <h2 className='text-xl text-left mb-2'>Event Date:<span className='font-bold'>{eventDate}</span></h2>
+                    <p className='text-justify'>{eventDesc}</p>
+                    <div>
+                        Location: Google Maps Gelecek
+                    </div>
+                </div></div>
+
 
             <div className='text-center flex flex-col items-center justify-center mt-8'>
                 <h2 className='font-bold text-3xl my-6'>Share This Event on Social Media Platforms</h2>
