@@ -1,44 +1,43 @@
-import React, { useEffect } from 'react';
-import EventsCard from './EventsCard';
-import { useDispatch } from 'react-redux';
-import { getData } from '../../redux/dataSlice';
+import React, { useEffect } from "react";
+import EventsCard from "./EventsCard";
+import { useDispatch } from "react-redux";
+import { getData } from "../../redux/dataSlice";
 
 const EventsComp = ({ events, path }) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getData());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getData());
+  }, [dispatch]);
 
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString('en-GB'); 
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString("en-GB");
 
-    const convertToDate = (dateString) => {
-        const [day, month, year] = dateString.split('.');
-        const formattedDate = new Date(`${year}-${month}-${day}`);
-        return formattedDate.toLocaleDateString('en-GB');
+  const convertToDate = (dateString) => {
+    const [day, month, year] = dateString.split(".");
+    const formattedDate = new Date(`${year}-${month}-${day}`);
+    return formattedDate.toLocaleDateString("en-GB");
+  };
+
+  const filteredByDate = events.filter((event) => {
+    const eventDate = convertToDate(event.eventDate);
+    const isPast = () => {
+      if (path === "/pastevents") {
+        return eventDate < formattedDate;
+      } else {
+        return eventDate >= formattedDate;
+      }
     };
+    return isPast();
+  });
 
-    const filteredByDate = events.filter((event) => {
-        const eventDate = convertToDate(event.eventDate);
-        const isPast = () => {
-            if (path === '/pastevents') {
-                return eventDate < formattedDate;
-            } else {
-                console.log(eventDate, '//', formattedDate)
-                return eventDate >= formattedDate;
-            }
-        }
-        return isPast();
-    });
-
-    return (
-        <div className='flex gap-8 justify-center items-center my-12 px-10 flex-wrap'>
-            {filteredByDate.map((event, i) => (
-                <EventsCard key={i} event={event} />
-            ))}
-        </div>
-    );
+  return (
+    <div className="flex gap-8 justify-center items-center my-12 px-10 flex-wrap">
+      {filteredByDate.map((event, i) => (
+        <EventsCard key={i} event={event} />
+      ))}
+    </div>
+  );
 };
 
 export default EventsComp;

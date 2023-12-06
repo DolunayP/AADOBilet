@@ -1,276 +1,336 @@
 {
-    "data": [
+  "data": [
+    {
+      "id": 1,
+      "eventName": "Inna KONSERİ",
+      "eventHour": "14:00",
+      "eventFinishHour": "17:00",
+      "eventDate": "15.12.2023",
+      "eventDesc": "Dünya çapında ünlü pop yıldızı INNA'nın muhteşem konserine hoş geldiniz! Enerjisi yüksek şarkıları ve etkileyici sahne performansı ile unutulmaz bir gece yaşayacaksınız.",
+      "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+      "eventCategory": {
+        "name": "Music",
+        "image": "https://www.acibadem.com.tr/hayat/Images/YayinMakaleler/muzik-kalbin-de-gidasi_3238_1.jpg"
+      },
+
+      "attendanceList": [
         {
-            "id": 1,
-            "eventName": "Inna KONSERİ",
-            "eventHour": "14:00",
-            "eventFinishHour": "17:00",
-            "eventDate": "15.12.2023",
-            "eventDesc": "Dünya çapında ünlü pop yıldızı INNA'nın muhteşem konserine hoş geldiniz! Enerjisi yüksek şarkıları ve etkileyici sahne performansı ile unutulmaz bir gece yaşayacaksınız.",
-            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
-            "eventCategory": "music",
-            "attendanceList": [
-                {
-                    "artistName": "INNA",
-                    "artistPhoto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaYkYJBJzZMuCSFpzWJGVsRj7EjK2jSqikeMjKut71ssdTdfn"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "eventName": "Sagopa KONSERİ",
-            "eventHour": "16:00",
-            "eventFinishHour": "19:00",
-            "eventDate": "13.12.2023",
-            "eventDesc": "Türkiye'nin önde gelen rap sanatçılarından Sagopa KAJMER ile unutulmaz bir konser deneyimi! Sözleriyle derin düşündüren, enerjisiyle sizi coşturan bir gece sizi bekliyor.",
-            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
-            "eventCategory": "music",
-            "attendanceList": [
-                {
-                    "artistName": "SAGOPA KAJMER",
-                    "artistPhoto": "https://cdn.powergroup.com.tr/image/500x500/powerturk/u/Contents/c/h/channels4-profile-jpeg-1625670023.jpg"
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "eventName": "Shakira KONSERİ",
-            "eventHour": "18:00",
-            "eventFinishHour": "21:00",
-            "eventDate": "14.12.2023",
-            "eventDesc": "Latin müziğinin kraliçesi Shakira'nın büyüleyici konserine hazır mısınız? Ritmiyle kalbinizi yakalayacak, unutulmaz şarkılarıyla dans ettirecek bir gece sizi bekliyor.",
-            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
-            "eventCategory": "music",
-            "attendanceList": [
-                {
-                    "artistName": "SHAKIRA",
-                    "artistPhoto": "https://celebmafia.com/wp-content/uploads/2018/06/shakira-performing-on-her-el-doardo-world-tour-in-london-11_thumbnail.jpg"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "eventName": "Kurt Cobain KONSERİ",
-            "eventHour": "20:00",
-            "eventFinishHour": "23:00",
-            "eventDate": "15.12.2023",
-            "eventDesc": "Grunge müziğin efsanevi lideri Kurt Cobain'in ölümsüz eserlerini dinlemek için hazır olun! Nirvana'nın unutulmaz şarkılarıyla dolu bir gece sizi bekliyor.",
-            "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
-            "eventCategory": "music",
-            "attendanceList": [
-                {
-                    "artistName": "KURT COBAIN",
-                    "artistPhoto": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSrGck59Np7PCIaEmN3XqKIrPpYNGFqfkWVWmN448IK5oZWzYay"
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "eventName": "Hamlet Tiyatrosu",
-            "eventHour": "13:00",
-            "eventFinishHour": "14:00",
-            "eventDate": "07.12.2023",
-            "eventDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, esse!",
-            "eventLocation": "Mehmet Efendi Salonu, İzmit/Kocaeli",
-            "eventCategory": "theatre",
-            "attendanceList": [
-                {
-                    "artistName": "SAGOPA KAJMER",
-                    "artistPhoto": "https://cdn.powergroup.com.tr/image/500x500/powerturk/u/Contents/c/h/channels4-profile-jpeg-1625670023.jpg"
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "eventName": "Savaş ve Barış Sergisi",
-            "eventHour": "12:00",
-            "eventFinishHour": "18:00",
-            "eventDate": "22.12.2023",
-            "eventDesc": "Ünlü ressamların savaş ve barış temalı eserlerini bir araya getiren bu sergi, sanatseverlere duygusal bir deneyim sunuyor. Sergiyi keşfedin ve sanatın gücünü hissedin!",
-            "eventLocation": "Sanat Galerisi, İstanbul",
-            "eventCategory": "art",
-            "attendanceList": [
-                {
-                    "artistName": "Pablo Picasso",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Pablo_Picasso_1962.jpg/1200px-Pablo_Picasso_1962.jpg"
-                },
-                {
-                    "artistName": "Vincent van Gogh",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Self-portrait_with_grey_felt_hat.jpg/480px-Van_Gogh_-_Self-portrait_with_grey_felt_hat.jpg"
-                },
-                {
-                    "artistName": "Claude Monet",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/480px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg"
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "eventName": "Dans Gecesi",
-            "eventHour": "19:00",
-            "eventFinishHour": "22:00",
-            "eventDate": "05.12.2023",
-            "eventDesc": "Muhteşem dans performansları ile dolu bir geceye davetlisiniz! Profesyonel dansçıların gösterileriyle dansın ritmine kapılacak ve unutulmaz anlar yaşayacaksınız.",
-            "eventLocation": "Dans Akademisi, Ankara",
-            "eventCategory": "dance",
-            "attendanceList": [
-                {
-                    "artistName": "Michael Jackson Tribute",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Michael_Jackson_1984.jpg/480px-Michael_Jackson_1984.jpg"
-                },
-                {
-                    "artistName": "Isadora Duncan Dance Company",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Isadora_Duncan_1903_photograph_by_Arnold_Genthe.jpg/480px-Isadora_Duncan_1903_photograph_by_Arnold_Genthe.jpg"
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "eventName": "Yoga Festivali",
-            "eventHour": "10:00",
-            "eventFinishHour": "16:00",
-            "eventDate": "21.12.2023",
-            "eventDesc": "Yoga Festivali'ne katılın ve bedeninizi, zihniniz ve ruhunuzun denge bulduğu bir gün geçirin. Uzman eğitmenler eşliğinde yoga pratiğinin keyfini çıkarın.",
-            "eventLocation": "Doğa Parkı, Antalya",
-            "eventCategory": "health",
-            "attendanceList": [
-                {
-                    "artistName": "Yoga Master",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Yoga_agamas_1882.jpg/480px-Yoga_agamas_1882.jpg"
-                }
-            ]
-        },
-        {
-            "id": 9,
-            "eventName": "Basketbol Turnuvası",
-            "eventHour": "13:00",
-            "eventFinishHour": "18:00",
-            "eventDate": "10.12.2023",
-            "eventDesc": "Heyecan dolu bir basketbol turnuvasına hazır olun! Takımlar arasındaki çekişmeli mücadeleleri izleyin ve sporun keyfini birlikte yaşayın.",
-            "eventLocation": "Sporthall, İzmir",
-            "eventCategory": "sports",
-            "attendanceList": [
-                {
-                    "artistName": "LeBron James",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/LeBron_James_Dunk_%28Cleveland_Cavaliers_-_cropped%29.jpg/480px-LeBron_James_Dunk_%28Cleveland_Cavaliers_-_cropped%29.jpg"
-                },
-                {
-                    "artistName": "Stephen Curry",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Stephen_Curry_Dunk.jpg/480px-Stephen_Curry_Dunk.jpg"
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "eventName": "Bale Gösterisi",
-            "eventHour": "15:00",
-            "eventFinishHour": "18:00",
-            "eventDate": "06.12.2023",
-            "eventDesc": "Etkileyici bale gösterileriyle dolu bir gün sizi bekliyor! Bale sanatının zarafeti ve güzelliğiyle büyülenecek, sanatçıların kusursuz performanslarına şahit olacaksınız.",
-            "eventLocation": "Bale Akademisi, İstanbul",
-            "eventCategory": "dance",
-            "attendanceList": [
-                {
-                    "artistName": "Anna Pavlova",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Anna_Pavlova_%28retouched%29.jpg/480px-Anna_Pavlova_%28retouched%29.jpg"
-                },
-                {
-                    "artistName": "Mikhail Baryshnikov",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Mikhail_Baryshnikov_-_1976.jpg/480px-Mikhail_Baryshnikov_-_1976.jpg"
-                }
-            ]
-        },
-        {
-            "id": 11,
-            "eventName": "Picasso Sergisi",
-            "eventHour": "11:00",
-            "eventFinishHour": "17:00",
-            "eventDate": "15.12.2023",
-            "eventDesc": "20. yüzyılın en önemli ressamlarından biri olan Pablo Picasso'nun eserlerini bir araya getiren bu sergi, sanat tarihine damgasını vurmuş bir dâhinin yaratıcılığını keşfetmenizi sağlayacak.",
-            "eventLocation": "Modern Sanat Müzesi, Ankara",
-            "eventCategory": "art",
-            "attendanceList": [
-                {
-                    "artistName": "Pablo Picasso",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Pablo_Picasso_1962.jpg/1200px-Pablo_Picasso_1962.jpg"
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "eventName": "Jazz Gecesi",
-            "eventHour": "20:00",
-            "eventFinishHour": "23:00",
-            "eventDate": "20.12.2023",
-            "eventDesc": "Swing ritimleri, özgür caz notaları ve unutulmaz performanslarla dolu bir geceye davetlisiniz. Jazz müziğinin büyüsüne kapılacak, keyif dolu anlar yaşayacaksınız.",
-            "eventLocation": "Caz Kulübü, İzmir",
-            "eventCategory": "music",
-            "attendanceList": [
-                {
-                    "artistName": "Miles Davis Tribute",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Miles_Davis_by_Palumbo.jpg/480px-Miles_Davis_by_Palumbo.jpg"
-                },
-                {
-                    "artistName": "Ella Fitzgerald Tribute",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Ella_Fitzgerald_%281963%29.jpg/480px-Ella_Fitzgerald_%281963%29.jpg"
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "eventName": "Yoga ve Meditasyon Festivali",
-            "eventHour": "9:00",
-            "eventFinishHour": "15:00",
-            "eventDate": "06.12.2023",
-            "eventDesc": "Zihinsel ve ruhsal denge arayışındaysanız, Yoga ve Meditasyon Festivali tam size göre! Uzman eğitmenler eşliğinde meditasyon pratiği yapacak, doğanın huzurunu hissedeceksiniz.",
-            "eventLocation": "Doğa Parkı, Antalya",
-            "eventCategory": "health",
-            "attendanceList": [
-                {
-                    "artistName": "Meditation Master",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Meditation_%28Pintura%29.jpg/480px-Meditation_%28Pintura%29.jpg"
-                }
-            ]
-        },
-        {
-            "id": 14,
-            "eventName": "Futbol Turnuvası",
-            "eventHour": "14:00",
-            "eventFinishHour": "18:00",
-            "eventDate": "10.12.2023",
-            "eventDesc": "Heyecan dolu bir futbol turnuvasına katılmaya ne dersiniz? Takımınızı destekleyin ve dostluk, rekabet ve eğlence dolu bir gün geçirin.",
-            "eventLocation": "Stadyum, İstanbul",
-            "eventCategory": "sports",
-            "attendanceList": [
-                {
-                    "artistName": "Lionel Messi",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Lionel_Messi_by_August_2019.jpg/480px-Lionel_Messi_by_August_2019.jpg"
-                },
-                {
-                    "artistName": "Cristiano Ronaldo",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/480px-Cristiano_Ronaldo_2018.jpg"
-                }
-            ]
-        },
-        {
-            "id": 15,
-            "eventName": "Çağdaş Sanat Sergisi",
-            "eventHour": "13:00",
-            "eventFinishHour": "20:00",
-            "eventDate": "15.12.2023",
-            "eventDesc": "Çağdaş sanatın öncülerinden biri olan bu sergi, sıradışı eserleri ve sanatçıları bir araya getiriyor. Modern sanatın derinliklerine yolculuk yapmaya hazır olun.",
-            "eventLocation": "Çağdaş Sanat Galerisi, İstanbul",
-            "eventCategory": "art",
-            "attendanceList": [
-                {
-                    "artistName": "Yoko Ono",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Yoko_Ono_%282009%29.jpg/480px-Yoko_Ono_%282009%29.jpg"
-                },
-                {
-                    "artistName": "Damien Hirst",
-                    "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Damien_Hirst.png/480px-Damien_Hirst.png"
-                }
-            ]
+          "artistName": "INNA",
+          "artistPhoto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaYkYJBJzZMuCSFpzWJGVsRj7EjK2jSqikeMjKut71ssdTdfn"
         }
-    ]
+      ]
+    },
+    {
+      "id": 2,
+      "eventName": "Sagopa KONSERİ",
+      "eventHour": "16:00",
+      "eventFinishHour": "19:00",
+      "eventDate": "13.12.2023",
+      "eventDesc": "Türkiye'nin önde gelen rap sanatçılarından Sagopa KAJMER ile unutulmaz bir konser deneyimi! Sözleriyle derin düşündüren, enerjisiyle sizi coşturan bir gece sizi bekliyor.",
+      "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+      "eventCategory": {
+        "name": "Music",
+        "image": "https://www.acibadem.com.tr/hayat/Images/YayinMakaleler/muzik-kalbin-de-gidasi_3238_1.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "SAGOPA KAJMER",
+          "artistPhoto": "https://cdn.powergroup.com.tr/image/500x500/powerturk/u/Contents/c/h/channels4-profile-jpeg-1625670023.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "eventName": "Shakira KONSERİ",
+      "eventHour": "18:00",
+      "eventFinishHour": "21:00",
+      "eventDate": "14.12.2023",
+      "eventDesc": "Latin müziğinin kraliçesi Shakira'nın büyüleyici konserine hazır mısınız? Ritmiyle kalbinizi yakalayacak, unutulmaz şarkılarıyla dans ettirecek bir gece sizi bekliyor.",
+      "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+      "eventCategory": {
+        "name": "Music",
+        "image": "https://www.acibadem.com.tr/hayat/Images/YayinMakaleler/muzik-kalbin-de-gidasi_3238_1.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "SHAKIRA",
+          "artistPhoto": "https://celebmafia.com/wp-content/uploads/2018/06/shakira-performing-on-her-el-doardo-world-tour-in-london-11_thumbnail.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "eventName": "Kurt Cobain KONSERİ",
+      "eventHour": "20:00",
+      "eventFinishHour": "23:00",
+      "eventDate": "15.12.2023",
+      "eventDesc": "Grunge müziğin efsanevi lideri Kurt Cobain'in ölümsüz eserlerini dinlemek için hazır olun! Nirvana'nın unutulmaz şarkılarıyla dolu bir gece sizi bekliyor.",
+      "eventLocation": "Hayal Kahvesi, İzmit/Kocaeli",
+      "eventCategory": {
+        "name": "Music",
+        "image": "https://www.acibadem.com.tr/hayat/Images/YayinMakaleler/muzik-kalbin-de-gidasi_3238_1.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "KURT COBAIN",
+          "artistPhoto": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSrGck59Np7PCIaEmN3XqKIrPpYNGFqfkWVWmN448IK5oZWzYay"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "eventName": "Hamlet Tiyatrosu",
+      "eventHour": "13:00",
+      "eventFinishHour": "14:00",
+      "eventDate": "07.12.2023",
+      "eventDesc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, esse!",
+      "eventLocation": "Mehmet Efendi Salonu, İzmit/Kocaeli",
+      "eventCategory": {
+        "name": "Theatre",
+        "image": "https://www.culturewhisper.com/images/uploads/cw-49089.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "SAGOPA KAJMER",
+          "artistPhoto": "https://cdn.powergroup.com.tr/image/500x500/powerturk/u/Contents/c/h/channels4-profile-jpeg-1625670023.jpg"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "eventName": "Savaş ve Barış Sergisi",
+      "eventHour": "12:00",
+      "eventFinishHour": "18:00",
+      "eventDate": "22.12.2023",
+      "eventDesc": "Ünlü ressamların savaş ve barış temalı eserlerini bir araya getiren bu sergi, sanatseverlere duygusal bir deneyim sunuyor. Sergiyi keşfedin ve sanatın gücünü hissedin!",
+      "eventLocation": "Sanat Galerisi, İstanbul",
+      "eventCategory": {
+        "name": "Art",
+        "image": "https://s44783.pcdn.co/wp-content/uploads/2023/06/f12.png"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Pablo Picasso",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Pablo_Picasso_1962.jpg/1200px-Pablo_Picasso_1962.jpg"
+        },
+        {
+          "artistName": "Vincent van Gogh",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Self-portrait_with_grey_felt_hat.jpg/480px-Van_Gogh_-_Self-portrait_with_grey_felt_hat.jpg"
+        },
+        {
+          "artistName": "Claude Monet",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Claude_Monet%2C_Impression%2C_soleil_levant.jpg/480px-Claude_Monet%2C_Impression%2C_soleil_levant.jpg"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "eventName": "Dans Gecesi",
+      "eventHour": "19:00",
+      "eventFinishHour": "22:00",
+      "eventDate": "05.12.2023",
+      "eventDesc": "Muhteşem dans performansları ile dolu bir geceye davetlisiniz! Profesyonel dansçıların gösterileriyle dansın ritmine kapılacak ve unutulmaz anlar yaşayacaksınız.",
+      "eventLocation": "Dans Akademisi, Ankara",
+      "eventCategory": {
+        "name": "Dance",
+        "image": "https://static01.nyt.com/images/2023/09/17/multimedia/17new-listings-dance-01-ctgf/17new-listings-dance-01-ctgf-superJumbo.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Michael Jackson Tribute",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Michael_Jackson_1984.jpg/480px-Michael_Jackson_1984.jpg"
+        },
+        {
+          "artistName": "Isadora Duncan Dance Company",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Isadora_Duncan_1903_photograph_by_Arnold_Genthe.jpg/480px-Isadora_Duncan_1903_photograph_by_Arnold_Genthe.jpg"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "eventName": "Yoga Festivali",
+      "eventHour": "10:00",
+      "eventFinishHour": "16:00",
+      "eventDate": "21.12.2023",
+      "eventDesc": "Yoga Festivali'ne katılın ve bedeninizi, zihniniz ve ruhunuzun denge bulduğu bir gün geçirin. Uzman eğitmenler eşliğinde yoga pratiğinin keyfini çıkarın.",
+      "eventLocation": "Doğa Parkı, Antalya",
+      "eventCategory": {
+        "name": "Health",
+        "image": "https://www.ips-apprenticeships.co.uk/wp-content/uploads/2020/01/Healthy-Eating-Topic-of-the-month.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Yoga Master",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Yoga_agamas_1882.jpg/480px-Yoga_agamas_1882.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "eventName": "Basketbol Turnuvası",
+      "eventHour": "13:00",
+      "eventFinishHour": "18:00",
+      "eventDate": "10.12.2023",
+      "eventDesc": "Heyecan dolu bir basketbol turnuvasına hazır olun! Takımlar arasındaki çekişmeli mücadeleleri izleyin ve sporun keyfini birlikte yaşayın.",
+      "eventLocation": "Sporthall, İzmir",
+      "eventCategory": {
+        "name": "Sports",
+        "image": "https://wearecardinals.com/wp-content/uploads/2020/04/u1Re9qgMfM8d6kumlW85PS6s55jQh5fbdmppgQsP.jpeg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "LeBron James",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/LeBron_James_Dunk_%28Cleveland_Cavaliers_-_cropped%29.jpg/480px-LeBron_James_Dunk_%28Cleveland_Cavaliers_-_cropped%29.jpg"
+        },
+        {
+          "artistName": "Stephen Curry",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Stephen_Curry_Dunk.jpg/480px-Stephen_Curry_Dunk.jpg"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "eventName": "Bale Gösterisi",
+      "eventHour": "15:00",
+      "eventFinishHour": "18:00",
+      "eventDate": "06.12.2023",
+      "eventDesc": "Etkileyici bale gösterileriyle dolu bir gün sizi bekliyor! Bale sanatının zarafeti ve güzelliğiyle büyülenecek, sanatçıların kusursuz performanslarına şahit olacaksınız.",
+      "eventLocation": "Bale Akademisi, İstanbul",
+      "eventCategory": {
+        "name": "Dance",
+        "image": "https://static01.nyt.com/images/2023/09/17/multimedia/17new-listings-dance-01-ctgf/17new-listings-dance-01-ctgf-superJumbo.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Anna Pavlova",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Anna_Pavlova_%28retouched%29.jpg/480px-Anna_Pavlova_%28retouched%29.jpg"
+        },
+        {
+          "artistName": "Mikhail Baryshnikov",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Mikhail_Baryshnikov_-_1976.jpg/480px-Mikhail_Baryshnikov_-_1976.jpg"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "eventName": "Picasso Sergisi",
+      "eventHour": "11:00",
+      "eventFinishHour": "17:00",
+      "eventDate": "15.12.2023",
+      "eventDesc": "20. yüzyılın en önemli ressamlarından biri olan Pablo Picasso'nun eserlerini bir araya getiren bu sergi, sanat tarihine damgasını vurmuş bir dâhinin yaratıcılığını keşfetmenizi sağlayacak.",
+      "eventLocation": "Modern Sanat Müzesi, Ankara",
+      "eventCategory": {
+        "name": "Art",
+        "image": "https://s44783.pcdn.co/wp-content/uploads/2023/06/f12.png"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Pablo Picasso",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Pablo_Picasso_1962.jpg/1200px-Pablo_Picasso_1962.jpg"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "eventName": "Jazz Gecesi",
+      "eventHour": "20:00",
+      "eventFinishHour": "23:00",
+      "eventDate": "20.12.2023",
+      "eventDesc": "Swing ritimleri, özgür caz notaları ve unutulmaz performanslarla dolu bir geceye davetlisiniz. Jazz müziğinin büyüsüne kapılacak, keyif dolu anlar yaşayacaksınız.",
+      "eventLocation": "Caz Kulübü, İzmir",
+      "eventCategory": {
+        "name": "Music",
+        "image": "https://www.acibadem.com.tr/hayat/Images/YayinMakaleler/muzik-kalbin-de-gidasi_3238_1.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Miles Davis Tribute",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Miles_Davis_by_Palumbo.jpg/480px-Miles_Davis_by_Palumbo.jpg"
+        },
+        {
+          "artistName": "Ella Fitzgerald Tribute",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Ella_Fitzgerald_%281963%29.jpg/480px-Ella_Fitzgerald_%281963%29.jpg"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "eventName": "Yoga ve Meditasyon Festivali",
+      "eventHour": "9:00",
+      "eventFinishHour": "15:00",
+      "eventDate": "06.12.2023",
+      "eventDesc": "Zihinsel ve ruhsal denge arayışındaysanız, Yoga ve Meditasyon Festivali tam size göre! Uzman eğitmenler eşliğinde meditasyon pratiği yapacak, doğanın huzurunu hissedeceksiniz.",
+      "eventLocation": "Doğa Parkı, Antalya",
+      "eventCategory": {
+        "name": "Health",
+        "image": "https://www.ips-apprenticeships.co.uk/wp-content/uploads/2020/01/Healthy-Eating-Topic-of-the-month.jpg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Meditation Master",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Meditation_%28Pintura%29.jpg/480px-Meditation_%28Pintura%29.jpg"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "eventName": "Futbol Turnuvası",
+      "eventHour": "14:00",
+      "eventFinishHour": "18:00",
+      "eventDate": "10.12.2023",
+      "eventDesc": "Heyecan dolu bir futbol turnuvasına katılmaya ne dersiniz? Takımınızı destekleyin ve dostluk, rekabet ve eğlence dolu bir gün geçirin.",
+      "eventLocation": "Stadyum, İstanbul",
+      "eventCategory": {
+        "name": "Sports",
+        "image": "https://wearecardinals.com/wp-content/uploads/2020/04/u1Re9qgMfM8d6kumlW85PS6s55jQh5fbdmppgQsP.jpeg"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Lionel Messi",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Lionel_Messi_by_August_2019.jpg/480px-Lionel_Messi_by_August_2019.jpg"
+        },
+        {
+          "artistName": "Cristiano Ronaldo",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/480px-Cristiano_Ronaldo_2018.jpg"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "eventName": "Çağdaş Sanat Sergisi",
+      "eventHour": "13:00",
+      "eventFinishHour": "20:00",
+      "eventDate": "15.12.2023",
+      "eventDesc": "Çağdaş sanatın öncülerinden biri olan bu sergi, sıradışı eserleri ve sanatçıları bir araya getiriyor. Modern sanatın derinliklerine yolculuk yapmaya hazır olun.",
+      "eventLocation": "Çağdaş Sanat Galerisi, İstanbul",
+      "eventCategory": {
+        "name": "Art",
+        "image": "https://s44783.pcdn.co/wp-content/uploads/2023/06/f12.png"
+      },
+
+      "attendanceList": [
+        {
+          "artistName": "Yoko Ono",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Yoko_Ono_%282009%29.jpg/480px-Yoko_Ono_%282009%29.jpg"
+        },
+        {
+          "artistName": "Damien Hirst",
+          "artistPhoto": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Damien_Hirst.png/480px-Damien_Hirst.png"
+        }
+      ]
+    }
+  ]
 }

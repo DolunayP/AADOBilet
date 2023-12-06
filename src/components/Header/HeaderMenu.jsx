@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Button from "./Button.jsx";
+import { Link } from "react-router-dom";
 
 const HeaderMenu = () => {
   let Links = [
-    { name: "Gift Cards", link: "/" },
-    { name: "Sell", link: "/" },
-    { name: "My Tickets", link: "/" },
+    { name: "Events", link: "/events" },
     { name: "Login", link: "/login" },
   ];
   let [open, setOpen] = useState(false);
@@ -17,10 +16,10 @@ const HeaderMenu = () => {
   return (
     <div className="p-7">
       <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
-        <div
-          className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800"
-        >
-          <img src="/logo-removebg-preview.png" alt="Logo" className="h-20" />
+        <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
+          <Link to="/">
+            <img src="/logo-removebg-preview.png" alt="Logo" className="h-44" />
+          </Link>
         </div>
         <div
           onClick={toggleMenu}
@@ -49,7 +48,7 @@ const HeaderMenu = () => {
           ))}
           <a href="/login">
             <Button>Sign Up</Button>
-            </a>
+          </a>
         </ul>
       </div>
     </div>

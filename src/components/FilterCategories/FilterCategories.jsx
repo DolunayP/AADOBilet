@@ -27,6 +27,7 @@ const FilterCategories = ({ events, onSelectCategory, clickedCategory }) => {
         ? ""
         : category
     );
+
     navigate(`/events/${category}`);
   };
 
@@ -45,13 +46,13 @@ const FilterCategories = ({ events, onSelectCategory, clickedCategory }) => {
         className="px-4 py-2 border rounded-lg w-[200px]"
       >
         <option value="All">All</option>
-        {Array.from(new Set(events.map((event) => event.eventCategory))).map(
-          (category, index) => (
-            <option className="capitalize" key={index} value={category}>
-              {category}
-            </option>
-          )
-        )}
+        {Array.from(
+          new Set(events.map((event) => event.eventCategory.name))
+        ).map((category, index) => (
+          <option className="capitalize" key={index} value={category}>
+            {category}
+          </option>
+        ))}
       </select>
     </div>
   );
