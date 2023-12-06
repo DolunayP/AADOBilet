@@ -13,21 +13,18 @@ const Events = () => {
 
   const dispatch = useDispatch();
 
-  // const filterEvents = useCallback(() => {
-  //   let filtered = [];
+  const filterEvents = useCallback(() => {
+    let filtered = [];
 
-  //   filtered = events.filter((event) => event.eventCategory === categoryName);
-  //   console.log(filtered, "-", events);
+    filtered = events.filter((event) => event.eventCategory === categoryName);
+    console.log(filtered, "-", events);
 
-  //   if (!isEqual(filteredEvents, filtered)) {
-  //     console.log("eşit değil");
-  //     setFilteredEvents(filtered);
-  //   } else return;
-  // }, []);
+    setFilteredEvents(filtered);
+  }, []);
 
-  // useEffect(() => {
-  //   filterEvents();
-  // }, [filterEvents]);
+  useEffect(() => {
+    filterEvents();
+  }, [filterEvents]);
 
   useEffect(() => {
     dispatch(getData());
@@ -35,12 +32,12 @@ const Events = () => {
 
   const handleCategorySelect = (category) => {
     if (categoryName && category === null) {
-      setFilteredEvents((prev) => []);
+      setFilteredEvents(null);
     } else if (category === "") {
       setFilteredEvents(events);
     } else {
       const filtered = events.filter(
-        (event) => event.eventCategory === category
+        (event) => event.eventCategory.name === category
       );
 
       setFilteredEvents(filtered);
