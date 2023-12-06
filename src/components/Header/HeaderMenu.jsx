@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button.jsx";
 import { Link } from "react-router-dom";
+import Logo from "../LogoComp/Logo.jsx";
 
 const HeaderMenu = () => {
   let Links = [
@@ -17,9 +18,7 @@ const HeaderMenu = () => {
     <div className="p-7">
       <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
         <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
-          <Link to="/">
-            <img src="/logo-removebg-preview.png" alt="Logo" className="h-44" />
-          </Link>
+          <Logo />
         </div>
         <div
           onClick={toggleMenu}
