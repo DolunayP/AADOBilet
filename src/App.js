@@ -6,6 +6,7 @@ import TimelineComp from "./components/TimelineComp/TimelineComp";
 import Categories from "./components/CategoriesComp/Categories";
 import Statistics from "./components/Statistics";
 import SearchComp from "./components/SearchComp/SearchComp";
+import Footer from "./components/FooterComp/Footer";
 
 function App() {
   const [word, setWord] = useState("");
@@ -20,6 +21,7 @@ function App() {
           <TimelineComp />
           <Categories />
           <Statistics />
+          <Footer />
         </>
       ) : (
         <>
