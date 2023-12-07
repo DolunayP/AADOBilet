@@ -67,7 +67,7 @@ function SignUp({ toggleForm }) {
             </button>
 
             <p class="text-white">
-              If you have an yet, please{" "}
+              If you have an account, please{" "}
               <span class="font-bold cursor-pointer" onClick={toggleForm}>
                 Sign In
               </span>
