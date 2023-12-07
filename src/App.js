@@ -8,6 +8,7 @@ import Statistics from "./components/Statistics";
 import SearchComp from "./components/SearchComp/SearchComp";
 import Footer from "./components/FooterComp/Footer";
 import TestComponent from "./components/TestComponent";
+import Forms from "./components/SignUp/Forms";
 
 function App() {
   const [word, setWord] = useState("");
