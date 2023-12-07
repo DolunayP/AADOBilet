@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import SignUp from "./components/SignUp/SignUp";
 import Details from "./pages/Details";
 import PastEvents from "./pages/PastEvents";
 import Events from "./pages/Events";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
+import Forms from "./components/SignUp/Forms";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <SignUp />,
+    element: <Forms />,
   },
   {
     path: "/details/:id",
