@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import Input from "./Input";
 import * as Yup from "yup";
-
+//deneme
 function SignUp({ toggleForm }) {
   const formik = useFormik({
     initialValues: {
