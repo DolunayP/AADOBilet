@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 function CategoriesItem({ category }) {
   const navigate = useNavigate();
-  const goToEvents = (e) => {
+  const goToEvents = () => {
     navigate(
       `events/${category.name.charAt(0).toUpperCase() + category.name.slice(1)}`
     );
@@ -10,9 +10,7 @@ function CategoriesItem({ category }) {
 
   return (
     <div
-      onClick={(e) => {
-        goToEvents(e);
-      }}
+      onClick={() => { goToEvents(); }}
       className=" w-11/12 h-60 relative flex justify-center items-center cursor-pointer group"
     >
       <img

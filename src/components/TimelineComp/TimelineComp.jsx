@@ -49,26 +49,25 @@ const TimelineComp = () => {
       <div className="w-full flex justify-center">
         <div className="sm:w-[86%] relative sm:flex justify-between sm:m-auto">
           <div className="w-[4px] sm:w-[90%] sm:translate-x-[-50%] bg-black bottom-[50%] sm:translate-y-0 translate-y-[50%] h-[78%] sm:h-[4px] absolute sm:bottom-20 z-0 left-[15%] sm:left-[50%]"></div>
-          <div>
-            {eventsWithArtists.length > 0 && todayEvents.length > 0 ? (
-              todayEvents.map((e, i) => <TimelineElement key={i} event={e} />)
-            ) : (
-              <h1>loading.....</h1>
-            )}
-            {/* {eventsWithArtists
+          {eventsWithArtists.length > 0 && todayEvents.length > 0 ? (
+            todayEvents.map((e, i) => <TimelineElement key={i} event={e} />)
+          ) : (
+            <h1>loading.....</h1>
+          )}
+          {/* {eventsWithArtists
               .filter((event) => event.eventDate === currentDate)
               .map((e, i) => {
                 return <TimelineElement key={i} event={e} />;
               })}  */}
-          </div>
-          {/* {todayEvents.length > 0 ? (
+        </div>
+        {/* {todayEvents.length > 0 ? (
             todayEvents.map((event, i) => {
               return <TimelineElement key={i} event={event} />;
             })
           ) : (
             <div> loading.. </div>
           )} */}
-        </div>
+
       </div>
     </div>
   );
