@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import SliderCard from "./SliderCard";
 import bg from "../../assets/bg.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../../redux/dataSlice";
+import { getArtistWithEvents, getData } from "../../redux/dataSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 
 const SliderComp = () => {
-  const { events } = useSelector((state) => state.data);
+  const { eventsWithArtists } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getData());
+    dispatch(getArtistWithEvents());
   }, [dispatch]);
 
   return (
@@ -30,7 +30,7 @@ const SliderComp = () => {
         modules={[Pagination]}
         className="mySwiper !py-[40px]"
       >
-        {events.map((events, i) => {
+        {eventsWithArtists.map((events, i) => {
           return (
             <SwiperSlide>
               <SliderCard events={events} key={i} />

@@ -3,11 +3,11 @@ import HeaderView from "../components/Header/HeaderView";
 import EventsComp from "../components/EventsComp/EventsComp";
 import FilterCategories from "../components/FilterCategories/FilterCategories";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../redux/dataSlice";
+import { getArtistWithEvents } from "../redux/dataSlice";
 import { useParams } from "react-router-dom";
 
 const Events = () => {
-  const { events } = useSelector((state) => state.data);
+  const { eventsWithArtists } = useSelector((state) => state.data);
   const { categoryName } = useParams();
   const [filteredEvents, setFilteredEvents] = useState([]);
 
@@ -15,9 +15,6 @@ const Events = () => {
 
   const filterEvents = useCallback(() => {
     let filtered = [];
-
-    filtered = events.filter((event) => event.eventCategory === categoryName);
-    console.log(filtered, "-", events);
 
     setFilteredEvents(filtered);
   }, []);
@@ -27,17 +24,17 @@ const Events = () => {
   }, [filterEvents]);
 
   useEffect(() => {
-    dispatch(getData());
+    dispatch(getArtistWithEvents());
   }, [dispatch]);
 
   const handleCategorySelect = (category) => {
     if (categoryName && category === null) {
       setFilteredEvents(null);
     } else if (category === "") {
-      setFilteredEvents(events);
+      setFilteredEvents(eventsWithArtists);
     } else {
-      const filtered = events.filter(
-        (event) => event.eventCategory.name === category
+      const filtered = eventsWithArtists.filter(
+        (event) => event.category.name === category
       );
 
       setFilteredEvents(filtered);
@@ -48,7 +45,7 @@ const Events = () => {
     <>
       <HeaderView />
       <FilterCategories
-        events={events}
+        events={eventsWithArtists}
         clickedCategory={categoryName}
         onSelectCategory={handleCategorySelect}
       />
@@ -56,6 +53,7 @@ const Events = () => {
         INCOMING EVENTS
       </div>
       <EventsComp events={filteredEvents} />
+      <div></div>
     </>
   );
 };
