@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../../redux/dataSlice";
+import { getArtistWithEvents } from "../../redux/dataSlice";
 import EventsComp from "../EventsComp/EventsComp";
 
 const SearchComp = ({ word, date }) => {
-  const { events } = useSelector((state) => state.data);
+  const { eventsWithArtists } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   const [searchedEvents, setSearchedEvents] = useState([]);
 
   useEffect(() => {
-    dispatch(getData());
+    dispatch(getArtistWithEvents());
   }, [dispatch]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const SearchComp = ({ word, date }) => {
     };
 
     // Etkinlikleri filtreleme
-    const filteredEvents = events.filter((event) => {
+    const filteredEvents = eventsWithArtists.filter((event) => {
       const eventName = event.eventName.toLowerCase();
       const eventDate = datePickerToDatabaseFormat(date);
       // Eğer sadece kelime filtresi varsa, sadece kelimeye göre filtrele
@@ -41,7 +41,7 @@ const SearchComp = ({ word, date }) => {
     });
 
     setSearchedEvents(filteredEvents);
-  }, [word, date, events]);
+  }, [word, date, eventsWithArtists]);
 
   return (
     <>

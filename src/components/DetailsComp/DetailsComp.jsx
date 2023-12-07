@@ -1,18 +1,31 @@
 import React, { useEffect } from "react";
 import { FaFacebook, FaWhatsapp, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { getEventById } from "../../redux/dataSlice";
+import { getEventById, getEventSingle } from "../../redux/dataSlice";
 
 const DetailsComp = ({ id }) => {
-  const { eventById } = useSelector((state) => state.data);
-  const { eventDesc, eventHour, eventLocation, eventName, eventDate } =
-    eventById;
+  //console.log("iddd", id);
+
+  const { event } = useSelector((state) => state.data);
+
+  let artists = [];
+
+  if (event.event) {
+    artists = [...event.event.artists];
+  }
+
+  console.log("event", artists);
+
+  const artistImg = artists.map((artist) => artist.artistPhoto);
+
+  // console.log("artistImg", artistImg);
+
   const href = window.location.href;
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getEventById(id));
-  }, [dispatch, href]);
+    dispatch(getEventSingle(id));
+  }, [dispatch, href, id]);
 
   const handleFacebookShare = () => {
     // Facebook paylaşım URL'si
@@ -45,25 +58,27 @@ const DetailsComp = ({ id }) => {
         <div className="mx-auto">
           <img
             className="rounded-lg shadow-2xl w-[360px] h-auto"
-            src={eventById?.attendanceList?.map((photo) => {
-              return photo.artistPhoto;
-            })}
+            src={artistImg[0]}
             alt=""
           />
         </div>
-        <div className="flex flex-col justify-start ps-8">
-          <h2 className="text-xl text-left mb-2">
-            Event: <span className="font-bold">{eventName}</span>
-          </h2>
-          <h2 className="text-xl text-left mb-2">
-            Event Time:<span className="font-bold">{eventHour}</span>
-          </h2>
-          <h2 className="text-xl text-left mb-2">
-            Event Date:<span className="font-bold">{eventDate}</span>
-          </h2>
-          <p className="text-justify">{eventDesc}</p>
-          <div>Location: Google Maps Gelecek</div>
-        </div>
+        {event.event && (
+          <div className="flex flex-col justify-start ps-8">
+            <h2 className="text-xl text-left mb-2">
+              Event: <span className="font-bold">{event.event.eventName}</span>
+            </h2>
+            <h2 className="text-xl text-left mb-2">
+              Event Time:
+              <span className="font-bold">{event.event.eventHour}</span>
+            </h2>
+            <h2 className="text-xl text-left mb-2">
+              Event Date:
+              <span className="font-bold">{event.event.eventDate}</span>
+            </h2>
+            <p className="text-justify">{event.event.eventDesc}</p>
+            <div>Location: Google Maps Gelecek</div>
+          </div>
+        )}
       </div>
 
       <div className="text-center flex flex-col items-center justify-center mt-8">

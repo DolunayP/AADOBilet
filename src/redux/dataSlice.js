@@ -1,11 +1,45 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import {
+  getCategories,
+  getArtists,
+  getEventsWithArtist,
+  getEvent,
+} from "../backend/app";
 
 const initialState = {
   events: [],
   eventById: [],
   categories: [],
+  categoriesTest: [],
+  artists: [],
+  eventsWithArtists: [],
+  event: {},
 };
+
+export const getCategoryTest = createAsyncThunk("testCategory", async () => {
+  const data = await getCategories();
+
+  return data;
+});
+
+export const getArtistTest = createAsyncThunk("artists", async () => {
+  const data = await getArtists();
+
+  return data;
+});
+
+export const getArtistWithEvents = createAsyncThunk("eventartist", async () => {
+  const data = await getEventsWithArtist();
+
+  return data;
+});
+
+export const getEventSingle = createAsyncThunk("getevent", async (eventId) => {
+  const data = await getEvent(eventId);
+
+  return data;
+});
 
 export const getData = createAsyncThunk("event", async () => {
   try {
@@ -59,6 +93,18 @@ const dataSlice = createSlice({
       })
       .addCase(getCategory.fulfilled, (state, action) => {
         state.categories = action.payload;
+      })
+      .addCase(getCategoryTest.fulfilled, (state, action) => {
+        state.categoriesTest = action.payload;
+      })
+      .addCase(getArtistTest.fulfilled, (state, action) => {
+        state.artists = action.payload;
+      })
+      .addCase(getArtistWithEvents.fulfilled, (state, action) => {
+        state.eventsWithArtists = action.payload;
+      })
+      .addCase(getEventSingle.fulfilled, (state, action) => {
+        state.event = action.payload;
       });
   },
 });

@@ -7,10 +7,13 @@ import Categories from "./components/CategoriesComp/Categories";
 import Statistics from "./components/Statistics";
 import SearchComp from "./components/SearchComp/SearchComp";
 import Footer from "./components/FooterComp/Footer";
+import TestComponent from "./components/TestComponent";
 
 function App() {
   const [word, setWord] = useState("");
   const [date, setDate] = useState("");
+
+  //console.log("app", setWord);
 
   return (
     <div className="App">

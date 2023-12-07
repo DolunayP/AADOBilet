@@ -1,34 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CategoriesItem from "./CategoriesItem";
-import { getCategory } from "../../redux/dataSlice";
+import { getCategory, getCategoryTest } from "../../redux/dataSlice";
 import { useNavigate } from "react-router-dom";
 function Categories() {
   const { categories } = useSelector((state) => state.data);
-  const [uniqueCategories, setUniqueCategories] = useState([]);
+  const { categoriesTest } = useSelector((state) => state.data);
+
+  //   const { data, error } = await supabase.from("event_artists").select(`
+  //   events(id,eventName,eventHour,eventFinishHour,eventDate,eventDesc,eventLocation, categories(name,image)),
+  //   artists(artistName,artistPhoto)
+
+  // `);
+
+  // const [uniqueCategories, setUniqueCategories] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getCategory());
+    dispatch(getCategoryTest());
   }, [dispatch]);
 
-  useEffect(() => {
-    const uniqueCategories = [];
-    categories.forEach((event) => {
-      const existingCategory = uniqueCategories.find(
-        (category) => category.name === event.eventCategory.name
-      );
-      if (!existingCategory) {
-        uniqueCategories.push({
-          name: event.eventCategory.name,
-          image: event.eventCategory.image,
-        });
-      }
-    });
-    setUniqueCategories(uniqueCategories);
-  }, [categories]);
+  // useEffect(() => {
+  //   const uniqueCategories = [];
+  //   categories.forEach((event) => {
+  //     const existingCategory = uniqueCategories.find(
+  //       (category) => category.name === event.eventCategory.name
+  //     );
+  //     if (!existingCategory) {
+  //       uniqueCategories.push({
+  //         name: event.eventCategory.name,
+  //         image: event.eventCategory.image,
+  //       });
+  //     }
+  //   });
+  //   setUniqueCategories(uniqueCategories);
+  // }, [categories]);
 
   return (
     <div className="my-0 mx-auto max-w-7xl">
@@ -47,7 +55,7 @@ function Categories() {
         className="grid-cols-1 grid  sm:grid-cols-2  xl:grid-cols-3 lg:grid-cols-2 
       md:grid-cols-2 p-3 ml-4 w-full text-white uppercase text-2xl gap-y-8"
       >
-        {uniqueCategories.map((e, i) => {
+        {categoriesTest.map((e, i) => {
           return <CategoriesItem category={e} key={i} />;
         })}
 
