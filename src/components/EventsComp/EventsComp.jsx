@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import EventsCard from "./EventsCard";
 import { useDispatch } from "react-redux";
-import { getData } from "../../redux/dataSlice";
+import { getArtistWithEvents } from "../../redux/dataSlice";
 
-const EventsComp = ({ events, path }) => {
+const EventsComp = ({ events, path, categoryName }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getData());
+    dispatch(getArtistWithEvents());
   }, [dispatch]);
 
   const currentDate = new Date();
@@ -30,10 +30,18 @@ const EventsComp = ({ events, path }) => {
     };
     return isPast();
   });
+  const arr = []
 
+  filteredByDate.map(e => {
+    if (e.category.name === categoryName || 'All' === categoryName) {
+      arr.push(e)
+    }
+  })
+
+  console.log(arr)
   return (
     <div className="flex gap-8 justify-center items-center my-12 px-10 flex-wrap">
-      {filteredByDate.map((event, i) => (
+      {arr.map((event, i) => (
         <EventsCard key={i} event={event} />
       ))}
     </div>

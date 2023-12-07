@@ -13,30 +13,17 @@ const Events = () => {
 
   const dispatch = useDispatch();
 
-  const filterEvents = useCallback(() => {
-    let filtered = [];
-
-    setFilteredEvents(filtered);
-  }, []);
-
-  useEffect(() => {
-    filterEvents();
-  }, [filterEvents]);
-
   useEffect(() => {
     dispatch(getArtistWithEvents());
   }, [dispatch]);
 
   const handleCategorySelect = (category) => {
-    if (categoryName && category === null) {
-      setFilteredEvents(null);
-    } else if (category === "") {
+    if (category === "") {
       setFilteredEvents(eventsWithArtists);
     } else {
       const filtered = eventsWithArtists.filter(
         (event) => event.category.name === category
       );
-
       setFilteredEvents(filtered);
     }
   };
@@ -52,8 +39,8 @@ const Events = () => {
       <div className="my-4 font-bold text-4xl text-[#32847a]">
         INCOMING EVENTS
       </div>
-      <EventsComp events={filteredEvents} />
-      <div></div>
+      <EventsComp events={filteredEvents} categoryName={categoryName} />
+
     </>
   );
 };
