@@ -14,8 +14,6 @@ function App() {
   const [word, setWord] = useState("");
   const [date, setDate] = useState("");
 
-  //console.log("app", setWord);
-
   return (
     <div className="App">
       <HeaderView word={word} setWord={setWord} date={date} setDate={setDate} />
