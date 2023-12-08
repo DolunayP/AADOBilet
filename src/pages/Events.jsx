@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import HeaderView from "../components/Header/HeaderView";
 import EventsComp from "../components/EventsComp/EventsComp";
 import FilterCategories from "../components/FilterCategories/FilterCategories";
 import { useDispatch, useSelector } from "react-redux";
 import { getArtistWithEvents } from "../redux/dataSlice";
 import { useParams } from "react-router-dom";
+import HeaderTitle from "../components/Header/HeaderTitle";
+import HeaderMenu from "../components/Header/HeaderMenu";
 
 const Events = () => {
   const { eventsWithArtists } = useSelector((state) => state.data);
@@ -30,7 +31,10 @@ const Events = () => {
 
   return (
     <>
-      <HeaderView />
+      <div className="bg-color-primary">
+        <HeaderMenu />
+        <HeaderTitle />
+      </div>
       <FilterCategories
         events={eventsWithArtists}
         clickedCategory={categoryName}

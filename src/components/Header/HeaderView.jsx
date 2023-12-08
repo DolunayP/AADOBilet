@@ -3,7 +3,6 @@ import HeaderMenu from "./HeaderMenu";
 import HeaderTitle from "./HeaderTitle";
 
 function HeaderView({ word, setWord, date, setDate }) {
-  //console.log("setword Headreview", setWord);
 
   return (
     <div className="bg-color-primary">

@@ -5,6 +5,7 @@ import {
   getArtists,
   getEventsWithArtist,
   getEvent,
+  getEventPhotos,
 } from "../backend/app";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   artists: [],
   eventsWithArtists: [],
   event: {},
+  eventPhotos: [],
 };
 
 export const getCategoryTest = createAsyncThunk("testCategory", async () => {
@@ -37,6 +39,12 @@ export const getArtistWithEvents = createAsyncThunk("eventartist", async () => {
 
 export const getEventSingle = createAsyncThunk("getevent", async (eventId) => {
   const data = await getEvent(eventId);
+
+  return data;
+});
+
+export const getPhotosByEvent = createAsyncThunk("geteventphotos", async (eventId) => {
+  const data = await getEventPhotos(eventId);
 
   return data;
 });
@@ -105,6 +113,9 @@ const dataSlice = createSlice({
       })
       .addCase(getEventSingle.fulfilled, (state, action) => {
         state.event = action.payload;
+      })
+      .addCase(getPhotosByEvent.fulfilled, (state, action) => {
+        state.eventPhotos = action.payload;
       });
   },
 });

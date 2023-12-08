@@ -32,7 +32,7 @@ const SliderComp = () => {
       >
         {eventsWithArtists.map((events, i) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={i}>
               <SliderCard events={events} key={i} />
             </SwiperSlide>
           );

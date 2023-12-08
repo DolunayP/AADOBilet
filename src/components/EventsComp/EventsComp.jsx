@@ -6,6 +6,7 @@ import { getArtistWithEvents } from "../../redux/dataSlice";
 const EventsComp = ({ events, path, categoryName }) => {
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getArtistWithEvents());
   }, [dispatch]);
@@ -30,15 +31,14 @@ const EventsComp = ({ events, path, categoryName }) => {
     };
     return isPast();
   });
-  const arr = []
 
+  const arr = []
   filteredByDate.map(e => {
-    if (e.category.name === categoryName || 'All' === categoryName) {
+    if (e.category.name === categoryName || 'All' === categoryName || undefined === categoryName) {
       arr.push(e)
     }
   })
 
-  console.log(arr)
   return (
     <div className="flex gap-8 justify-center items-center my-12 px-10 flex-wrap">
       {arr.map((event, i) => (

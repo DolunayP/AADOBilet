@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const EventsCard = ({ event }) => {
-  const { eventDesc, eventHour, eventLocation, eventName, eventDate } = event;
+  const { eventDesc, eventHour, eventLocation, eventFinishHour,eventName, eventDate } = event;
   const navigate = useNavigate();
   const getDetails = (id) => {
     navigate(`/details/${id}`);
@@ -26,6 +26,9 @@ const EventsCard = ({ event }) => {
         </p>
         <p className="text-start">
           <span className="font-bold">Time:</span> {eventHour}
+        </p>
+        <p className="text-start">
+          <span className="font-bold">Time:</span> {eventFinishHour}
         </p>
         <p className="text-start">
           <span className="font-bold">Date:</span> {eventDate}

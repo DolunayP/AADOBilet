@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import HeaderView from '../components/Header/HeaderView'
 import EventsComp from '../components/EventsComp/EventsComp'
 import { useDispatch, useSelector } from 'react-redux';
-import { getArtistWithEvents, getData } from '../redux/dataSlice';
+import { getArtistWithEvents } from '../redux/dataSlice';
 import { useLocation } from 'react-router-dom';
+import HeaderMenu from '../components/Header/HeaderMenu';
+import HeaderTitle from '../components/Header/HeaderTitle';
 
 const PastEvents = () => {
     const location = useLocation();
@@ -17,11 +18,14 @@ const PastEvents = () => {
     }, [dispatch]);
     return (
         <>
-            <HeaderView />
+            <div className="bg-color-primary">
+                <HeaderMenu />
+                <HeaderTitle />
+            </div>
             <div className='my-4 font-bold text-[52px] text-[#32847a]'>
                 Geçmiş Etkinlikler
             </div>
-            <EventsComp events={eventsWithArtists} path={path}/>
+            <EventsComp events={eventsWithArtists} path={path} />
         </>
     )
 }

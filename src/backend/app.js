@@ -8,6 +8,19 @@ export async function getCategories() {
       console.error(error);
       throw new Error("Categories could not be loaded");
     }
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function getEventPhotos(eventId) {
+  try {
+    const { data, error } = await supabase.from("eventPhotos").select("*").eq('eventId', eventId);
+    if (error) {
+      console.error(error);
+      throw new Error("eventPhotos could not be loaded");
+    }
 
     return data;
   } catch (e) {
@@ -50,11 +63,10 @@ export async function getEventsWithArtist() {
         const { data: eventData, error: eventError } = await supabase
           .from("events")
           .select(
-            "id, eventName, eventHour, eventFinishHour, eventDate, eventDesc, eventLocation, categoryId"
+            "id, eventName, eventHour, eventFinishHour, eventDate, eventDesc, eventLocation, categoryId, ticketPrice"
           )
           .eq("id", eventId)
           .single();
-
         if (eventError) {
           console.error("Event error:", eventError);
           throw new Error("Event could not be loaded");
@@ -109,7 +121,7 @@ export async function getEvent(eventId) {
     const { data: eventData, error: eventError } = await supabase
       .from("events")
       .select(
-        "id, eventName, eventHour, eventFinishHour, eventDate, eventDesc, eventLocation, categoryId"
+        "id, eventName, eventHour, eventFinishHour, eventDate, eventDesc, eventLocation, categoryId, ticketPrice"
       )
       .eq("id", eventId)
       .single();

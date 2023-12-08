@@ -4,6 +4,14 @@ import { useNavigate } from "react-router-dom";
 const SliderCard = ({ events }) => {
   const { artists } = events;
 
+  const handleScrollToTop = () => {
+    // Sayfanın en üstüne kaydırma işlemi
+    window.scrollTo({
+      top: 200,
+      behavior: 'smooth', // Animasyonlu kaydırma için
+    });
+  };
+
   const navigate = useNavigate();
 
   const getDetails = (id) => {
@@ -26,7 +34,11 @@ const SliderCard = ({ events }) => {
             <h2 className="font-bold"> {events.eventName}</h2>
             <p className="text-sm">{events.eventDesc}</p>
             <button
-              onClick={() => getDetails(events.id)}
+              onClick={() => {
+                getDetails(events.id);
+                handleScrollToTop();
+              }
+              }
               className="shadow-xl mt-4 me-4 py-3 px-6 bg-black text-white hover:scale-95 hover:text-[#6cebdc] transition-all duration-500"
             >
               See Details{" "}
