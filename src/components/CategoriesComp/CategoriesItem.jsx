@@ -16,10 +16,10 @@ function CategoriesItem({ category }) {
       <img
         src={category.image}
         alt="img"
-        className="absolute inset-0 bg-cover"
+        className="absolute h-full w-full object-cover inset-0"
       />
-      <div className="absolute inset-0 bg-color-rose-ebony bg-opacity-90 group-hover:bg-opacity-70 transition duration-300"></div>
-      <p className="absolute group-hover: bg-opacity-90 tracking-widest">
+      <div className="absolute inset-0 bg-color-rose-ebony bg-opacity-70 group-hover:bg-opacity-30 transition-all duration-[600ms]"></div>
+      <p className="absolute group-hover:scale-125 transition-all duration-[600ms] group-hover:font-bold tracking-widest">
         {category.name}
       </p>
     </div>

@@ -29,20 +29,12 @@ const TimelineComp = () => {
           | <span className="text-[#32847a]">Today's</span> Schedule
         </div>
         <div className="sm:w-[200px] text-md sm:text-2xl font-bold justify-center flex items-center">
-          <AiFillCalendar className="me-3 w-6 h-6 sm:h-11 sm:w-11" />{" "}
+          <AiFillCalendar className="me-3 w-6 h-6 sm:h-11 sm:w-11" />
           <span className="text-[#32847a]">{day}</span>/{month}/{year}
         </div>
         <div className="sm:w-[200px] font-bold text-lg sm:text-3xl sm:text-start">
-          {" "}
           <a href="">
-            <span className="text-[#32847a]">|</span> See All
-            <span
-              className="t {/* {filter.map((e, i) => (
-              <TimelineElement key={i} event={e} />
-            ))}ext-[#32847a]"
-            >
-              Events
-            </span>
+            <span className="text-[#32847a]">|</span> See All Events
           </a>
         </div>
       </div>
@@ -54,20 +46,7 @@ const TimelineComp = () => {
           ) : (
             <h1>loading.....</h1>
           )}
-          {/* {eventsWithArtists
-              .filter((event) => event.eventDate === currentDate)
-              .map((e, i) => {
-                return <TimelineElement key={i} event={e} />;
-              })}  */}
         </div>
-        {/* {todayEvents.length > 0 ? (
-            todayEvents.map((event, i) => {
-              return <TimelineElement key={i} event={event} />;
-            })
-          ) : (
-            <div> loading.. </div>
-          )} */}
-
       </div>
     </div>
   );
