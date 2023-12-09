@@ -8,12 +8,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 
-import { CircleLoader, HashLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 
 const SliderComp = () => {
   const { eventsWithArtists } = useSelector((state) => state.data);
 
-  console.log(eventsWithArtists);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getArtistWithEvents());

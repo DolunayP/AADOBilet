@@ -7,12 +7,10 @@ import {
   getEventsWithArtist,
 } from "../backend/events/events";
 import { getArtists } from "../backend/artists/artists";
-import { getSeats, selectSeat } from "../backend/seats/seats";
+import { getSeats, getTicketsSold, selectSeat } from "../backend/seats/seats";
 import { buyTicket, getEventTickets } from "../backend/tickets/tickets";
 
 const initialState = {
-  events: [],
-  eventById: [],
   categories: [],
   categoriesTest: [],
   artists: [],
@@ -22,6 +20,7 @@ const initialState = {
   seats: [],
   eventTickets: [],
   selectedSeat: {},
+  soldTickets: {},
 };
 
 export const getCategoryTest = createAsyncThunk("testCategory", async () => {
@@ -65,6 +64,12 @@ export const getSeatsByEvent = createAsyncThunk("seats", async (eventId) => {
 
 export const getTickets = createAsyncThunk("gettickets", async (eventId) => {
   const data = await getEventTickets(eventId);
+
+  return data;
+});
+
+export const getSoldTickets = createAsyncThunk("soldticket", async () => {
+  const data = await getTicketsSold();
 
   return data;
 });
@@ -144,6 +149,9 @@ const dataSlice = createSlice({
       })
       .addCase(selectSeatByUser.fulfilled, (state, action) => {
         state.selectedSeat = action.payload;
+      })
+      .addCase(getSoldTickets.fulfilled, (state, action) => {
+        state.soldTickets = action.payload;
       });
   },
 });
