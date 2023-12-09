@@ -1,17 +1,8 @@
 import { Link } from "react-router-dom";
 import { FaFacebook, FaWhatsapp, FaTwitter, FaInstagram } from "react-icons/fa";
 import Logo from "../LogoComp/Logo";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 
 function Footer() {
-  const dispatch = useDispatch();
-  const { seats } = useSelector((state) => state.data);
-
-  useEffect(() => {
-    // dispatch(getSeat);
-  }, [dispatch]);
-
   return (
     <div className=" bg-color-secondary py-4 text-[#f7caca] h-[439px]">
       <div className="flex justify-center ">

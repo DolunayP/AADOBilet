@@ -1,6 +1,5 @@
 import supabase from "../supabase";
 export async function getEventTickets(eventId) {
-  console.log("eventId app.js", eventId);
   try {
     const { data, error } = await supabase.from("ticketPricing").select("*");
 
