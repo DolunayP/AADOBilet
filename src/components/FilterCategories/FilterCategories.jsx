@@ -22,7 +22,9 @@ const FilterCategories = ({ events, onSelectCategory, clickedCategory }) => {
     onSelectCategory(
       clickedCategory !== null && category === null
         ? clickedCategory
-        : category === "All" ? "" : category
+        : category === "All"
+        ? ""
+        : category
     );
     navigate(`/events/${category}`);
   };
@@ -36,8 +38,8 @@ const FilterCategories = ({ events, onSelectCategory, clickedCategory }) => {
           clickedCategory !== null && isSelected === false
             ? clickedCategory
             : selectedCategory === ""
-              ? "All"
-              : selectedCategory
+            ? "All"
+            : selectedCategory
         }
         className="px-4 py-2 border rounded-lg w-[200px]"
       >

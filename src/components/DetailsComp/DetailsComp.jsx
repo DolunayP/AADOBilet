@@ -2,14 +2,16 @@ import React, { useEffect } from "react";
 import { FaFacebook, FaWhatsapp, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getEventSingle, getPhotosByEvent } from "../../redux/dataSlice";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 import DetailsSlider from "./DetailsSlider";
+import { useNavigate } from "react-router-dom";
 
 const DetailsComp = ({ id }) => {
   const { event, eventPhotos } = useSelector((state) => state.data);
+  const navigate = useNavigate();
 
   let artists = [];
 
@@ -23,7 +25,7 @@ const DetailsComp = ({ id }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getEventSingle(id));
-    dispatch(getPhotosByEvent(id))
+    dispatch(getPhotosByEvent(id));
   }, [dispatch, href, id]);
 
   const handleFacebookShare = () => {
@@ -55,12 +57,14 @@ const DetailsComp = ({ id }) => {
           navigation={true}
           modules={[Navigation]}
           className="mySwiper w-[500px] "
-        >{eventPhotos?.map((photo, i) => {
-          return (<SwiperSlide key={i}>
-            <DetailsSlider key={i} photo={photo} />
-          </SwiperSlide>
-          )
-        })}
+        >
+          {eventPhotos?.map((photo, i) => {
+            return (
+              <SwiperSlide key={i}>
+                <DetailsSlider key={i} photo={photo} />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
         <div className="flex flex-row-reverse">
           <div className="mx-auto ps-8 ">
@@ -73,7 +77,8 @@ const DetailsComp = ({ id }) => {
           {event.event && (
             <div className="flex flex-col items-start justify-center max-w-[300px] ">
               <h2 className="text-xl text-left mb-2">
-                Event: <span className="font-bold"> {event.event.eventName}</span>
+                Event:{" "}
+                <span className="font-bold"> {event.event.eventName}</span>
               </h2>
               <h2 className="text-xl text-left mb-2">
                 Event Time:
@@ -81,7 +86,10 @@ const DetailsComp = ({ id }) => {
               </h2>
               <h2 className="text-xl text-left mb-2">
                 Event End Time:
-                <span className="font-bold"> {event.event.eventFinishHour}</span>
+                <span className="font-bold">
+                  {" "}
+                  {event.event.eventFinishHour}
+                </span>
               </h2>
               <h2 className="text-xl text-left mb-2">
                 Event Date:
@@ -93,14 +101,18 @@ const DetailsComp = ({ id }) => {
               </h2>
               <p className="text-justify"> {event.event.eventDesc}</p>
 
+              <button
+                className="bg-color-secondary p-2 text-white border rounded-md mt-2"
+                onClick={() => navigate(`/event/tickets/${event.event.id}`)}
+              >
+                Buy Ticket
+              </button>
             </div>
           )}
         </div>
       </div>
       <div className="flex px-[10%] justify-between items-center">
-        <div className="text-2xl">
-          google maps GELECEK
-        </div>
+        <div className="text-2xl">google maps GELECEK</div>
         <div className="text-center flex flex-col items-center justify-center mt-8">
           <h2 className="font-bold text-3xl my-6">
             Share This Event on Social Media Platforms

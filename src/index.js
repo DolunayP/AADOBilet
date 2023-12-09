@@ -9,6 +9,8 @@ import Events from "./pages/Events";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 import Forms from "./components/SignUp/Forms";
+import Tickets from "./pages/Tickets.jsx";
+import SuccessBuyTicket from "./pages/SuccessBuyTicket.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
   {
     path: "/events/:categoryName",
     element: <Events />,
+  },
+  {
+    path: "/event/tickets/:id",
+    element: <Tickets />,
+  },
+  {
+    path: "/event/ticket/success",
+    element: <SuccessBuyTicket />,
   },
 ]);
 

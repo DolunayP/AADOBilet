@@ -6,6 +6,10 @@ import {
   getEventsWithArtist,
   getEvent,
   getEventPhotos,
+  getSeats,
+  buyTicket,
+  getEventTickets,
+  selectSeat,
 } from "../backend/app";
 
 const initialState = {
@@ -17,6 +21,9 @@ const initialState = {
   eventsWithArtists: [],
   event: {},
   eventPhotos: [],
+  seats: [],
+  eventTickets: [],
+  selectedSeat: {},
 };
 
 export const getCategoryTest = createAsyncThunk("testCategory", async () => {
@@ -43,11 +50,48 @@ export const getEventSingle = createAsyncThunk("getevent", async (eventId) => {
   return data;
 });
 
-export const getPhotosByEvent = createAsyncThunk("geteventphotos", async (eventId) => {
-  const data = await getEventPhotos(eventId);
+export const getPhotosByEvent = createAsyncThunk(
+  "geteventphotos",
+  async (eventId) => {
+    const data = await getEventPhotos(eventId);
+
+    return data;
+  }
+);
+
+export const getSeatsByEvent = createAsyncThunk("seats", async (eventId) => {
+  const data = await getSeats(eventId);
 
   return data;
 });
+
+export const getTickets = createAsyncThunk("gettickets", async (eventId) => {
+  const data = await getEventTickets(eventId);
+
+  return data;
+});
+
+export const buyTicketOfEvent = createAsyncThunk(
+  "buyTicket",
+  async ({ eventId, seatId, ticketId }) => {
+    const data = await buyTicket(eventId, seatId, ticketId);
+
+    console.log("dataa", data);
+
+    return data;
+  }
+);
+
+export const selectSeatByUser = createAsyncThunk(
+  "selectseat",
+  async (seatId) => {
+    const data = await selectSeat(seatId);
+
+    console.log("dataa", data);
+
+    return data;
+  }
+);
 
 export const getData = createAsyncThunk("event", async () => {
   try {
@@ -116,6 +160,38 @@ const dataSlice = createSlice({
       })
       .addCase(getPhotosByEvent.fulfilled, (state, action) => {
         state.eventPhotos = action.payload;
+      })
+      .addCase(getSeatsByEvent.fulfilled, (state, action) => {
+        state.seats = action.payload;
+      })
+      .addCase(getTickets.fulfilled, (state, action) => {
+        state.eventTickets = action.payload;
+      })
+      .addCase(buyTicketOfEvent.fulfilled, (state, action) => {
+        console.log("addcase", action.payload);
+        const updatedSeats = state.seats.map((seat) => {
+          if (
+            seat.id === action.payload.seatId &&
+            seat.eventId === action.payload.eventId
+          ) {
+            return {
+              ...seat,
+              availability: false,
+            };
+          }
+          return seat;
+        });
+
+        state.seats = updatedSeats;
+
+        state.eventTickets = state.eventTickets.filter(
+          (ticket) =>
+            ticket.ticketId !== action.payload.seatId &&
+            ticket.eventId === action.payload.eventId
+        );
+      })
+      .addCase(selectSeatByUser.fulfilled, (state, action) => {
+        state.selectedSeat = action.payload;
       });
   },
 });

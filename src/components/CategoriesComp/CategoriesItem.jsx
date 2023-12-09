@@ -10,7 +10,9 @@ function CategoriesItem({ category }) {
 
   return (
     <div
-      onClick={() => { goToEvents(); }}
+      onClick={() => {
+        goToEvents();
+      }}
       className=" w-11/12 h-60 relative flex justify-center items-center cursor-pointer group"
     >
       <img

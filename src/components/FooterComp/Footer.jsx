@@ -4,7 +4,7 @@ import Logo from "../LogoComp/Logo";
 
 function Footer() {
   return (
-    <div className=" bg-color-secondary py-4 text-[#f7caca]">
+    <div className=" bg-color-secondary py-4 text-[#f7caca] h-[439px]">
       <div className="flex justify-center ">
         <Logo />
       </div>

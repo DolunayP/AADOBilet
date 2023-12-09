@@ -6,6 +6,7 @@ import { getArtistWithEvents } from "../redux/dataSlice";
 import { useParams } from "react-router-dom";
 import HeaderTitle from "../components/Header/HeaderTitle";
 import HeaderMenu from "../components/Header/HeaderMenu";
+import Footer from "../components/FooterComp/Footer";
 
 const Events = () => {
   const { eventsWithArtists } = useSelector((state) => state.data);
@@ -44,7 +45,7 @@ const Events = () => {
         INCOMING EVENTS
       </div>
       <EventsComp events={filteredEvents} categoryName={categoryName} />
-
+      <Footer />
     </>
   );
 };
