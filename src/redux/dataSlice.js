@@ -1,16 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+
+import { getCategories } from "../backend/categories/categories";
 import {
-  getCategories,
-  getArtists,
-  getEventsWithArtist,
   getEvent,
   getEventPhotos,
-  getSeats,
-  buyTicket,
-  getEventTickets,
-  selectSeat,
-} from "../backend/app";
+  getEventsWithArtist,
+} from "../backend/events/events";
+import { getArtists } from "../backend/artists/artists";
+import { getSeats, selectSeat } from "../backend/seats/seats";
+import { buyTicket, getEventTickets } from "../backend/tickets/tickets";
 
 const initialState = {
   events: [],
@@ -93,59 +91,13 @@ export const selectSeatByUser = createAsyncThunk(
   }
 );
 
-export const getData = createAsyncThunk("event", async () => {
-  try {
-    const res = await axios.get("http://localhost:3000/data");
-    const data = res.data;
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-export const getCategory = createAsyncThunk("category", async () => {
-  try {
-    const res = await axios.get("http://localhost:3000/data");
-    const data = res.data.map((item) => {
-      return {
-        eventCategory: {
-          name: item.eventCategory.name.toLowerCase(),
-          image: item.eventCategory.image,
-        },
-      };
-    });
-    const uniqueCategories = [...new Set(data)];
-    return uniqueCategories;
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-export const getEventById = createAsyncThunk("eventid", async (eventId) => {
-  try {
-    const res = await axios.get(`http://localhost:3000/data/${eventId}`);
-    const data = res.data;
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-});
-
 const dataSlice = createSlice({
   name: "data",
   initialState,
   reducers: [],
   extraReducers: (builder) => {
     builder
-      .addCase(getData.fulfilled, (state, action) => {
-        state.events = action.payload;
-      })
-      .addCase(getEventById.fulfilled, (state, action) => {
-        state.eventById = action.payload;
-      })
-      .addCase(getCategory.fulfilled, (state, action) => {
-        state.categories = action.payload;
-      })
+
       .addCase(getCategoryTest.fulfilled, (state, action) => {
         state.categoriesTest = action.payload;
       })

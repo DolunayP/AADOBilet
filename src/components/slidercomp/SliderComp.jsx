@@ -8,8 +8,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 
+import { CircleLoader, HashLoader } from "react-spinners";
+
 const SliderComp = () => {
   const { eventsWithArtists } = useSelector((state) => state.data);
+
+  console.log(eventsWithArtists);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getArtistWithEvents());
@@ -20,24 +24,37 @@ const SliderComp = () => {
       <h2 className="mt-2 mb-6 font-bold text-[48px] text-[#296c60]">
         Yaklaşan Popüler Etkinlikler
       </h2>
-      <img className="absolute top-0 left-0 h-full w-full" src={bg} alt="" />
-      <Swiper
-        slidesPerView={4}
-        spaceBetween={20}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper !py-[40px]"
-      >
-        {eventsWithArtists.map((events, i) => {
-          return (
-            <SwiperSlide key={i}>
-              <SliderCard events={events} key={i} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+
+      {eventsWithArtists.length > 0 ? (
+        <>
+          <img
+            className="absolute top-0 left-0 h-full w-full"
+            src={bg}
+            alt=""
+          />
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={20}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination]}
+            className="mySwiper !py-[40px]"
+          >
+            {eventsWithArtists.map((events, i) => {
+              return (
+                <SwiperSlide key={i}>
+                  <SliderCard events={events} key={i} />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </>
+      ) : (
+        <div className="flex justify-center">
+          <HashLoader size={120} color="#404529" />
+        </div>
+      )}
     </div>
   );
 };
