@@ -3,6 +3,8 @@ import { AiFillCalendar } from "react-icons/ai";
 import TimelineElement from "./TimelineElement";
 import { useDispatch, useSelector } from "react-redux";
 import { getArtistWithEvents } from "../../redux/dataSlice";
+import { HashLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
 const TimelineComp = () => {
   const date = new Date();
@@ -33,18 +35,24 @@ const TimelineComp = () => {
           <span className="text-[#32847a]">{day}</span>/{month}/{year}
         </div>
         <div className="sm:w-[200px] font-bold text-lg sm:text-3xl sm:text-start">
-          <a href="">
+          <Link to="events">
             <span className="text-[#32847a]">|</span> See All Events
-          </a>
+          </Link>
         </div>
       </div>
       <div className="w-full flex justify-center">
         <div className="sm:w-[86%] relative sm:flex justify-between sm:m-auto">
           <div className="w-[4px] sm:w-[90%] sm:translate-x-[-50%] bg-black bottom-[50%] sm:translate-y-0 translate-y-[50%] h-[78%] sm:h-[4px] absolute sm:bottom-20 z-0 left-[15%] sm:left-[50%]"></div>
-          {eventsWithArtists.length > 0 && todayEvents.length > 0 ? (
+          {todayEvents.length > 0 ? (
             todayEvents.map((e, i) => <TimelineElement key={i} event={e} />)
+          ) : todayEvents.length === 0 ? (
+            <div className="flex  justify-center w-full ab">
+              <span className="text-2xl text-center">
+                There are no events today.
+              </span>
+            </div>
           ) : (
-            <h1>loading.....</h1>
+            <HashLoader size={50} color="#404529" />
           )}
         </div>
       </div>
