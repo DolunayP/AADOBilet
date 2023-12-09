@@ -16,7 +16,10 @@ export async function getCategories() {
 
 export async function getEventPhotos(eventId) {
   try {
-    const { data, error } = await supabase.from("eventPhotos").select("*").eq('eventId', eventId);
+    const { data, error } = await supabase
+      .from("eventPhotos")
+      .select("*")
+      .eq("eventId", eventId);
     if (error) {
       console.error(error);
       throw new Error("eventPhotos could not be loaded");
@@ -176,5 +179,91 @@ export async function getEvent(eventId) {
   } catch (error) {
     console.error("Error fetching event with artists and category:", error);
     throw new Error("Event with artists and category could not be loaded");
+  }
+}
+
+export async function getSeats(eventId) {
+  try {
+    const { data, error } = await supabase
+      .from("seats")
+      .select("*, ticketPricing(ticketCategories(categoryName,price))")
+      .eq("eventId", eventId);
+
+    if (error) {
+      console.error(error);
+      throw new Error("Seats could not be loaded");
+    }
+
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function getEventTickets(eventId) {
+  console.log("eventId app.js", eventId);
+  try {
+    const { data, error } = await supabase.from("ticketPricing").select("*");
+
+    if (error) {
+      console.error(error);
+      throw new Error("Tickets could not be loaded");
+    }
+
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function selectSeat(seatId) {
+  try {
+    const { data, error } = await supabase
+      .from("seats")
+      .select(
+        "id,seatName,availability, events(id,eventName,eventDate, eventLocation, isFree),  ticketPricing(id, ticketCategories(categoryName,price)) "
+      )
+      .eq("id", seatId)
+      .single();
+
+    if (error) {
+      console.error(error);
+      throw new Error("Seats could not be loaded");
+    }
+
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function buyTicket(eventId, seatId, ticketId) {
+  console.log("eventId =>", eventId, "seatId =>", seatId);
+  try {
+    const updateSeat = await supabase
+      .from("seats")
+      .update({ availability: false, ticketId: null })
+      .eq("eventId", eventId)
+      .eq("id", seatId);
+
+    if (updateSeat.error) {
+      console.error(updateSeat.error);
+      throw new Error("Seat availability could not be updated");
+    }
+
+    const { error: deleteError } = await supabase
+      .from("ticketPricing")
+      .delete()
+      .eq("id", ticketId);
+
+    if (deleteError) {
+      console.error(deleteError.error);
+      throw new Error("Ticket pricing could not be deleted");
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    throw new Error("An error occurred while buying the ticket");
   }
 }

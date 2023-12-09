@@ -11,14 +11,8 @@ module.exports = {
         "color-davys-gray": "#545155",
         "color-myrtle-green": "#3D726D",
       },
-      backgroundImage: {
-        events: "url('/src/assets/img/events.jpg')",
-        sports: "url('/src/assets/img/sports.jpg')",
-        parties: "url('/src/assets/img/parties.jpg')",
-        communities: "url('/src/assets/img/communities.jpg')",
-        theaters: "url('/src/assets/img/theaters.jpg')",
-        concerts: "url('/src/assets/img/concerts.jpg')",
-        statistics: "url('/src/assets/img/statistics.jpg')",
+      fontFamily: {
+        sans: ["Cormorant Garamond", "sans-serif"],
       },
     },
   },
