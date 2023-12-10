@@ -9,7 +9,14 @@ import {
 import { getArtists } from "../backend/artists/artists";
 import { getSeats, getTicketsSold, selectSeat } from "../backend/seats/seats";
 import { buyTicket, getEventTickets } from "../backend/tickets/tickets";
-import { fetchUsers, logout, signIn, signUp } from "../backend/user/user";
+import {
+  fetchUsers,
+  getUser,
+  getUserFromDatabase,
+  logout,
+  signIn,
+  signUp,
+} from "../backend/user/user";
 
 const initialState = {
   categories: [],
@@ -24,6 +31,8 @@ const initialState = {
   soldTickets: {},
   users: [],
   user: {},
+  userSession: {},
+  userData: {},
 };
 
 export const getCategoryTest = createAsyncThunk("testCategory", async () => {
@@ -56,11 +65,20 @@ export const getUsers = createAsyncThunk("fetchusers", async () => {
   return data;
 });
 
-export const getUser = createAsyncThunk("getUser", async () => {
+export const getUserSession = createAsyncThunk("getUser", async () => {
   const data = await getUser();
 
   return data;
 });
+
+export const getUserSessionDatabase = createAsyncThunk(
+  "getUserdata",
+  async (userId) => {
+    const data = await getUserFromDatabase(userId);
+
+    return data;
+  }
+);
 
 export const login = createAsyncThunk("login", async ({ email, password }) => {
   const data = await signIn({ email, password });
@@ -71,6 +89,8 @@ export const login = createAsyncThunk("login", async ({ email, password }) => {
 export const logoutUser = createAsyncThunk("logout", async () => {
   const data = await logout();
 
+  console.log("logout", data);
+
   return data;
 });
 
@@ -78,6 +98,8 @@ export const register = createAsyncThunk(
   "register",
   async ({ email, password, username }) => {
     const data = await signUp({ email, password, username });
+
+    console.log("data register", data);
 
     return data;
   }
@@ -193,16 +215,22 @@ const dataSlice = createSlice({
         state.users = action.payload;
       })
       .addCase(register.fulfilled, (state, action) => {
-        const registeredUser = state.users.map((user) => {
-          return {
-            ...user,
-          };
-        });
+        const registeredUser = action.payload;
 
-        state.users = registeredUser;
+        state.users = [...state.users, registeredUser];
       })
-      .addCase(getUser.fulfilled, (state, action) => {
+      .addCase(login.fulfilled, (state, action) => {
+        state.userSession = action.payload;
+      })
+
+      .addCase(getUserSession.fulfilled, (state, action) => {
         state.user = action.payload;
+      })
+      .addCase(getUserSessionDatabase.fulfilled, (state, action) => {
+        state.userData = action.payload;
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        state.user = {};
       });
   },
 });

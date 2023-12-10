@@ -5,7 +5,19 @@ export async function getUser() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log("datauser", user);
+  if (!user) return;
+
+  return user;
+}
+
+export async function getUserFromDatabase(userId) {
+  if (!userId) return;
+  console.log("getUserFromDatabase", userId);
+  const { data: user } = await supabase
+    .from("users")
+    .select("*")
+    .eq("id", userId)
+    .single();
 
   return user;
 }
@@ -19,22 +31,43 @@ export async function signUp({ email, password, username }) {
     password,
   });
 
-  return user;
+  const userData = {
+    id: user.id,
+    email: email,
+    username: username,
+    password: password,
+    //authenticated: user.role,
+    // Diğer gerekli kullanıcı bilgileri...
+  };
+
+  const { data, error: insertError } = await supabase
+    .from("users")
+    .insert([{ ...userData }]);
+
+  console.log("insertdata", data);
+
+  if (insertError) {
+    return { error: insertError };
+  }
+
+  return data;
 }
 
 export async function signIn({ email, password }) {
   const { data: user, error } = await supabase.auth.signInWithPassword({
-    email: "anilates.97@gmail.com",
-    password: "12345678",
+    email,
+    password,
   });
+
+  console.log("signin data", user);
 
   if (error) throw new Error(error.message);
 
   return user;
 }
 
-export async function logout({ email, password }) {
-  console.log("data signin", email, password);
+export async function logout() {
+  console.log("data signout");
   const { data: user, error } = await supabase.auth.signOut();
 
   if (error) throw new Error(error.message);
@@ -54,4 +87,25 @@ export async function fetchUsers() {
   } catch (error) {
     console.error("Error:", error.message);
   }
+}
+
+export async function updateRoleOnLogin() {
+  const { data: session } = supabase.auth.getSession();
+
+  console.log("sesssionnn", session);
+
+  if (session) {
+    const accessToken = session.access_token || session.token;
+
+    const { error: updateError } = await supabase.auth.update({
+      access_token: accessToken,
+      role: "admin", // Değiştirilecek rol
+    });
+
+    if (updateError) {
+      return { error: updateError };
+    }
+  }
+
+  return null;
 }

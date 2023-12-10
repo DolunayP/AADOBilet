@@ -12,8 +12,6 @@ const Forms = () => {
   const { users } = useSelector((state) => state.data);
   const navigate = useNavigate();
 
-  console.log(users);
-
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
