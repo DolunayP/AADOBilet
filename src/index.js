@@ -11,6 +11,8 @@ import { store } from "./redux/store.js";
 import Forms from "./components/SignUp/Forms";
 import Tickets from "./pages/Tickets.jsx";
 import SuccessBuyTicket from "./pages/SuccessBuyTicket.jsx";
+import ProtectedRoute from "./pages/admin/ProtectedRoute.jsx";
+import Admin from "./pages/admin/Admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
+    element: <Forms />,
+  },
+  {
+    path: "/register",
     element: <Forms />,
   },
   {
@@ -37,6 +43,7 @@ const router = createBrowserRouter([
     path: "/events/:categoryName",
     element: <Events />,
   },
+
   {
     path: "/event/tickets/:id",
     element: <Tickets />,
@@ -44,6 +51,14 @@ const router = createBrowserRouter([
   {
     path: "/event/ticket/success",
     element: <SuccessBuyTicket />,
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute>
+        <Admin />
+      </ProtectedRoute>
+    ),
   },
 ]);
 

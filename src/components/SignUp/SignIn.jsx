@@ -3,8 +3,12 @@ import React from "react";
 import { useFormik } from "formik";
 import Input from "./Input";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/dataSlice";
 
 function SignIn({ toggleForm }) {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -19,6 +23,10 @@ function SignIn({ toggleForm }) {
         .required("Password is required"),
     }),
     onSubmit: (values) => {
+      const { email, password } = values;
+      dispatch(login({ email, password }));
+      //window.location.href = "/";
+
       // TODO: BACKEND
       console.log("Form values:", values);
     },
@@ -49,9 +57,9 @@ function SignIn({ toggleForm }) {
               Sign In
             </button>
 
-            <p class="text-white">
+            <p className="text-white">
               If you don't have an account yet, please{" "}
-              <span class="font-bold cursor-pointer" onClick={toggleForm}>
+              <span className="font-bold cursor-pointer" onClick={toggleForm}>
                 Sign Up
               </span>
               !
