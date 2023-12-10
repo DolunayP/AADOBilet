@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FaFacebook, FaWhatsapp, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { getEventSingle, getPhotosByEvent } from "../../redux/dataSlice";
+import { getEventSingle, getPhotosByEvent, getUserSession } from "../../redux/dataSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,7 +10,7 @@ import DetailsSlider from "./DetailsSlider";
 import { useNavigate } from "react-router-dom";
 
 const DetailsComp = ({ id }) => {
-  const { event, eventPhotos } = useSelector((state) => state.data);
+  const { event, eventPhotos, user } = useSelector((state) => state.data);
   const navigate = useNavigate();
 
   let artists = [];
@@ -26,6 +26,7 @@ const DetailsComp = ({ id }) => {
   useEffect(() => {
     dispatch(getEventSingle(id));
     dispatch(getPhotosByEvent(id));
+    dispatch(getUserSession())
   }, [dispatch, href, id]);
 
   const handleFacebookShare = () => {
@@ -50,6 +51,17 @@ const DetailsComp = ({ id }) => {
     )}`;
     window.open(whatsappShareUrl, "_blank");
   };
+
+
+  const isLoggedIn = () => {
+    if (user) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  console.log(isLoggedIn())
   return (
     <>
       <div className="flex justify-between items-center px-[10%] gap-6">
@@ -100,17 +112,20 @@ const DetailsComp = ({ id }) => {
                 <span className="font-bold"> {event.event.ticketPrice} ₺</span>
               </h2>
               <p className="text-justify"> {event.event.eventDesc}</p>
-
-              <button
+              {isLoggedIn() ? <button
                 className="bg-color-secondary p-2 text-white border rounded-md mt-2"
                 onClick={() => navigate(`/event/tickets/${event.event.id}`)}
               >
                 Buy Ticket
-              </button>
+              </button> : <button
+                className="bg-color-secondary p-2 text-white border rounded-md mt-2"
+                onClick={() => navigate(`/login`)}>
+                Buy Ticket         </button>}
+
             </div>
           )}
         </div>
-      </div>
+      </div >
       <div className="flex px-[10%] justify-between items-center">
         <div className="text-2xl">google maps GELECEK</div>
         <div className="text-center flex flex-col items-center justify-center mt-8">

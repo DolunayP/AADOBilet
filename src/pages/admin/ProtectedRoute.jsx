@@ -2,26 +2,22 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { HashLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserSession, getUserSessionDatabase } from "../../redux/dataSlice";
+import { getUserSession} from "../../redux/dataSlice";
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-  // 1. Load the authenticated user
-  const { user, userData } = useSelector((state) => state.data);
+  const { user } = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserSession());
-    dispatch(getUserSessionDatabase(user ? user.id : "1234"));
-  }, [dispatch, user]);
-
-  console.log("userdataaa", userData);
+  }, [dispatch]);
 
   useEffect(
     function () {
-      if (!userData) window.location.href = "/login";
+      if (!user) window.location.href = "/login";
     },
-    [userData, navigate]
+    [user, navigate]
   );
 
   // 3. While loading, show a spinner

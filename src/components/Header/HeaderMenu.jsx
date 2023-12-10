@@ -9,14 +9,13 @@ const HeaderMenu = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.data);
 
-  console.log("user var mı", user);
-
   useEffect(() => {
     dispatch(getUserSession());
+    console.log("user var mı", user);
+
   }, [dispatch]);
 
   let Links = [];
-
   if (user) {
     Links = [
       { name: "Logout", link: "/" },
@@ -51,9 +50,8 @@ const HeaderMenu = () => {
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-32 z-50 bg-black bg-opacity-90" : "top-[-490px] z-0"
-          }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-32 z-50 bg-black bg-opacity-90" : "top-[-490px] z-0"
+            }`}
         >
           <>
             {user && (
@@ -68,7 +66,23 @@ const HeaderMenu = () => {
             )}
             {Links.map((link) => (
               <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-                {!user ? (
+                {user ? (
+                  <button
+                    className="hover:text-opacity-50 transition-all duration-200 text-white"
+                    onClick={() => {
+                      if (link.name === "Logout") {
+                        dispatch(logoutUser());
+                        setTimeout(() => {
+                          window.location.href = "/";
+                        }, 300);
+                      } else {
+                        window.location.href = "/events";
+                      }
+                    }}
+                  >
+                    {link.name}
+                  </button>
+                ) : (
                   <button
                     onClick={() => {
                       if (link.name === "Login") {
@@ -78,20 +92,6 @@ const HeaderMenu = () => {
                       }
                     }}
                     className="text-white hover:text-gray-400 duration-500"
-                  >
-                    {link.name}
-                  </button>
-                ) : (
-                  <button
-                    className="hover:text-opacity-50 transition-all duration-200 text-white"
-                    onClick={() => {
-                      if (link.name === "Logout") {
-                        dispatch(logoutUser());
-                        //window.location.href = "/";
-                      } else {
-                        window.location.href = "/events";
-                      }
-                    }}
                   >
                     {link.name}
                   </button>
