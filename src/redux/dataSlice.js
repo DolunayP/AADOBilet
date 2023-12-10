@@ -9,6 +9,7 @@ import {
 import { getArtists } from "../backend/artists/artists";
 import { getSeats, getTicketsSold, selectSeat } from "../backend/seats/seats";
 import { buyTicket, getEventTickets } from "../backend/tickets/tickets";
+import { fetchUsers, logout, signIn, signUp } from "../backend/user/user";
 
 const initialState = {
   categories: [],
@@ -21,6 +22,8 @@ const initialState = {
   eventTickets: [],
   selectedSeat: {},
   soldTickets: {},
+  users: [],
+  user: {},
 };
 
 export const getCategoryTest = createAsyncThunk("testCategory", async () => {
@@ -46,6 +49,39 @@ export const getEventSingle = createAsyncThunk("getevent", async (eventId) => {
 
   return data;
 });
+
+export const getUsers = createAsyncThunk("fetchusers", async () => {
+  const data = await fetchUsers();
+
+  return data;
+});
+
+export const getUser = createAsyncThunk("getUser", async () => {
+  const data = await getUser();
+
+  return data;
+});
+
+export const login = createAsyncThunk("login", async ({ email, password }) => {
+  const data = await signIn({ email, password });
+
+  return data;
+});
+
+export const logoutUser = createAsyncThunk("logout", async () => {
+  const data = await logout();
+
+  return data;
+});
+
+export const register = createAsyncThunk(
+  "register",
+  async ({ email, password, username }) => {
+    const data = await signUp({ email, password, username });
+
+    return data;
+  }
+);
 
 export const getPhotosByEvent = createAsyncThunk(
   "geteventphotos",
@@ -152,6 +188,21 @@ const dataSlice = createSlice({
       })
       .addCase(getSoldTickets.fulfilled, (state, action) => {
         state.soldTickets = action.payload;
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        const registeredUser = state.users.map((user) => {
+          return {
+            ...user,
+          };
+        });
+
+        state.users = registeredUser;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.user = action.payload;
       });
   },
 });
