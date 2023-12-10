@@ -34,6 +34,7 @@ export async function getEventsWithArtist() {
       const { eventId, artistId } = eventArtist;
 
       if (!eventsWithArtistsAndCategories[eventId]) {
+        if (!eventId) return;
         const { data: eventData, error: eventError } = await supabase
           .from("events")
           .select(
@@ -41,6 +42,9 @@ export async function getEventsWithArtist() {
           )
           .eq("id", eventId)
           .single();
+
+        if (!eventData) return;
+
         if (eventError) {
           console.error("Event error:", eventError);
           throw new Error("Event could not be loaded");
@@ -51,6 +55,8 @@ export async function getEventsWithArtist() {
           .select("id, name, image")
           .eq("id", eventData.categoryId)
           .single();
+
+        if (!categoryData) return;
 
         if (categoryError) {
           console.error("Category error:", categoryError);
@@ -71,6 +77,8 @@ export async function getEventsWithArtist() {
         .select("id, artistName, artistPhoto")
         .eq("id", artistId)
         .single();
+
+      if (!artistData) return;
 
       if (artistError) {
         console.error("Artist error:", artistError);

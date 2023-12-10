@@ -1,14 +1,12 @@
 import "./App.css";
 import HeaderView from "./components/Header/HeaderView";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SliderComp from "./components/slidercomp/SliderComp";
 import TimelineComp from "./components/TimelineComp/TimelineComp";
 import Categories from "./components/CategoriesComp/Categories";
 import Statistics from "./components/Statistics";
 import SearchComp from "./components/SearchComp/SearchComp";
 import Footer from "./components/FooterComp/Footer";
-import TestComponent from "./components/TestComponent";
-import Forms from "./components/SignUp/Forms";
 
 function App() {
   const [word, setWord] = useState("");

@@ -12,8 +12,6 @@ function Statistics() {
 
   const { soldTickets, eventsWithArtists } = useSelector((state) => state.data);
 
-  console.log("soldd", soldTickets);
-
   useEffect(() => {
     dispatch(getSoldTickets());
     dispatch(getArtistWithEvents());

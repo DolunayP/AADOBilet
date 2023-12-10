@@ -46,7 +46,11 @@ const router = createBrowserRouter([
 
   {
     path: "/event/tickets/:id",
-    element: <Tickets />,
+    element: (
+      <ProtectedRoute>
+        <Tickets />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/event/ticket/success",
