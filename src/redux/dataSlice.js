@@ -7,12 +7,16 @@ import {
   getEventsWithArtist,
 } from "../backend/events/events";
 import { getArtists } from "../backend/artists/artists";
+
 import { getSeats, selectSeat } from "../backend/seats/seats";
 import {
   buyTicket,
   getEventTickets,
   getSoldTickets,
 } from "../backend/tickets/tickets";
+
+
+
 import {
   fetchUsers,
   getUser,

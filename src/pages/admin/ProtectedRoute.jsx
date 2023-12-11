@@ -2,7 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { HashLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserSession, getUserSessionDatabase } from "../../redux/dataSlice";
+
+
+
+import { getUserSession} from "../../redux/dataSlice";
+
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();

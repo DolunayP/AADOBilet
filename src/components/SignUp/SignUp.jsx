@@ -1,8 +1,11 @@
 import { useFormik } from "formik";
 import Input from "./Input";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/dataSlice";
 //deneme
 function SignUp({ toggleForm }) {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -23,6 +26,8 @@ function SignUp({ toggleForm }) {
         .required("Password verification is required"),
     }),
     onSubmit: (values) => {
+      const { email, password, username } = values;
+      dispatch(register({ email, password, username }));
       // TODO BACKEND BAĞLA
       console.log("Form values:", values);
     },
@@ -31,7 +36,6 @@ function SignUp({ toggleForm }) {
   return (
     <div className="fixed top-0 left-0 w-full h-full">
       <div className="grid grid-cols-2 sm:grid-cols-2 h-screen w-full">
-
         <div className="bg-gray-800 flex flex-col pt-[120px]">
           <form
             onSubmit={formik.handleSubmit}
