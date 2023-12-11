@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
 import { FaFacebook, FaWhatsapp, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { getEventSingle, getPhotosByEvent, getUserSession } from "../../redux/dataSlice";
+
+import {
+  getEventSingle,
+  getPhotosByEvent,
+  getUserSession,
+} from "../../redux/dataSlice";
+
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -26,7 +33,11 @@ const DetailsComp = ({ id }) => {
   useEffect(() => {
     dispatch(getEventSingle(id));
     dispatch(getPhotosByEvent(id));
-    dispatch(getUserSession())
+
+    dispatch(getUserSession());
+
+    
+
   }, [dispatch, href, id]);
 
   const handleFacebookShare = () => {
@@ -55,13 +66,17 @@ const DetailsComp = ({ id }) => {
 
   const isLoggedIn = () => {
     if (user) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
-  }
+  };
 
-  console.log(isLoggedIn())
+  console.log(isLoggedIn());
+
+
+ 
+
   return (
     <>
       <div className="flex justify-between items-center px-[10%] gap-6">
@@ -112,15 +127,22 @@ const DetailsComp = ({ id }) => {
                 <span className="font-bold"> {event.event.ticketPrice} ₺</span>
               </h2>
               <p className="text-justify"> {event.event.eventDesc}</p>
-              {isLoggedIn() ? <button
-                className="bg-color-secondary p-2 text-white border rounded-md mt-2"
-                onClick={() => navigate(`/event/tickets/${event.event.id}`)}
-              >
-                Buy Ticket
-              </button> : <button
-                className="bg-color-secondary p-2 text-white border rounded-md mt-2"
-                onClick={() => navigate(`/login`)}>
-                Buy Ticket         </button>}
+
+              {isLoggedIn() ? (
+                <button
+                  className="bg-color-secondary p-2 text-white border rounded-md mt-2"
+                  onClick={() => navigate(`/event/tickets/${event.event.id}`)}
+                >
+                  Buy Ticket
+                </button>
+              ) : (
+                <button
+                  className="bg-color-secondary p-2 text-white border rounded-md mt-2"
+                  onClick={() => navigate(`/login`)}
+                >
+                  Buy Ticket{" "}
+                </button>
+              )}
 
             </div>
           )}
