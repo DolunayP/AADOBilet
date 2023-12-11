@@ -18,24 +18,6 @@ export async function getSeats(eventId) {
   }
 }
 
-export async function getTicketsSold() {
-  try {
-    const { data, error } = await supabase
-      .from("seats")
-      .select("*")
-      .is("ticketId", null);
-
-    if (error) {
-      console.error(error);
-      throw new Error("Tickets sold error");
-    }
-
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 export async function selectSeat(seatId) {
   try {
     const { data, error } = await supabase

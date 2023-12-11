@@ -27,7 +27,7 @@ const Tickets = () => {
   function getBackgroundColor(category) {
     switch (category) {
       case "VIP":
-        return "bg-green-600";
+        return "bg-red-600";
       case "Normal":
         return "bg-orange-600";
       case "Öğrenci":
@@ -58,7 +58,9 @@ const Tickets = () => {
         ticketId: selectedSeat.ticketPricing.id,
       })
     );
-    window.location.href = "/event/ticket/success";
+    setTimeout(() => {
+      window.location.href = "/event/ticket/success";
+    }, 1000);
     //dispatch(getSeatsByEvent(seat.eventId));
   }
 

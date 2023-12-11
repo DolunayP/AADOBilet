@@ -25,8 +25,9 @@ function SignIn({ toggleForm }) {
     onSubmit: (values) => {
       const { email, password } = values;
       dispatch(login({ email, password }));
-      //window.location.href = "/";
-
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 400);
       // TODO: BACKEND
       console.log("Form values:", values);
     },

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getArtistWithEvents,
-  getSoldTickets,
+  getSoldTicketsData,
   getUsers,
 } from "../redux/dataSlice";
 
@@ -15,7 +15,7 @@ function Statistics() {
   console.log("soldd", soldTickets);
 
   useEffect(() => {
-    dispatch(getSoldTickets());
+    dispatch(getSoldTicketsData());
     dispatch(getArtistWithEvents());
     dispatch(getUsers());
   }, [dispatch]);
@@ -54,7 +54,7 @@ function Statistics() {
               className="text-6xl after:bg-white after:block after:w-10 after:h-1 
           after:mx-auto after:mt-8 after: mb-8 "
             >
-              {soldTickets.length}
+              {soldTickets.soldCount}
             </h3>
             <h4 className="text-2xl uppercase">Tickets Sold</h4>
           </div>

@@ -1,23 +1,9 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import {
-  buyTicketOfEvent,
-  getSeatsByEvent,
-  selectSeatByUser,
-} from "../../redux/dataSlice";
-import { getEventPhotos } from "../../backend/app";
-
 function Seats({ seat, onSelect, showImage, onBuyTicket }) {
-  const dispatch = useDispatch();
-
   // useEffect(() => {
   //   dispatch(getSeatsByEvent(seat.eventId));
   // }, [dispatch, seat.eventId]);
 
   function handleSelectSeat(seatId) {
-    console.log("seatId", seatId);
-
     onSelect(seatId);
 
     showImage(seat.eventId);
@@ -26,7 +12,7 @@ function Seats({ seat, onSelect, showImage, onBuyTicket }) {
   function getHoverColor(category) {
     switch (category) {
       case "VIP":
-        return "hover:bg-green-800";
+        return "hover:bg-red-400";
       case "Normal":
         return "hover:bg-orange-800";
       case "Öğrenci":
@@ -46,7 +32,7 @@ function Seats({ seat, onSelect, showImage, onBuyTicket }) {
         className={`${!seat.availability && "bg-gray-600"} ${
           seat.ticketPricing &&
           seat.ticketPricing.ticketCategories.categoryName === "VIP" &&
-          "bg-green-600"
+          "bg-red-600"
         } ${
           seat.ticketPricing &&
           seat.ticketPricing.ticketCategories.categoryName === "Normal" &&
@@ -57,6 +43,7 @@ function Seats({ seat, onSelect, showImage, onBuyTicket }) {
           "bg-green-400"
         } p-4 m-5 rounded-md text-white ${
           seat.availability &&
+          seat.ticketPricing &&
           `${getHoverColor(
             seat.ticketPricing.ticketCategories.categoryName
           )} transition-all duration-200`

@@ -14,6 +14,24 @@ export async function getEventTickets(eventId) {
   }
 }
 
+export async function getSoldTickets() {
+  try {
+    const { data, error } = await supabase
+      .from("soldTickets")
+      .select("*")
+      .single();
+
+    if (error) {
+      console.error(error);
+      throw new Error("soldTickets could not be loaded");
+    }
+
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function buyTicket(eventId, seatId, ticketId) {
   console.log("eventId =>", eventId, "seatId =>", seatId);
   try {
@@ -36,6 +54,33 @@ export async function buyTicket(eventId, seatId, ticketId) {
     if (deleteError) {
       console.error(deleteError.error);
       throw new Error("Ticket pricing could not be deleted");
+    }
+
+    const { data: soldCountData, error: soldCountError } = await supabase
+      .from("soldTickets")
+      .select("soldCount")
+      .single();
+
+    console.log("soldcountdata", soldCountData);
+
+    if (soldCountError) {
+      console.error(soldCountError);
+      throw new Error("Sold count could not be fetched");
+    }
+
+    // soldCount değerini artır ve güncelle
+    const updatedSoldCount = soldCountData.soldCount + 1;
+    const { error: updateError } = await supabase
+      .from("soldTickets")
+      .update({ soldCount: updatedSoldCount })
+      .eq("id", 1)
+      .single();
+
+    console.log("updatedsol", updatedSoldCount);
+
+    if (updateError) {
+      console.error(updateError);
+      throw new Error("Sold count could not be updated");
     }
 
     return { success: true };

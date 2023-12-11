@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./Button.jsx";
 import { Link } from "react-router-dom";
 import Logo from "../LogoComp/Logo.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserSession, logoutUser } from "../../redux/dataSlice.js";
 
 const HeaderMenu = () => {
-  let Links = [
-    { name: "Events", link: "/events" },
-    { name: "Login", link: "/login" },
-  ];
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.data);
+
+  useEffect(() => {
+    dispatch(getUserSession());
+    console.log("user var mı", user);
+  }, [dispatch]);
+
+  let Links = [];
+  if (user) {
+    Links = [
+      { name: "Logout", link: "/" },
+      { name: "Events", link: "/events" },
+    ];
+  } else {
+    Links = [
+      { name: "Login", link: "/login" },
+      { name: "Events", link: "/events" },
+    ];
+  }
   let [open, setOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -35,19 +53,57 @@ const HeaderMenu = () => {
             open ? "top-32 z-50 bg-black bg-opacity-90" : "top-[-490px] z-0"
           }`}
         >
-          {Links.map((link) => (
-            <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-              <a
-                href={link.link}
-                className="text-white hover:text-gray-400 duration-500"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-          <a href="/login">
-            <Button>Sign Up</Button>
-          </a>
+          <>
+            {user && (
+              <div className="text-white">
+                {Object.keys(user).length > 0 ? (
+                  <span className="font-bold text-lg">Welcome</span>
+                ) : (
+                  <span></span>
+                )}{" "}
+                {user.email}
+              </div>
+            )}
+            {Links.map((link) => (
+              <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
+                {user ? (
+                  <button
+                    className="hover:text-opacity-50 transition-all duration-200 text-white"
+                    onClick={() => {
+                      if (link.name === "Logout") {
+                        dispatch(logoutUser());
+                        setTimeout(() => {
+                          window.location.href = "/";
+                        }, 300);
+                      } else {
+                        window.location.href = "/events";
+                      }
+                    }}
+                  >
+                    {link.name}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      if (link.name === "Login") {
+                        window.location.href = "/login";
+                      } else {
+                        window.location.href = "/events";
+                      }
+                    }}
+                    className="text-white hover:text-gray-400 duration-500"
+                  >
+                    {link.name}
+                  </button>
+                )}
+              </li>
+            ))}
+          </>
+          {!user && (
+            <a href="/login">
+              <Button>Sign Up</Button>
+            </a>
+          )}
         </ul>
       </div>
     </div>
