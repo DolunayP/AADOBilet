@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function CategoriesItem({ category }) {
+function CategoriesItem({ category,handleScrollToTop }) {
   const navigate = useNavigate();
   const goToEvents = () => {
     navigate(
@@ -12,8 +12,9 @@ function CategoriesItem({ category }) {
     <div
       onClick={() => {
         goToEvents();
+        handleScrollToTop();
       }}
-      className=" w-11/12 h-60 relative flex justify-center items-center cursor-pointer group"
+      className="w-11/12 h-60 relative flex justify-center items-center cursor-pointer group"
     >
       <img
         src={category.image}

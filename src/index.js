@@ -11,8 +11,8 @@ import { store } from "./redux/store.js";
 import Forms from "./components/SignUp/Forms";
 import Tickets from "./pages/Tickets.jsx";
 import SuccessBuyTicket from "./pages/SuccessBuyTicket.jsx";
-import ProtectedRoute from "./pages/admin/ProtectedRoute.jsx";
-import Admin from "./pages/admin/Admin.jsx";
+import AdminLayout from "./pages/admin/AdminLayout.jsx";
+import ProtectedRouteAdmin from "./pages/admin/ProtectedRouteAdmin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,9 +47,9 @@ const router = createBrowserRouter([
   {
     path: "/event/tickets/:id",
     element: (
-      <ProtectedRoute>
+      <ProtectedRouteAdmin>
         <Tickets />
-      </ProtectedRoute>
+      </ProtectedRouteAdmin>
     ),
   },
   {
@@ -59,9 +59,9 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      <ProtectedRoute>
-        <Admin />
-      </ProtectedRoute>
+      <ProtectedRouteAdmin>
+        <AdminLayout />
+      </ProtectedRouteAdmin>
     ),
   },
 ]);

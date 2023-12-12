@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CategoriesItem from "./CategoriesItem";
-import { getCategory, getCategoryTest } from "../../redux/dataSlice";
+import { getCategoryTest } from "../../redux/dataSlice";
 import { useNavigate } from "react-router-dom";
 function Categories() {
-  const { categories } = useSelector((state) => state.data);
   const { categoriesTest } = useSelector((state) => state.data);
-
-  //   const { data, error } = await supabase.from("event_artists").select(`
-  //   events(id,eventName,eventHour,eventFinishHour,eventDate,eventDesc,eventLocation, categories(name,image)),
-  //   artists(artistName,artistPhoto)
-
-  // `);
-
-  // const [uniqueCategories, setUniqueCategories] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,31 +13,21 @@ function Categories() {
     dispatch(getCategoryTest());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   const uniqueCategories = [];
-  //   categories.forEach((event) => {
-  //     const existingCategory = uniqueCategories.find(
-  //       (category) => category.name === event.eventCategory.name
-  //     );
-  //     if (!existingCategory) {
-  //       uniqueCategories.push({
-  //         name: event.eventCategory.name,
-  //         image: event.eventCategory.image,
-  //       });
-  //     }
-  //   });
-  //   setUniqueCategories(uniqueCategories);
-  // }, [categories]);
-
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 200,
+      behavior: 'smooth',
+    });
+  };
   return (
     <div className="my-0 mx-auto max-w-7xl">
-      <div className="flex items-center justify-between">
-        <h3 className="uppercase before:bg-color-myrtle-green before:w-1 before:h-4 before:block  flex before:mr-5 p-5 items-center font-bold text-2xl text-[#373737]">
-          Events By Categories
-        </h3>
+      <div className="flex items-center justify-between px-[4%] sm:px-[2.5%]">
+        <div className="uppercase p-5 w-[180px] text-2xl font-extrabold">
+          <span className="text-[#236059]">|</span> Events By <span className="text-[#236059]"> Categories</span>
+        </div>
         <button
-          className="rounded-md px-4 h-12 uppercase bg-[#544242] text-white hover:bg-[#7b6060] transition-all duration-200"
-          onClick={() => navigate(`events/All`)}
+          className="font-semibold rounded-md px-4 h-12 uppercase bg-[#32847a] text-white hover:bg-[#236059] hover:scale-95 transition-all duration-500"
+          onClick={() => { navigate(`events/All`); handleScrollToTop() }}
         >
           All Events
         </button>
@@ -56,12 +37,8 @@ function Categories() {
       md:grid-cols-2 p-3 ml-4 w-full text-white uppercase text-2xl gap-y-8"
       >
         {categoriesTest.map((e, i) => {
-          return <CategoriesItem category={e} key={i} />;
+          return <CategoriesItem handleScrollToTop={handleScrollToTop} category={e} key={i} />;
         })}
-
-        {/* {categories.map((e, i) => (
-          <CategoriesItem category={e} key={i} />
-        ))} */}
       </div>
     </div>
   );
