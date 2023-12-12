@@ -72,6 +72,8 @@ export const getUsers = createAsyncThunk("fetchusers", async () => {
 export const getUserSession = createAsyncThunk("getUser", async () => {
   const data = await getUser();
 
+  console.log("dataslicessession", data);
+
   return data;
 });
 
@@ -229,6 +231,7 @@ const dataSlice = createSlice({
 
       .addCase(getUserSession.fulfilled, (state, action) => {
         state.user = action.payload;
+        console.log("action", state.user);
       })
       .addCase(getUserSessionDatabase.fulfilled, (state, action) => {
         state.userData = action.payload;

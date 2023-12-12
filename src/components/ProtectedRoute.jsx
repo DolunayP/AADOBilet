@@ -2,15 +2,17 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { HashLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserSession, getUserSessionDatabase } from "../../redux/dataSlice";
+import { getUserSession } from "../../redux/dataSlice";
+import { getUserFromDatabase } from "../backend/user/user";
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.data);
+  const { user, userData } = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserSession());
+    dispatch(getUserFromDatabase(user.id));
   }, [dispatch]);
 
   useEffect(

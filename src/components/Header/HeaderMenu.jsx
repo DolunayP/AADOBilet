@@ -11,7 +11,6 @@ const HeaderMenu = () => {
 
   useEffect(() => {
     dispatch(getUserSession());
-    console.log("user var mı", user);
   }, [dispatch]);
 
   let Links = [];
