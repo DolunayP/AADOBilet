@@ -15,8 +15,6 @@ import {
   getSoldTickets,
 } from "../backend/tickets/tickets";
 
-
-
 import {
   fetchUsers,
   getUser,
@@ -25,6 +23,7 @@ import {
   signIn,
   signUp,
 } from "../backend/user/user";
+import { addCategory } from "../backend/admin/Category/category";
 
 const initialState = {
   categories: [],
@@ -162,6 +161,19 @@ export const selectSeatByUser = createAsyncThunk(
   }
 );
 
+//ADMIN
+
+export const createCategory = createAsyncThunk(
+  "createcategory",
+  async ({ categoryName, categoryPhoto }) => {
+    const data = await addCategory({ categoryName, categoryPhoto });
+
+    console.log("createcategorydata", categoryName);
+
+    return data;
+  }
+);
+
 const dataSlice = createSlice({
   name: "data",
   initialState,
@@ -239,6 +251,9 @@ const dataSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.user = {};
+      })
+      .addCase(createCategory.fulfilled, (state, action) => {
+        state.categoriesTest.push(action.payload);
       });
   },
 });

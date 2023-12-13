@@ -10,8 +10,6 @@ function ProtectedRouteAdmin({ children }) {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true); // Yükleme durumu için state
 
-  console.log("user", user);
-
   useEffect(() => {
     dispatch(getUserSession());
   }, [dispatch]);
