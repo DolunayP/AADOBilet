@@ -13,6 +13,7 @@ import Forms from "./components/SignUp/Forms";
 import Tickets from "./pages/Tickets.jsx";
 import SuccessBuyTicket from "./pages/SuccessBuyTicket.jsx";
 
+
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import AdminLayout from "./pages/admin/AdminLayout.jsx";
 import Categories from "./pages/admin/Category/Categories.jsx";
@@ -23,6 +24,9 @@ import Seats from "./pages/admin/Seats.jsx";
 import TicketCategories from "./pages/admin/TicketCategories.jsx";
 import Users from "./pages/admin/Users.jsx";
 import CategoryAddForm from "./pages/admin/Category/CategoryAddForm.jsx";
+
+
+
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRouteAdmin.jsx";
 
 const router = createBrowserRouter([
@@ -57,7 +61,14 @@ const router = createBrowserRouter([
 
   {
     path: "/event/tickets/:id",
-    element: <Tickets />,
+
+
+    element: (
+      <ProtectedRouteAdmin>
+        <Tickets />
+      </ProtectedRouteAdmin>
+    ),
+
   },
   {
     path: "/event/ticket/success",
@@ -69,6 +80,7 @@ const router = createBrowserRouter([
       <ProtectedRouteAdmin>
         <AdminLayout />
       </ProtectedRouteAdmin>
+
     ),
   },
   {
@@ -159,6 +171,8 @@ const router = createBrowserRouter([
           <TicketCategories />
         </AdminLayout>
       </ProtectedRouteAdmin>
+
+
     ),
   },
 ]);

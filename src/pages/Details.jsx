@@ -15,7 +15,7 @@ const Details = () => {
         <HeaderMenu />
         <HeaderTitle />
       </div>
-      <div className="font-bold text-center text-[44px] text-[#32847a] mt-4">
+      <div className="font-bold text-center text-[44px] text-[#32847a] mt-2 mb-2">
         EVENT DETAILS
       </div>
       <DetailsComp id={id} />
