@@ -38,7 +38,7 @@ export async function getEventsWithArtist() {
         const { data: eventData, error: eventError } = await supabase
           .from("events")
           .select(
-            "id, eventName, eventHour, eventFinishHour, eventDate, eventDesc, eventLocation, categoryId, ticketPrice"
+            "id, eventName, eventHour, eventFinishHour, eventDate, eventDesc, isFree, eventLocation, categoryId"
           )
           .eq("id", eventId)
           .single();
@@ -103,7 +103,7 @@ export async function getEvent(eventId) {
     const { data: eventData, error: eventError } = await supabase
       .from("events")
       .select(
-        "id, eventName, eventHour, eventFinishHour, eventDate, eventDesc, eventLocation, categoryId, ticketPrice"
+        "id, eventName, eventHour, eventFinishHour, eventDate, eventDesc, eventLocation, categoryId"
       )
       .eq("id", eventId)
       .single();

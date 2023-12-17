@@ -20,7 +20,7 @@ const TimelineComp = () => {
   }, [dispatch]);
 
   const todayEvents =
-    eventsWithArtists.length > 0
+    eventsWithArtists?.length > 0
       ? eventsWithArtists.filter((event) => event.eventDate === currentDate)
       : [];
 

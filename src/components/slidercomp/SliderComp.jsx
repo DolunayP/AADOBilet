@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SliderCard from "./SliderCard";
 import bg from "../../assets/bg.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getArtistWithEvents, getData } from "../../redux/dataSlice";
+import { getArtistWithEvents } from "../../redux/dataSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -24,7 +24,7 @@ const SliderComp = () => {
         Yaklaşan Popüler Etkinlikler
       </h2>
 
-      {eventsWithArtists.length > 0 ? (
+      {eventsWithArtists?.length > 0 ? (
         <>
           <img
             className="absolute top-0 left-0 h-full w-full"

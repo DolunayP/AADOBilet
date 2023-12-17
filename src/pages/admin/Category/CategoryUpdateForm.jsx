@@ -1,20 +1,26 @@
+// SignIn.js
 import React from "react";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import CategoryFormInput from "../Category/CategoryFormInput";
-import { useNavigate } from "react-router-dom";
-import { createCategory } from "../../../redux/dataSlice";
+import CategoryFormInput from "./CategoryFormInput";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { updateCategoryWithId } from "../../../redux/dataSlice";
 
-function CategoryAddForm({ toggleForm }) {
+function CategoryUpdateForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const location = useLocation();
+  const state = location.state;
+
+  const { name, photo } = state;
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      photo: "",
+      name,
+      photo,
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
@@ -23,13 +29,10 @@ function CategoryAddForm({ toggleForm }) {
     onSubmit: (values) => {
       const { name, photo } = values;
 
-      console.log("values", values);
-
-      dispatch(createCategory({ categoryName: name, categoryPhoto: photo }));
+      dispatch(
+        updateCategoryWithId({ id, categoryName: name, categoryPhoto: photo })
+      );
       navigate("/admin/Categories");
-    },
-    onReset: () => {
-      formik.setValues({ name: "", photo: "" });
     },
   });
 
@@ -40,7 +43,7 @@ function CategoryAddForm({ toggleForm }) {
         className="max-w-[400px] w-full mx-auto bg-gray-800 p-8 px-8 rounded-lg"
       >
         <h2 className="text-4xl dark:text-white font-bold text-center uppercase">
-          Add Category
+          Update Category
         </h2>
         <CategoryFormInput
           label="Category Name"
@@ -59,14 +62,14 @@ function CategoryAddForm({ toggleForm }) {
           type="submit"
           className="w-full my-5 py-2 bg-teal-600 shadow-lg shadow-teal-600/50 hover:shadow-teal-500/30 text-white rounded-lg"
         >
-          Add
+          Update
         </button>
 
         <p class="text-white flex justify-end">
           <button
             onClick={() => navigate("/admin/Categories", { replace: true })}
           >
-            Back Categories{" "}
+            Back Categories
           </button>
           !
         </p>
@@ -75,4 +78,4 @@ function CategoryAddForm({ toggleForm }) {
   );
 }
 
-export default CategoryAddForm;
+export default CategoryUpdateForm;

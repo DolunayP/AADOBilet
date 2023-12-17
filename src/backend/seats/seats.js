@@ -5,7 +5,8 @@ export async function getSeats(eventId) {
     const { data, error } = await supabase
       .from("seats")
       .select("*, ticketPricing(ticketCategories(categoryName,price))")
-      .eq("eventId", eventId);
+      .eq("eventId", eventId)
+      .in("status", ["ASSIGNED", "SOLD"]);
 
     if (error) {
       console.error(error);

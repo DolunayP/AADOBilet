@@ -28,7 +28,7 @@ function Statistics() {
               className="text-6xl  after:bg-white after:block after:w-10 after:h-1
           after:mx-auto after:mt-8 after:mb-8"
             >
-              {eventsWithArtists.length}
+              {eventsWithArtists?.length}
             </h3>
             <h4 className="text-2xl uppercase">Events organized</h4>
           </div>

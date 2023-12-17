@@ -8,7 +8,6 @@ import {
   getUserSession,
 } from "../../redux/dataSlice";
 
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -35,9 +34,6 @@ const DetailsComp = ({ id }) => {
     dispatch(getPhotosByEvent(id));
 
     dispatch(getUserSession());
-
-    
-
   }, [dispatch, href, id]);
 
   const handleFacebookShare = () => {
@@ -63,7 +59,6 @@ const DetailsComp = ({ id }) => {
     window.open(whatsappShareUrl, "_blank");
   };
 
-
   const isLoggedIn = () => {
     if (user) {
       return true;
@@ -73,9 +68,6 @@ const DetailsComp = ({ id }) => {
   };
 
   console.log(isLoggedIn());
-
-
- 
 
   return (
     <>
@@ -122,10 +114,7 @@ const DetailsComp = ({ id }) => {
                 Event Date:
                 <span className="font-bold"> {event.event.eventDate}</span>
               </h2>
-              <h2 className="text-xl text-left mb-2">
-                Ticket Price:
-                <span className="font-bold"> {event.event.ticketPrice} ₺</span>
-              </h2>
+
               <p className="text-justify"> {event.event.eventDesc}</p>
 
               {isLoggedIn() ? (
@@ -143,11 +132,10 @@ const DetailsComp = ({ id }) => {
                   Buy Ticket{" "}
                 </button>
               )}
-
             </div>
           )}
         </div>
-      </div >
+      </div>
       <div className="flex px-[10%] justify-between items-center">
         <div className="text-2xl">google maps GELECEK</div>
         <div className="text-center flex flex-col items-center justify-center mt-8">
