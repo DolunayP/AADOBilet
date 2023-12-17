@@ -13,7 +13,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import HeaderMenu from "../components/Header/HeaderMenu";
 import HeaderTitle from "../components/Header/HeaderTitle";
 import Seats from "../components/SeatsComp/Seats";
-import { getEventPhotos } from "../backend/app";
+
 import Footer from "../components/FooterComp/Footer";
 
 const Tickets = () => {

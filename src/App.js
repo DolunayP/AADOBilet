@@ -11,11 +11,19 @@ import Footer from "./components/FooterComp/Footer";
 function App() {
   const [word, setWord] = useState("");
   const [date, setDate] = useState("");
+  const [place, setPlace] = useState("");
 
   return (
     <div className="App">
-      <HeaderView word={word} setWord={setWord} date={date} setDate={setDate} />
-      {!word && !date ? (
+      <HeaderView
+        word={word}
+        setWord={setWord}
+        date={date}
+        setDate={setDate}
+        place={place}
+        setPlace={setPlace}
+      />
+      {!word && !date && !place ? (
         <>
           <SliderComp />
           <TimelineComp />
@@ -25,7 +33,7 @@ function App() {
         </>
       ) : (
         <>
-          <SearchComp word={word} date={date} />
+          <SearchComp word={word} date={date} place={place} />
         </>
       )}
     </div>
