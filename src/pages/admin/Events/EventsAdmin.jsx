@@ -65,10 +65,10 @@ function EventsAdmin() {
                     </select>
                   </td>
                   <td>{event.isFree ? "Free" : "Not Free"}</td>
-                  <td>
-                    <div className="flex gap-6 ml-6">
+                  <td className="w-[200px]">
+                    <div className="flex gap-4 ml-4">
                       <button
-                        className="text-zinc-300 bg-red-800 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200"
+                        className="text-zinc-300 bg-red-800 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px]"
                         onClick={() => {
                           dispatch(deleteEventById(event.id));
                         }}
@@ -76,7 +76,7 @@ function EventsAdmin() {
                         Delete
                       </button>
                       <button
-                        className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200"
+                        className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px]"
                         onClick={() => {
                           navigate(`/admin/Event/${event.id}`, {
                             state: {
