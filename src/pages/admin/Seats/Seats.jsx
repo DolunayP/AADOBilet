@@ -8,6 +8,9 @@ import {
   getTickets,
 } from "../../../redux/dataSlice";
 import { useNavigate } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin2Fill } from "react-icons/ri";
+import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
 
 function Seats() {
   const dispatch = useDispatch();
@@ -109,7 +112,7 @@ function Seats() {
                           {seat.status !== "ASSIGNED" &&
                             seat.status !== "SOLD" && (
                               <button
-                                className="text-zinc-300 bg-gray-700 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] "
+                                className="text-zinc-300 bg-gray-700 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] flex justify-center items-center space-x-2"
                                 onClick={() => {
                                   console.log("seatid", seat.id);
                                   navigate(`/admin/AssignTicket/${seat.id}`, {
@@ -120,20 +123,22 @@ function Seats() {
                                   });
                                 }}
                               >
-                                Assign
+                                <span>Assign</span>
+                                <MdOutlineAssignmentTurnedIn />
                               </button>
                             )}
                           <button
-                            className="text-zinc-300 bg-red-800 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] "
+                            className="text-zinc-300 bg-red-800 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] flex justify-center items-center space-x-2"
                             onClick={() => {
                               console.log("seatid", seat.id);
                               dispatch(deleteSeatById(seat.id));
                             }}
                           >
-                            Delete
+                            <span> Delete</span>
+                            <RiDeleteBin2Fill />
                           </button>
                           <button
-                            className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px]"
+                            className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] flex justify-center items-center space-x-2"
                             onClick={() => {
                               navigate(`/admin/Seats/${seat.id}`, {
                                 state: {
@@ -143,7 +148,8 @@ function Seats() {
                               });
                             }}
                           >
-                            Update
+                            <span>Update</span>
+                            <FaEdit />
                           </button>
                         </div>
                       </td>
