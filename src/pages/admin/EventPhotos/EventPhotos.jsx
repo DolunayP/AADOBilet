@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  deleteEventById,
   deleteEventPhotosById,
-  deleteTicketCategoryById,
   fetchAllEventPhotos,
-  getAllTicketCategories,
   getEventPhotosWithEvent,
-  getTicketCategoriesWithEventId,
 } from "../../../redux/dataSlice";
 import { useNavigate } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 
 function EventPhotos() {
   const dispatch = useDispatch();
@@ -104,15 +102,16 @@ function EventPhotos() {
                       <td className="w-[300px]">
                         <div className="flex justify-evenly space-x-2">
                           <button
-                            className="text-zinc-300 bg-red-800 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[150px]"
+                            className="text-zinc-300 bg-red-800 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[150px] flex justify-center items-center space-x-2"
                             onClick={() => {
                               dispatch(deleteEventPhotosById(eventPhoto.id));
                             }}
                           >
-                            Delete
+                            <span> Delete</span>
+                            <RiDeleteBin2Fill />
                           </button>
                           <button
-                            className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[150px]"
+                            className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[150px] flex justify-center items-center space-x-2"
                             onClick={() => {
                               navigate(`/admin/EventPhoto/${eventPhoto.id}`, {
                                 state: {
@@ -122,7 +121,8 @@ function EventPhotos() {
                               });
                             }}
                           >
-                            Update
+                            <span>Update</span>
+                            <FaEdit />
                           </button>
                         </div>
                       </td>

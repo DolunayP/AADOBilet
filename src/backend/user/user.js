@@ -35,7 +35,7 @@ export async function signUp({ email, password, username }) {
     id: user.id,
     email: email,
     username: username,
-    password: password,
+
     //authenticated: user.role,
     // Diğer gerekli kullanıcı bilgileri...
   };

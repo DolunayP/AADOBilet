@@ -17,13 +17,13 @@ function Users() {
     <div className="flex justify-center h-full items-center flex-col ">
       <div className="bg-white text-black rounded-lg p-1 overflow-y-auto">
         {Object.keys(users).length > 0 ? (
-          <table className="w-0">
+          <table className="w-[900px] flex flex-col">
             <thead className="bg-color-primary text-white">
               <tr>
-                <th className="p-4">Username</th>
-                <th className="p-4">Password</th>
-                <th className="p-4">Email</th>
-                <th className="p-4">Role</th>
+                <th className="p-4 w-[300px]">Username</th>
+
+                <th className="p-4 w-[300px]">Email</th>
+                <th className="p-4 w-[300px]">Role</th>
               </tr>
             </thead>
             <tbody>
@@ -32,10 +32,10 @@ function Users() {
                   key={user.id}
                   className={`${i % 2 === 0 && "bg-gray-300"} `}
                 >
-                  <td className="p-4">{user.username}</td>
-                  <td>{user.password}</td>
-                  <td>{user.email}</td>
-                  <td>{user.authenticated_role}</td>
+                  <td className="p-4 w-[300px]">{user.username}</td>
+
+                  <td className="p-4 w-[300px]">{user.email}</td>
+                  <td className="p-4 w-[300px]">{user.authenticated_role}</td>
                 </tr>
               ))}
             </tbody>

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteArtistById, getArtistTest } from "../../../redux/dataSlice";
 import { useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 
 function Artists() {
   const dispatch = useDispatch();
@@ -38,15 +40,16 @@ function Artists() {
                   <td className="w-[300px]">
                     <div className="flex gap-6 ml-6">
                       <button
-                        className="text-zinc-300 bg-red-600 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[150px]"
+                        className="text-zinc-300 bg-red-600 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[150px] flex justify-center items-center space-x-2"
                         onClick={() => {
                           dispatch(deleteArtistById(artist.id));
                         }}
                       >
-                        Delete
+                        <span> Delete</span>
+                        <RiDeleteBin2Fill />
                       </button>
                       <button
-                        className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[150px]"
+                        className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[150px] flex justify-center items-center space-x-2"
                         onClick={() => {
                           navigate(`/admin/Artist/${artist.id}`, {
                             state: {
@@ -56,7 +59,8 @@ function Artists() {
                           });
                         }}
                       >
-                        Update
+                        <span>Update</span>
+                        <FaEdit />
                       </button>
                     </div>
                   </td>
