@@ -22,6 +22,7 @@ import EventPhotos from "./pages/admin/EventPhotos/EventPhotos.jsx";
 import TicketCategories from "./pages/admin/TicketCategories/TicketCategories.jsx";
 import Users from "./pages/admin/Users/Users.jsx";
 import CategoryAddForm from "./pages/admin/Category/CategoryAddForm.jsx";
+
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRouteAdmin.jsx";
 import CategoryUpdateForm from "./pages/admin/Category/CategoryUpdateForm.jsx";
 import EventsAdmin from "./pages/admin/Events/EventsAdmin.jsx";

@@ -18,6 +18,8 @@ const SliderComp = () => {
     dispatch(getArtistWithEvents());
   }, [dispatch]);
 
+  const width = window.innerWidth;
+
   return (
     <div className="relative h-full w-full mt-8 mb-14">
       <h2 className="mt-2 mb-6 font-bold text-[48px] text-[#296c60]">
@@ -32,7 +34,7 @@ const SliderComp = () => {
             alt=""
           />
           <Swiper
-            slidesPerView={4}
+            slidesPerView={(width <= 540) ? 1 : (width <= 768) ? 2 : 4}
             spaceBetween={20}
             pagination={{
               clickable: true,
@@ -51,10 +53,11 @@ const SliderComp = () => {
         </>
       ) : (
         <div className="flex justify-center">
-          <HashLoader size={120} color="#404529" />
+          <HashLoader size={120} color="#32847a" />
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 

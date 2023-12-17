@@ -32,7 +32,6 @@ const DetailsComp = ({ id }) => {
   useEffect(() => {
     dispatch(getEventSingle(id));
     dispatch(getPhotosByEvent(id));
-
     dispatch(getUserSession());
   }, [dispatch, href, id]);
 
@@ -67,15 +66,13 @@ const DetailsComp = ({ id }) => {
     }
   };
 
-  console.log(isLoggedIn());
-
   return (
     <>
-      <div className="flex justify-between items-center px-[10%] gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-center px-[0%] md:px-[10%] gap-6">
         <Swiper
           navigation={true}
           modules={[Navigation]}
-          className="mySwiper w-[500px] "
+          className="mySwiper w-full md:w-[500px] "
         >
           {eventPhotos?.map((photo, i) => {
             return (
@@ -85,8 +82,8 @@ const DetailsComp = ({ id }) => {
             );
           })}
         </Swiper>
-        <div className="flex flex-row-reverse">
-          <div className="mx-auto ps-8 ">
+        <div className="flex flex-col-reverse px-[8%] md:px-[0%] md:flex-row-reverse">
+          <div className="mx-auto ps-0 md:ps-8">
             <img
               className="rounded-lg shadow-2xl w-[320px] h-auto"
               src={artistImg[0]}
@@ -97,14 +94,17 @@ const DetailsComp = ({ id }) => {
             <div className="flex flex-col items-start justify-center max-w-[300px] ">
               <h2 className="text-xl text-left mb-2">
                 Event:{" "}
-                <span className="font-bold"> {event.event.eventName}</span>
+                <span className="font-bold uppercase">
+                  {" "}
+                  {event.event.eventName}
+                </span>
               </h2>
               <h2 className="text-xl text-left mb-2">
-                Event Time:
+                Event Starting Time:
                 <span className="font-bold"> {event.event.eventHour}</span>
               </h2>
               <h2 className="text-xl text-left mb-2">
-                Event End Time:
+                Event Ending Time:
                 <span className="font-bold">
                   {" "}
                   {event.event.eventFinishHour}
@@ -119,30 +119,30 @@ const DetailsComp = ({ id }) => {
 
               {isLoggedIn() ? (
                 <button
-                  className="bg-color-secondary p-2 text-white border rounded-md mt-2"
+                  className="bg-[#2fa799] px-6 py-3 text-white border text-lg font-bold rounded-md mt-2 md:mx-0 mx-auto mb-4 md:mb-0 hover:scale-95 transition-all duration-500"
                   onClick={() => navigate(`/event/tickets/${event.event.id}`)}
                 >
-                  Buy Ticket
+                  Buy a Ticket
                 </button>
               ) : (
                 <button
-                  className="bg-color-secondary p-2 text-white border rounded-md mt-2"
+                  className="bg-[#2fa799] px-6 py-3 text-white border text-lg font-bold rounded-md mt-2 md:mx-0 mx-auto mb-4 md:mb-0 hover:scale-95 transition-all duration-500"
                   onClick={() => navigate(`/login`)}
                 >
-                  Buy Ticket{" "}
+                  Buy a Ticket{" "}
                 </button>
               )}
             </div>
           )}
         </div>
       </div>
-      <div className="flex px-[10%] justify-between items-center">
+      <div className="flex px-[10%] justify-between items-center md:flex-row flex-col md:mt-2 mt-6">
         <div className="text-2xl">google maps GELECEK</div>
-        <div className="text-center flex flex-col items-center justify-center mt-8">
-          <h2 className="font-bold text-3xl my-6">
+        <div className="text-center flex flex-col items-center justify-center mt-7 w-screen md:w-full">
+          <h2 className="font-bold text-3xl my-3 md:my-6 ">
             Share This Event on Social Media Platforms
           </h2>
-          <div className="flex gap-8 text-base font-semibold">
+          <div className="flex md:flex-row flex-col gap-3 md:gap-8 text-base font-semibold">
             <button
               className="flex flex-col justify-center items-center"
               onClick={handleFacebookShare}

@@ -34,9 +34,9 @@ const TimelineComp = () => {
           <AiFillCalendar className="me-3 w-6 h-6 sm:h-11 sm:w-11" />
           <span className="text-[#32847a]">{day}</span>/{month}/{year}
         </div>
-        <div className="sm:w-[200px] font-bold text-lg sm:text-3xl sm:text-start">
+        <div className="sm:w-[140px] font-bold text-lg sm:text-3xl sm:text-start">
           <Link to="events">
-            <span className="text-[#32847a]">|</span> See All Events
+            <span className="text-[#32847a]">|</span> See All <span className="text-[#32847a]">Events</span>
           </Link>
         </div>
       </div>
@@ -52,7 +52,7 @@ const TimelineComp = () => {
               </span>
             </div>
           ) : (
-            <HashLoader size={50} color="#404529" />
+            <HashLoader size={50} color="#32847a" />
           )}
         </div>
       </div>

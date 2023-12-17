@@ -11,23 +11,20 @@ const HeaderMenu = () => {
 
   useEffect(() => {
     dispatch(getUserSession());
-    console.log("user var mı", user);
-
-
-
-
   }, [dispatch]);
 
   let Links = [];
   if (user) {
     Links = [
-      { name: "Logout", link: "/" },
       { name: "Events", link: "/events" },
+      { name: "Past Events", link: "/pastevents" },
+      { name: "Logout", link: "/" },
     ];
   } else {
     Links = [
       { name: "Login", link: "/login" },
       { name: "Events", link: "/events" },
+      { name: "Past Events", link: "/pastevents" }
     ];
   }
   let [open, setOpen] = useState(false);
@@ -37,9 +34,9 @@ const HeaderMenu = () => {
   };
 
   return (
-    <div className="p-7">
-      <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
-        <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
+    <div className="px-7 font-bold">
+      <div className="md:flex items-center justify-between md:px-10 px-7 font-bold">
+        <div className="cursor-pointer flex items-center">
           <Logo />
         </div>
         <div
@@ -51,11 +48,7 @@ const HeaderMenu = () => {
             style={{ color: "white" }}
           ></ion-icon>
         </div>
-
-        <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-32 z-50 bg-black bg-opacity-90" : "top-[-490px] z-0"
-            }`}
-        >
+        <ul className={`md:flex md:items-center md:pb-0 py-10 md:w-auto md:static absolute left-0 w-full transition-all duration-500 ease-in ${open ? "top-24 z-100 bg-black bg-opacity-90" : "top-[-490px]"}`}>
           <>
             {user && (
               <div className="text-white">
@@ -78,8 +71,10 @@ const HeaderMenu = () => {
                         setTimeout(() => {
                           window.location.href = "/";
                         }, 300);
-                      } else {
+                      } else if (link.name === "Events") {
                         window.location.href = "/events";
+                      } else {
+                        window.location.href = "/pastevents"
                       }
                     }}
                   >
@@ -90,8 +85,10 @@ const HeaderMenu = () => {
                     onClick={() => {
                       if (link.name === "Login") {
                         window.location.href = "/login";
-                      } else {
+                      } else if (link.name === "Events") {
                         window.location.href = "/events";
+                      } else {
+                        window.location.href = "/pastevents"
                       }
                     }}
                     className="text-white hover:text-gray-400 duration-500"
