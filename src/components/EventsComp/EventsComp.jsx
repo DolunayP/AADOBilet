@@ -31,13 +31,17 @@ const EventsComp = ({ events, path, categoryName }) => {
     return isPast();
   });
 
-  const arr = []
-  filteredByDate.map(e => {
-    if (e.category.name === categoryName || 'All' === categoryName || undefined === categoryName) {
-      arr.push(e)
+  const arr = [];
+  filteredByDate.forEach((e) => {
+    if (
+      e.category.name === categoryName ||
+      "All" === categoryName ||
+      undefined === categoryName
+    ) {
+      arr.push(e);
     }
-  })
-  
+  });
+
   return (
     <div className="flex gap-8 justify-center items-center my-12 px-10 flex-wrap">
       {arr.map((event, i) => (

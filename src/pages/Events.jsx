@@ -12,13 +12,31 @@ import { HashLoader } from "react-spinners";
 const Events = () => {
   const { eventsWithArtists } = useSelector((state) => state.data);
 
-  console.log("eventwithartist", eventsWithArtists);
   const { categoryName } = useParams();
   const [filteredEvents, setFilteredEvents] = useState([]);
 
-  const dispatch = useDispatch();
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString("en-GB");
 
-  console.log("artists", eventsWithArtists);
+  const convertToDate = (dateString) => {
+    const [day, month, year] = dateString.split(".");
+    const formattedDate = new Date(`${year}-${month}-${day}`);
+    return formattedDate.toLocaleDateString("en-GB");
+  };
+
+  const checkedData = filteredEvents.filter((event) => {
+    const filtered = convertToDate(event.eventDate);
+
+    if (filtered < formattedDate) {
+      return null;
+    }
+
+    return filtered;
+  });
+
+  console.log("data", checkedData);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getArtistWithEvents());
@@ -51,7 +69,11 @@ const Events = () => {
           <div className="my-4 font-bold text-4xl text-[#32847a]">
             INCOMING EVENTS
           </div>
-          <EventsComp events={filteredEvents} categoryName={categoryName} />
+          {checkedData.length > 0 ? (
+            <EventsComp events={filteredEvents} categoryName={categoryName} />
+          ) : (
+            <div className="text-2xl p-6">There is no incoming events!</div>
+          )}
         </>
       ) : eventsWithArtists?.length === 0 ? (
         <div className="flex justify-center p-8">

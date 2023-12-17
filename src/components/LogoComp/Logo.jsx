@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
-
 function Logo() {
   return (
-    <Link to="/">
+    <button onClick={() => (window.location.href = "/")}>
       <img src="/ado-bilet-logo.png" alt="Logo" className="h-[120px]" />
-    </Link>
+    </button>
   );
 }
 
