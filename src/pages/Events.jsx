@@ -11,6 +11,8 @@ import { HashLoader } from "react-spinners";
 
 const Events = () => {
   const { eventsWithArtists } = useSelector((state) => state.data);
+
+  console.log("eventwithartist", eventsWithArtists);
   const { categoryName } = useParams();
   const [filteredEvents, setFilteredEvents] = useState([]);
 
@@ -39,7 +41,7 @@ const Events = () => {
         <HeaderMenu />
         <HeaderTitle />
       </div>
-      {eventsWithArtists.length > 0 ? (
+      {eventsWithArtists?.length > 0 ? (
         <>
           <FilterCategories
             events={eventsWithArtists}
@@ -51,7 +53,7 @@ const Events = () => {
           </div>
           <EventsComp events={filteredEvents} categoryName={categoryName} />
         </>
-      ) : eventsWithArtists.length === 0 ? (
+      ) : eventsWithArtists?.length === 0 ? (
         <div className="flex justify-center p-8">
           <HashLoader size={100} color="#404529" />
         </div>

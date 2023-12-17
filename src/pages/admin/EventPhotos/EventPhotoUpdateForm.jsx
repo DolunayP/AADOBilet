@@ -3,33 +3,38 @@ import { useFormik } from "formik";
 
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import CategoryFormInput from "../Category/CategoryFormInput";
-import { useNavigate } from "react-router-dom";
-import { createCategory } from "../../../redux/dataSlice";
 
-function CategoryAddForm({ toggleForm }) {
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { updateEventPhotoWithId } from "../../../redux/dataSlice";
+import Input from "../Category/CategoryFormInput";
+
+function EventPhotoUpdateForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const location = useLocation();
+  const state = location.state;
+
+  const { eventPhoto, selectedEventObj } = state;
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      photo: "",
+      photo: eventPhoto.eventPhoto,
+      event: selectedEventObj.eventName,
     },
     validationSchema: Yup.object({
-      name: Yup.string().required("Name is required"),
       photo: Yup.string().required("Photo is required"),
     }),
     onSubmit: (values) => {
-      const { name, photo } = values;
+      const { photo } = values;
 
       console.log("values", values);
 
-      dispatch(createCategory({ categoryName: name, categoryPhoto: photo }));
-      navigate("/admin/Categories");
+      dispatch(updateEventPhotoWithId({ id, eventPhoto: photo }));
+      navigate("/admin/EventPhotos");
     },
     onReset: () => {
-      formik.setValues({ name: "", photo: "" });
+      formik.setValues({ photo: "" });
     },
   });
 
@@ -40,33 +45,30 @@ function CategoryAddForm({ toggleForm }) {
         className="max-w-[400px] w-full mx-auto bg-gray-800 p-8 px-8 rounded-lg"
       >
         <h2 className="text-4xl dark:text-white font-bold text-center uppercase">
-          Add Category
+          Update EventPhoto
         </h2>
-        <CategoryFormInput
-          label="Category Name"
+
+        <Input label="Event Photo" type="text" name="photo" formik={formik} />
+        <Input
+          label="Event Name"
           type="text"
-          name="name"
+          name="event"
           formik={formik}
-        />
-        <CategoryFormInput
-          label="Category Photo"
-          type="text"
-          name="photo"
-          formik={formik}
+          disabled={true}
         />
 
         <button
           type="submit"
           className="w-full my-5 py-2 bg-teal-600 shadow-lg shadow-teal-600/50 hover:shadow-teal-500/30 text-white rounded-lg"
         >
-          Add
+          Update
         </button>
 
         <p class="text-white flex justify-end">
           <button
-            onClick={() => navigate("/admin/Categories", { replace: true })}
+            onClick={() => navigate("/admin/EventPhotos", { replace: true })}
           >
-            Back Categories{" "}
+            Back EventPhotos{" "}
           </button>
           !
         </p>
@@ -75,4 +77,4 @@ function CategoryAddForm({ toggleForm }) {
   );
 }
 
-export default CategoryAddForm;
+export default EventPhotoUpdateForm;

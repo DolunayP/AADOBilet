@@ -13,21 +13,33 @@ import Forms from "./components/SignUp/Forms";
 import Tickets from "./pages/Tickets.jsx";
 import SuccessBuyTicket from "./pages/SuccessBuyTicket.jsx";
 
-
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import AdminLayout from "./pages/admin/AdminLayout.jsx";
 import Categories from "./pages/admin/Category/Categories.jsx";
-import Artists from "./pages/admin/Artists.jsx";
-import EventsAdmin from "./pages/admin/EventsAdmin.jsx";
-import EventPhotos from "./pages/admin/EventPhotos.jsx";
-import Seats from "./pages/admin/Seats.jsx";
-import TicketCategories from "./pages/admin/TicketCategories.jsx";
-import Users from "./pages/admin/Users.jsx";
+
+import EventPhotos from "./pages/admin/EventPhotos/EventPhotos.jsx";
+
+import TicketCategories from "./pages/admin/TicketCategories/TicketCategories.jsx";
+import Users from "./pages/admin/Users/Users.jsx";
 import CategoryAddForm from "./pages/admin/Category/CategoryAddForm.jsx";
 
-
-
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRouteAdmin.jsx";
+import CategoryUpdateForm from "./pages/admin/Category/CategoryUpdateForm.jsx";
+import EventsAdmin from "./pages/admin/Events/EventsAdmin.jsx";
+import EventUpdateForm from "./pages/admin/Events/EventUpdateForm.jsx";
+import EventAddForm from "./pages/admin/Events/EventAddForm.jsx";
+import Artists from "./pages/admin/Artists/Artists.jsx";
+import ArtistAddForm from "./pages/admin/Artists/ArtistAddForm.jsx";
+import ArtistUpdateForm from "./pages/admin/Artists/ArtistUpdateForm.jsx";
+import TicketCategoriesAddForm from "./pages/admin/TicketCategories/TicketCategoriesAddForm.jsx";
+import TicketCategoriesUpdateForm from "./pages/admin/TicketCategories/TicketCategoriesUpdateForm.jsx";
+import Seats from "./pages/admin/Seats/Seats.jsx";
+import SeatAddForm from "./pages/admin/Seats/SeatAddForm.jsx";
+import SeatUpdateForm from "./pages/admin/Seats/SeatUpdateForm.jsx";
+import EventPhotoAddForm from "./pages/admin/EventPhotos/EventPhotoAddForm.jsx";
+import EventPhotoUpdateForm from "./pages/admin/EventPhotos/EventPhotoUpdateForm.jsx";
+import TicketPriceAddForm from "./pages/admin/TicketPrice/TicketPriceAddForm.jsx";
+import AssignTicketForm from "./pages/admin/AssignTicket/AssignTicketForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,14 +73,11 @@ const router = createBrowserRouter([
 
   {
     path: "/event/tickets/:id",
-
-
     element: (
       <ProtectedRouteAdmin>
         <Tickets />
       </ProtectedRouteAdmin>
     ),
-
   },
   {
     path: "/event/ticket/success",
@@ -80,7 +89,6 @@ const router = createBrowserRouter([
       <ProtectedRouteAdmin>
         <AdminLayout />
       </ProtectedRouteAdmin>
-
     ),
   },
   {
@@ -114,11 +122,51 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "admin/Categories/:id",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <CategoryUpdateForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
     path: "admin/Artists",
     element: (
       <ProtectedRouteAdmin>
         <AdminLayout>
           <Artists />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/Artists",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <Artists />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/addArtist",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <ArtistAddForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/Artist/:id",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <ArtistUpdateForm />
         </AdminLayout>
       </ProtectedRouteAdmin>
     ),
@@ -134,11 +182,52 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "admin/Event/:id",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <EventUpdateForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/addEvent",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <EventAddForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
     path: "admin/EventPhotos",
     element: (
       <ProtectedRouteAdmin>
         <AdminLayout>
           <EventPhotos />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+
+  {
+    path: "admin/addEventPhoto",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <EventPhotoAddForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/EventPhoto/:id",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <EventPhotoUpdateForm />
         </AdminLayout>
       </ProtectedRouteAdmin>
     ),
@@ -149,6 +238,26 @@ const router = createBrowserRouter([
       <ProtectedRouteAdmin>
         <AdminLayout>
           <Seats />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/AddSeat",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <SeatAddForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/Seats/:id",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <SeatUpdateForm />
         </AdminLayout>
       </ProtectedRouteAdmin>
     ),
@@ -171,8 +280,48 @@ const router = createBrowserRouter([
           <TicketCategories />
         </AdminLayout>
       </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/addTicketCategories",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <TicketCategoriesAddForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
+  {
+    path: "admin/TicketCategories/:id",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <TicketCategoriesUpdateForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
 
+  {
+    path: "admin/addTicketPrice",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <TicketPriceAddForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
+    ),
+  },
 
+  {
+    path: "admin/AssignTicket/:id",
+    element: (
+      <ProtectedRouteAdmin>
+        <AdminLayout>
+          <AssignTicketForm />
+        </AdminLayout>
+      </ProtectedRouteAdmin>
     ),
   },
 ]);

@@ -9,6 +9,19 @@ function Seats({ seat, onSelect, showImage, onBuyTicket }) {
     showImage(seat.eventId);
   }
 
+  function getBackgroundColor(category) {
+    switch (category) {
+      case "VIP":
+        return "bg-red-600";
+      case "Normal":
+        return "bg-orange-600";
+      case "Öğrenci":
+        return "bg-green-400";
+      default:
+        return "bg-blue-400";
+    }
+  }
+
   function getHoverColor(category) {
     switch (category) {
       case "VIP":
@@ -18,29 +31,26 @@ function Seats({ seat, onSelect, showImage, onBuyTicket }) {
       case "Öğrenci":
         return "hover:bg-green-600";
       default:
-        return "";
+        return "hover:bg-blue-600";
     }
   }
 
   return (
     <button
-      disabled={!seat.availability}
+      disabled={seat.status === "SOLD"}
       className="h-20"
       onClick={() => handleSelectSeat(seat.id)}
     >
       <div
         className={`${!seat.availability && "bg-gray-600"} ${
           seat.ticketPricing &&
-          seat.ticketPricing.ticketCategories.categoryName === "VIP" &&
-          "bg-red-600"
+          getBackgroundColor(seat.ticketPricing.ticketCategories.categoryName)
         } ${
           seat.ticketPricing &&
-          seat.ticketPricing.ticketCategories.categoryName === "Normal" &&
-          "bg-orange-600"
+          getBackgroundColor(seat.ticketPricing.ticketCategories.categoryName)
         } ${
           seat.ticketPricing &&
-          seat.ticketPricing.ticketCategories.categoryName === "Öğrenci" &&
-          "bg-green-400"
+          getBackgroundColor(seat.ticketPricing.ticketCategories.categoryName)
         } p-4 m-5 rounded-md text-white ${
           seat.availability &&
           seat.ticketPricing &&

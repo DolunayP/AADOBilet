@@ -12,7 +12,7 @@ export async function getUser() {
 
 export async function getUserFromDatabase(userId) {
   if (!userId) return;
-  console.log("getUserFromDatabase", userId);
+
   const { data: user } = await supabase
     .from("users")
     .select("*")
@@ -44,8 +44,6 @@ export async function signUp({ email, password, username }) {
     .from("users")
     .insert([{ ...userData }]);
 
-  console.log("insertdata", data);
-
   if (insertError) {
     return { error: insertError };
   }
@@ -59,15 +57,12 @@ export async function signIn({ email, password }) {
     password,
   });
 
-  console.log("signin data", user);
-
   if (error) throw new Error(error.message);
 
   return user;
 }
 
 export async function logout() {
-  console.log("data signout");
   const { data: user, error } = await supabase.auth.signOut();
 
   if (error) throw new Error(error.message);
@@ -91,8 +86,6 @@ export async function fetchUsers() {
 
 export async function updateRoleOnLogin() {
   const { data: session } = supabase.auth.getSession();
-
-  console.log("sesssionnn", session);
 
   if (session) {
     const accessToken = session.access_token || session.token;

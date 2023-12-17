@@ -8,7 +8,6 @@ import {
   getUserSession,
 } from "../../redux/dataSlice";
 
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -95,7 +94,10 @@ const DetailsComp = ({ id }) => {
             <div className="flex flex-col items-start justify-center max-w-[300px] ">
               <h2 className="text-xl text-left mb-2">
                 Event:{" "}
-                <span className="font-bold uppercase"> {event.event.eventName}</span>
+                <span className="font-bold uppercase">
+                  {" "}
+                  {event.event.eventName}
+                </span>
               </h2>
               <h2 className="text-xl text-left mb-2">
                 Event Starting Time:
@@ -112,11 +114,8 @@ const DetailsComp = ({ id }) => {
                 Event Date:
                 <span className="font-bold"> {event.event.eventDate}</span>
               </h2>
-              <h2 className="text-xl text-left mb-2">
-                Ticket Price:
-                <span className="font-bold"> {event.event.ticketPrice} ₺</span>
-              </h2>
-              <p className="text-justify font-bold"> {event.event.eventDesc}</p>
+
+              <p className="text-justify"> {event.event.eventDesc}</p>
 
               {isLoggedIn() ? (
                 <button
@@ -133,11 +132,10 @@ const DetailsComp = ({ id }) => {
                   Buy a Ticket{" "}
                 </button>
               )}
-
             </div>
           )}
         </div>
-      </div >
+      </div>
       <div className="flex px-[10%] justify-between items-center md:flex-row flex-col md:mt-2 mt-6">
         <div className="text-2xl">google maps GELECEK</div>
         <div className="text-center flex flex-col items-center justify-center mt-7 w-screen md:w-full">

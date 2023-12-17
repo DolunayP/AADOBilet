@@ -33,7 +33,7 @@ const Tickets = () => {
       case "Öğrenci":
         return "bg-green-400";
       default:
-        return "";
+        return "bg-blue-400";
     }
   }
 

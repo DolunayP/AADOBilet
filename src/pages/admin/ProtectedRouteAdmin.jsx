@@ -16,7 +16,6 @@ function ProtectedRouteAdmin({ children }) {
 
   useEffect(() => {
     if (user && Object.keys(user).length > 0 && user !== undefined) {
-      console.log("asdas");
       dispatch(getUserSessionDatabase(user.id));
     }
   }, [dispatch, user]);

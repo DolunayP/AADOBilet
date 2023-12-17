@@ -1,13 +1,15 @@
+// SignIn.js
 import React from "react";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import CategoryFormInput from "../Category/CategoryFormInput";
-import { useNavigate } from "react-router-dom";
-import { createCategory } from "../../../redux/dataSlice";
 
-function CategoryAddForm({ toggleForm }) {
+import { useNavigate } from "react-router-dom";
+import { createArtists } from "../../../redux/dataSlice";
+import Input from "../../../components/SignUp/Input";
+
+function ArtistAddForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,10 +25,8 @@ function CategoryAddForm({ toggleForm }) {
     onSubmit: (values) => {
       const { name, photo } = values;
 
-      console.log("values", values);
-
-      dispatch(createCategory({ categoryName: name, categoryPhoto: photo }));
-      navigate("/admin/Categories");
+      dispatch(createArtists({ artistName: name, artistPhoto: photo }));
+      navigate("/admin/Artists");
     },
     onReset: () => {
       formik.setValues({ name: "", photo: "" });
@@ -40,20 +40,10 @@ function CategoryAddForm({ toggleForm }) {
         className="max-w-[400px] w-full mx-auto bg-gray-800 p-8 px-8 rounded-lg"
       >
         <h2 className="text-4xl dark:text-white font-bold text-center uppercase">
-          Add Category
+          Add Artist
         </h2>
-        <CategoryFormInput
-          label="Category Name"
-          type="text"
-          name="name"
-          formik={formik}
-        />
-        <CategoryFormInput
-          label="Category Photo"
-          type="text"
-          name="photo"
-          formik={formik}
-        />
+        <Input label="Artist Name" type="text" name="name" formik={formik} />
+        <Input label="Artist Photo" type="text" name="photo" formik={formik} />
 
         <button
           type="submit"
@@ -63,10 +53,8 @@ function CategoryAddForm({ toggleForm }) {
         </button>
 
         <p class="text-white flex justify-end">
-          <button
-            onClick={() => navigate("/admin/Categories", { replace: true })}
-          >
-            Back Categories{" "}
+          <button onClick={() => navigate("/admin/Artists", { replace: true })}>
+            Back Artists{" "}
           </button>
           !
         </p>
@@ -75,4 +63,4 @@ function CategoryAddForm({ toggleForm }) {
   );
 }
 
-export default CategoryAddForm;
+export default ArtistAddForm;
