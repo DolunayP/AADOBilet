@@ -13,8 +13,6 @@ const HeaderMenu = () => {
   const dispatch = useDispatch();
   const { user, userData } = useSelector((state) => state.data);
 
-  console.log("userData", userData);
-
   useEffect(() => {
     dispatch(getUserSession());
   }, [dispatch]);

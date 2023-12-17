@@ -1,10 +1,8 @@
 import { useState } from "react";
 
-function HeaderForm({ word, setWord, date, setDate }) {
-  const [placeInput, setPlaceInput] = useState("");
-
+function HeaderForm({ word, setWord, date, setDate, place, setPlace }) {
   const handleChangePlaceName = (event) => {
-    setPlaceInput(event.target.value);
+    setPlace(event.target.value);
   };
 
   const handleChangeWord = (event) => {
@@ -34,7 +32,7 @@ function HeaderForm({ word, setWord, date, setDate }) {
       <input
         className=" w-5/6  mb-2 lg:w-1/6 md:w-1/2 min-w-[320px] text-lg bg-color-secondary pt-2 pb-3 rounded-md px-3 placeholder:text-gray-300 focus:outline-none text-gray-100"
         onChange={handleChangePlaceName}
-        value={placeInput}
+        value={place}
         type="text"
         placeholder="Type a place..."
       ></input>
