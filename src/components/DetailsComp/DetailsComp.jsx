@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaFacebook, FaWhatsapp, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import DetailsSlider from "./DetailsSlider";
 import { useNavigate } from "react-router-dom";
+import MapsComp from "./MapsComp";
 
 const DetailsComp = ({ id, path }) => {
   const { event, eventPhotos, user } = useSelector((state) => state.data);
@@ -132,7 +133,9 @@ const DetailsComp = ({ id, path }) => {
         </div>
       </div>
       <div className="flex px-[10%] justify-between items-center md:flex-row flex-col md:mt-2 mt-6">
-        <div className="text-2xl">google maps GELECEK</div>
+        <div className="text-2xl">
+          <MapsComp location={event?.event?.eventLocation.split(",")[0]} />
+        </div>
         <div className="text-center flex flex-col items-center justify-center mt-7 w-screen md:w-full">
           <h2 className="font-bold text-3xl my-3 md:my-6 ">
             Share This Event on Social Media Platforms
