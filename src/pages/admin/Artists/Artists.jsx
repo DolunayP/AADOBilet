@@ -35,7 +35,7 @@ function Artists() {
                 >
                   <td className="p-4 w-[350px]">{artist.artistName}</td>
                   <td className="p-4 w-[300px]">
-                    {artist.artistPhoto.slice(0, 45) + "..."}
+                    {artist?.artistPhoto?.slice(0, 45) + "..."}
                   </td>
                   <td className="w-[300px]">
                     <div className="flex gap-6 ml-6">
