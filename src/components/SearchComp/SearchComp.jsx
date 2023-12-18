@@ -11,7 +11,6 @@ const SearchComp = ({ word, date, place }) => {
   useEffect(() => {
     dispatch(getArtistWithEvents());
   }, [dispatch]);
-
   useEffect(() => {
     // DatePicker tarafından gelen tarihi database formatına çevirme
     const datePickerToDatabaseFormat = (datePickerDate) => {
@@ -23,13 +22,11 @@ const SearchComp = ({ word, date, place }) => {
     const filteredEvents = eventsWithArtists.filter((event) => {
       const eventName = event.eventName.toLowerCase();
       const eventDate = datePickerToDatabaseFormat(date);
-      const eventLocation = event.eventLocation.split(",")[0].toLowerCase();
-
+      const eventLocation = event.eventLocation.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      
       const matchesWord = word ? eventName.includes(word.toLowerCase()) : true;
       const matchesDate = date ? eventDate === event.eventDate : true;
-      const matchesPlace = place
-        ? eventLocation.includes(place.toLowerCase())
-        : true;
+      const matchesPlace = place ? eventLocation.includes(place.toLowerCase()) : true;
 
       return matchesWord && matchesDate && matchesPlace;
     });

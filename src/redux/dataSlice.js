@@ -104,9 +104,6 @@ export const getArtistTest = createAsyncThunk("artists", async () => {
 
 export const getArtistWithEvents = createAsyncThunk("eventartist", async () => {
   const data = await getEventsWithArtist();
-
-  console.log("eventaritst", data);
-
   return data;
 });
 

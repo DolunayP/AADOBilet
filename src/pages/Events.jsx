@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import EventsComp from "../components/EventsComp/EventsComp";
 import FilterCategories from "../components/FilterCategories/FilterCategories";
 import { useDispatch, useSelector } from "react-redux";
