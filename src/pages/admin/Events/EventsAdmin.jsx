@@ -42,65 +42,67 @@ function EventsAdmin() {
               </tr>
             </thead>
             <tbody>
-              {eventsWithArtists?.map((event, i) => (
-                <tr
-                  key={event.id}
-                  className={`${i % 2 === 0 && "bg-gray-300"} `}
-                >
-                  <td>{event.eventName}</td>
-                  <td>{event.eventHour}</td>
-                  <td>{event.eventFinishHour}</td>
-                  <td>{event.eventDate}</td>
-                  <td>{event.eventLocation}</td>
-                  <td>{event.category?.name}</td>
-                  <td>
-                    <select
-                      name=""
-                      id=""
-                      className="rounded-lg p-2 bg-gray-500 text-white"
-                    >
-                      {event.artists.map((artist) => (
-                        <option key={artist.eventId} value={artist.eventId}>
-                          {artist.artistName}
-                        </option>
-                      ))}
-                    </select>
-                  </td>
-                  <td>{event.isFree ? "Free" : "Not Free"}</td>
-                  <td className="w-[200px]">
-                    <div className="flex gap-4 ml-4">
-                      <button
-                        className="text-zinc-300 bg-red-800 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] flex justify-center items-center space-x-2"
-                        onClick={() => {
-                          dispatch(deleteEventById(event.id));
-                        }}
+              {Object.keys(eventsWithArtists).length > 0 &&
+                eventsWithArtists?.map((event, i) => (
+                  <tr
+                    key={event.id}
+                    className={`${i % 2 === 0 && "bg-gray-300"} `}
+                  >
+                    <td>{event.eventName}</td>
+                    <td>{event.eventHour}</td>
+                    <td>{event.eventFinishHour}</td>
+                    <td>{event.eventDate}</td>
+                    <td>{event.eventLocation}</td>
+                    <td>{event.category?.name}</td>
+                    <td>
+                      <select
+                        name=""
+                        id=""
+                        className="rounded-lg p-2 bg-gray-500 text-white"
                       >
-                        <span> Delete</span>
-                        <RiDeleteBin2Fill />
-                      </button>
-                      <button
-                        className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] flex justify-center items-center space-x-2"
-                        onClick={() => {
-                          navigate(`/admin/Event/${event.id}`, {
-                            state: {
-                              eventName: event.eventName,
-                              eventHour: event.eventHour,
-                              eventFinishHour: event.eventFinishHour,
-                              eventDate: event.eventDate,
-                              eventLocation: event.eventLocation,
-                              categoryId: event.category.id,
-                              isFree: event.isFree,
-                            },
-                          });
-                        }}
-                      >
-                        <span>Update</span>
-                        <FaEdit />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                        {event.artists &&
+                          event.artists?.map((artist) => (
+                            <option key={artist.eventId} value={artist.eventId}>
+                              {artist.artistName}
+                            </option>
+                          ))}
+                      </select>
+                    </td>
+                    <td>{event.isFree ? "Free" : "Not Free"}</td>
+                    <td className="w-[200px]">
+                      <div className="flex gap-4 ml-4">
+                        <button
+                          className="text-zinc-300 bg-red-800 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] flex justify-center items-center space-x-2"
+                          onClick={() => {
+                            dispatch(deleteEventById(event.id));
+                          }}
+                        >
+                          <span> Delete</span>
+                          <RiDeleteBin2Fill />
+                        </button>
+                        <button
+                          className="text-zinc-300 bg-green-900 p-2 rounded-lg text-[16px] hover:bg-opacity-75 transition-all duration-200 w-[100px] flex justify-center items-center space-x-2"
+                          onClick={() => {
+                            navigate(`/admin/Event/${event.id}`, {
+                              state: {
+                                eventName: event.eventName,
+                                eventHour: event.eventHour,
+                                eventFinishHour: event.eventFinishHour,
+                                eventDate: event.eventDate,
+                                eventLocation: event.eventLocation,
+                                categoryId: event.category.id,
+                                isFree: event.isFree,
+                              },
+                            });
+                          }}
+                        >
+                          <span>Update</span>
+                          <FaEdit />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         ) : (
