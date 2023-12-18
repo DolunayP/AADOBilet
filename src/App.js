@@ -7,6 +7,7 @@ import Categories from "./components/CategoriesComp/Categories";
 import Statistics from "./components/Statistics";
 import SearchComp from "./components/SearchComp/SearchComp";
 import Footer from "./components/FooterComp/Footer";
+import MapsComp from "./components/DetailsComp/MapsComp";
 
 function App() {
   const [word, setWord] = useState("");
