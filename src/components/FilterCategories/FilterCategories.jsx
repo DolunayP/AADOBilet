@@ -30,8 +30,8 @@ const FilterCategories = ({ events, onSelectCategory, clickedCategory }) => {
   };
 
   return (
-    <div className="my-4">
-      <label className="text-lg font-semibold me-2">Select a Category:</label>
+    <div className="mt-4">
+      <label className="text-xl font-bold me-2">Select a Category:</label>
       <select
         onChange={handleCategorySelect}
         value={

@@ -24,10 +24,8 @@ const PastEvents = () => {
         <HeaderMenu />
         <HeaderTitle />
       </div>
-      <div className="  text-[52px] text-white  bg-gradient-to-b from-[#183f3b] to-[#358981] rounded-b-3xl  ">
-        <span className="shadow-xl after:content-['|'] before:content-['|'] after:ml-5 before:mr-5 border-b-8 after:shadow-xl before:shadow-xl ">
+      <div className="text-[52px] text-white bg-gradient-to-b from-[#173633] to-[#07a696] rounded-b-full shadow-xl py-12 mb-6">
           Past Events
-        </span>
       </div>
       {eventsWithArtists.length > 0 ? (
         <EventsComp events={eventsWithArtists} path={path} />

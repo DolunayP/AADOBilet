@@ -2,8 +2,8 @@ import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useCallback, useEffect, useState } from "react";
 
 const containerStyle = {
-  width: "500px",
-  height: "500px",
+  width: "400px",
+  height: "340px",
 };
 
 function MapsComp({ location }) {
@@ -15,7 +15,7 @@ function MapsComp({ location }) {
   const [map, setMap] = useState(null);
   const [center, setCenter] = useState(null);
   const [google, setGoogle] = useState(null);
-  const [initialZoom, setInitialZoom] = useState(2);
+  const [initialZoom, setInitialZoom] = useState(1);
 
   useEffect(() => {
     if (window.google) {
@@ -25,7 +25,7 @@ function MapsComp({ location }) {
     if (isLoaded && google && center) {
       const bounds = new google.maps.LatLngBounds(center);
       map.fitBounds(bounds);
-      setInitialZoom(2); // Zoom değeri değiştirildi
+      setInitialZoom(1); // Zoom değeri değiştirildi
     }
   }, [isLoaded, google, center, map]);
 
@@ -79,7 +79,7 @@ function MapsComp({ location }) {
           position={center}
           icon={{
             url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
-            scaledSize: new google.maps.Size(50, 50),
+            scaledSize: new google.maps.Size(40, 40),
           }}
         />
       )}

@@ -69,11 +69,64 @@ const DetailsComp = ({ id, path }) => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between items-center px-[0%] md:px-[10%] gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-center px-[0%] md:px-[8%] gap-6 h-full">
+        <div className=" md:flex-[0.33]">
+          <img
+            className="rounded-lg shadow-2xl w-[320px] h-auto mx-auto"
+            src={artistImg[0]}
+            alt=""
+          />
+        </div>
+        {event.event && (
+          <div className="flex flex-col items-stretch justify-between md:flex-[0.33] h-full">
+            <h2 className="text-xl text-left mb-2">
+              Event:{" "}
+              <span className="font-bold uppercase">
+                {" "}
+                {event.event.eventName}
+              </span>
+            </h2>
+            <h2 className="text-xl text-left mb-2">
+              Event Starting Time:
+              <span className="font-bold"> {event.event.eventHour}</span>
+            </h2>
+            <h2 className="text-xl text-left mb-2">
+              Event Ending Time:
+              <span className="font-bold">
+                {" "}
+                {event.event.eventFinishHour}
+              </span>
+            </h2>
+            <h2 className="text-xl text-left mb-2">
+              Event Date:
+              <span className="font-bold"> {event.event.eventDate}</span>
+            </h2>
+            <p className="text-justify text-lg"> {event.event.eventDesc}</p>
+            {!path && (
+              <button
+                className="bg-[#2fa799] shadow-xl px-6 py-3 text-white border text-lg font-bold rounded-md mt-6 md:mx-0 mb-4 md:mb-0 hover:scale-95 transition-all duration-500"
+                onClick={() => {
+                  isLoggedIn()
+                    ? navigate(`/event/tickets/${event.event.id}`)
+                    : navigate(`/login`);
+                }}
+              >
+                Buy a Ticket
+              </button>
+            )}
+          </div>
+        )}
+
+        <div className="text-2xl md:flex-[0.33]">
+          <MapsComp location={event?.event?.eventLocation.split(",")[0]} />
+        </div>
+      </div>
+
+      <div className="flex px-[8%] justify-center items-center md:mt-10 mt-4">
         <Swiper
           navigation={true}
           modules={[Navigation]}
-          className="mySwiper w-full md:w-[500px] "
+          className="mySwiper w-full md:w-[920px]"
         >
           {eventPhotos?.map((photo, i) => {
             return (
@@ -83,93 +136,40 @@ const DetailsComp = ({ id, path }) => {
             );
           })}
         </Swiper>
-        <div className="flex flex-col-reverse px-[8%] md:px-[0%] md:flex-row-reverse">
-          <div className="mx-auto ps-0 md:ps-8">
-            <img
-              className="rounded-lg shadow-2xl w-[320px] h-auto"
-              src={artistImg[0]}
-              alt=""
-            />
-          </div>
-          {event.event && (
-            <div className="flex flex-col items-start justify-center max-w-[300px] ">
-              <h2 className="text-xl text-left mb-2">
-                Event:{" "}
-                <span className="font-bold uppercase">
-                  {" "}
-                  {event.event.eventName}
-                </span>
-              </h2>
-              <h2 className="text-xl text-left mb-2">
-                Event Starting Time:
-                <span className="font-bold"> {event.event.eventHour}</span>
-              </h2>
-              <h2 className="text-xl text-left mb-2">
-                Event Ending Time:
-                <span className="font-bold">
-                  {" "}
-                  {event.event.eventFinishHour}
-                </span>
-              </h2>
-              <h2 className="text-xl text-left mb-2">
-                Event Date:
-                <span className="font-bold"> {event.event.eventDate}</span>
-              </h2>
-              <p className="text-justify"> {event.event.eventDesc}</p>
-              {!path && (
-                <button
-                  className="bg-[#2fa799] px-6 py-3 text-white border text-lg font-bold rounded-md mt-2 md:mx-0 mx-auto mb-4 md:mb-0 hover:scale-95 transition-all duration-500"
-                  onClick={() => {
-                    isLoggedIn()
-                      ? navigate(`/event/tickets/${event.event.id}`)
-                      : navigate(`/login`);
-                  }}
-                >
-                  Buy a Ticket
-                </button>
-              )}
-            </div>
-          )}
-        </div>
       </div>
-      <div className="flex px-[10%] justify-between items-center md:flex-row flex-col md:mt-2 mt-6">
-        <div className="text-2xl">
-          <MapsComp location={event?.event?.eventLocation.split(",")[0]} />
-        </div>
-        <div className="text-center flex flex-col items-center justify-center mt-7 w-screen md:w-full">
-          <h2 className="font-bold text-3xl my-3 md:my-6 ">
-            Share This Event on Social Media Platforms
-          </h2>
-          <div className="flex md:flex-row flex-col gap-3 md:gap-8 text-base font-semibold">
-            <button
-              className="flex flex-col justify-center items-center"
-              onClick={handleFacebookShare}
-            >
-              <FaFacebook size={38} />
-              <div>Facebook'ta Paylaş</div>
-            </button>
-            <button
-              className="flex flex-col justify-center items-center"
-              onClick={handleInstagramShare}
-            >
-              <FaInstagram size={38} />
-              <div>Instagram'da Paylaş</div>
-            </button>
-            <button
-              className="flex flex-col justify-center items-center"
-              onClick={handleTwitterShare}
-            >
-              <FaTwitter size={38} />
-              <div>Twitter'da Paylaş</div>
-            </button>
-            <button
-              className="flex flex-col justify-center items-center"
-              onClick={handleWhatsAppShare}
-            >
-              <FaWhatsapp size={38} />
-              <div>WhatsApp'ta Paylaş</div>
-            </button>
-          </div>
+      <div className="text-center flex flex-col items-center justify-center mt-6 mb-10">
+        <h2 className="font-bold text-3xl my-3 md:my-6 ">
+          Share This Event on Social Media Platforms
+        </h2>
+        <div className="flex md:flex-row flex-wrap flex-col gap-3 md:gap-8 text-base font-semibold">
+          <button
+            className="flex flex-col justify-center items-center"
+            onClick={handleFacebookShare}
+          >
+            <FaFacebook size={38} />
+            <div>Facebook'ta Paylaş</div>
+          </button>
+          <button
+            className="flex flex-col justify-center items-center"
+            onClick={handleInstagramShare}
+          >
+            <FaInstagram size={38} />
+            <div>Instagram'da Paylaş</div>
+          </button>
+          <button
+            className="flex flex-col justify-center items-center"
+            onClick={handleTwitterShare}
+          >
+            <FaTwitter size={38} />
+            <div>Twitter'da Paylaş</div>
+          </button>
+          <button
+            className="flex flex-col justify-center items-center"
+            onClick={handleWhatsAppShare}
+          >
+            <FaWhatsapp size={38} />
+            <div>WhatsApp'ta Paylaş</div>
+          </button>
         </div>
       </div>
     </>
