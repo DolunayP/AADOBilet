@@ -1,16 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const EventsCard = ({ event }) => {
-  const { eventDesc, eventHour, eventLocation, eventFinishHour, eventName, eventDate } = event;
+const EventsCard = ({ event, path }) => {
+  const {
+    eventDesc,
+    eventHour,
+    eventLocation,
+    eventFinishHour,
+    eventName,
+    eventDate,
+  } = event;
   const navigate = useNavigate();
   const getDetails = (id) => {
-    navigate(`/details/${id}`);
+    navigate(`/details/${id}`, {
+      state: path,
+    });
   };
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 200,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
   return (
@@ -34,25 +43,34 @@ const EventsCard = ({ event }) => {
           <span className="font-bold">Event Starting Time:</span> {eventHour}
         </p>
         <p className="text-start">
-          <span className="font-bold">Event Ending Time:</span> {eventFinishHour}
+          <span className="font-bold">Event Ending Time:</span>{" "}
+          {eventFinishHour}
         </p>
         <p className="text-start">
           <span className="font-bold">Event Date:</span> {eventDate}
         </p>
 
+        {path === "pastevents" && (
+          <a
+            onClick={() => {
+              getDetails(event.id);
+              handleScrollToTop();
+            }}
+            className="cursor-pointer shadow-xl mt-4 me-4 py-3 px-6 bg-black text-white rounded-full hover:scale-95 hover:text-[#67f7e6] transition-all duration-500"
+          >
+            Buy a Ticket
+          </a>
+        )}
         <a
-          onClick={() => { getDetails(event.id); handleScrollToTop() }}
-          className="cursor-pointer shadow-xl mt-4 me-4 py-3 px-6 bg-black text-white rounded-full hover:scale-95 hover:text-[#67f7e6] transition-all duration-500"
-        >
-          Buy a Ticket
-        </a>
-        <a
-          onClick={() => { getDetails(event.id); handleScrollToTop() }}
+          onClick={() => {
+            getDetails(event.id);
+            handleScrollToTop();
+          }}
           className="cursor-pointer me-4 py-3 px-6 bg-black text-white rounded-full hover:scale-95 hover:text-[#67f7e6] transition-all duration-500"
         >
           See Details
         </a>
-      </div >
+      </div>
     </>
   );
 };

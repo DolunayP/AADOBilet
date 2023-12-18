@@ -45,7 +45,7 @@ const EventsComp = ({ events, path, categoryName }) => {
   return (
     <div className="flex gap-8 justify-center items-center my-12 px-10 flex-wrap">
       {arr.map((event, i) => (
-        <EventsCard key={i} event={event} />
+        <EventsCard key={i} event={event} path={path} />
       ))}
     </div>
   );

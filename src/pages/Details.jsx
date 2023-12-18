@@ -1,13 +1,16 @@
 import React from "react";
 import SliderComp from "../components/slidercomp/SliderComp";
 import DetailsComp from "../components/DetailsComp/DetailsComp";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import HeaderMenu from "../components/Header/HeaderMenu";
 import HeaderTitle from "../components/Header/HeaderTitle";
 import Footer from "../components/FooterComp/Footer";
 
 const Details = () => {
   const { id } = useParams();
+  const location = useLocation();
+
+  const path = location.state;
 
   return (
     <>
@@ -15,10 +18,13 @@ const Details = () => {
         <HeaderMenu />
         <HeaderTitle />
       </div>
-      <div className="font-bold text-center text-[44px] text-[#32847a] mt-2 mb-2">
-        EVENT DETAILS
+
+      <div className="  text-[52px] text-white  bg-gradient-to-b from-[#183f3b] to-[#358981] rounded-b-3xl  ">
+        <span className="shadow-xl after:content-['|'] before:content-['|'] after:ml-5 before:mr-5 border-b-8 after:shadow-xl before:shadow-xl ">
+          {path ? "PAST EVENT DETAILS" : "EVENT DETAILS"}
+        </span>
       </div>
-      <DetailsComp id={id} />
+      <DetailsComp id={id} path={path} />
       <SliderComp />
       <Footer />
     </>

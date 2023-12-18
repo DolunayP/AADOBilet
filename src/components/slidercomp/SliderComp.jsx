@@ -21,9 +21,11 @@ const SliderComp = () => {
   const width = window.innerWidth;
 
   return (
-    <div className="relative h-full w-full mt-8 mb-14">
-      <h2 className="mt-2 mb-6 font-bold text-[48px] text-[#296c60]">
-        Yaklaşan Popüler Etkinlikler
+    <div className="relative h-full w-full ">
+      <h2 className="  text-[48px] text-white  bg-gradient-to-b from-[#183f3b] to-[#358981] rounded-b-3xl  ">
+        <span className="shadow-xl after:content-['|'] before:content-['|'] after:ml-5 before:mr-5 border-b-8 after:shadow-xl before:shadow-xl ">
+          Yaklaşan Popüler Etkinlikler
+        </span>
       </h2>
 
       {eventsWithArtists?.length > 0 ? (
@@ -34,7 +36,7 @@ const SliderComp = () => {
             alt=""
           />
           <Swiper
-            slidesPerView={(width <= 540) ? 1 : (width <= 768) ? 2 : 4}
+            slidesPerView={width <= 540 ? 1 : width <= 768 ? 2 : 4}
             spaceBetween={20}
             pagination={{
               clickable: true,
@@ -55,9 +57,8 @@ const SliderComp = () => {
         <div className="flex justify-center">
           <HashLoader size={120} color="#32847a" />
         </div>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 };
 
