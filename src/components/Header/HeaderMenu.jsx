@@ -8,6 +8,10 @@ import {
   getUserSessionDatabase,
   logoutUser,
 } from "../../redux/dataSlice.js";
+import { CiLogout, CiLogin } from "react-icons/ci";
+import { MdEventAvailable } from "react-icons/md";
+import { MdOutlineSettingsBackupRestore } from "react-icons/md";
+import { FaUserAlt } from "react-icons/fa";
 
 const HeaderMenu = () => {
   const dispatch = useDispatch();
@@ -63,30 +67,29 @@ const HeaderMenu = () => {
           ></ion-icon>
         </div>
         <ul
-          className={`md:flex md:items-center md:pb-0 py-10 md:w-auto md:static absolute left-0 w-full transition-all duration-500 ease-in ${
-            open ? "top-24 z-100 bg-black bg-opacity-90" : "top-[-490px]"
-          }`}
+          className={`md:flex md:items-center md:pb-0 py-10 md:w-auto md:static absolute left-0 w-full transition-all duration-500 ease-in ${open ? "top-24 z-100 bg-black bg-opacity-90" : "top-[-490px]"
+            }`}
         >
           <>
             {user && (
               <div className="text-white">
                 {Object.keys(user).length > 0 ? (
-                  <span className="font-bold text-lg">Welcome</span>
+                  <div className="flex gap-2 items-center justify-center font-bold text-lg"> <FaUserAlt /> Welcome {" "}
+                    {user.email} </div>
                 ) : (
                   <span></span>
-                )}{" "}
-                {user.email}
+                )}
+
               </div>
             )}
             {Links.map((link) => (
               <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
                 {user ? (
                   <button
-                    className={`hover:text-opacity-50 transition-all duration-200  ${
-                      link.name === "Admin Panel"
-                        ? "text-green-800"
-                        : "text-white"
-                    }`}
+                    className={`hover:text-opacity-60 flex items-center justify-center gap-2 transition-all duration-200 ${link.name === "Admin Panel"
+                      ? "text-green-800"
+                      : "text-white"
+                      }`}
                     onClick={() => {
                       if (link.name === "Logout") {
                         dispatch(logoutUser());
@@ -102,7 +105,7 @@ const HeaderMenu = () => {
                       }
                     }}
                   >
-                    {link.name}
+                    {link.name} {link.name === "Logout" ? <CiLogout /> : link.name === "Events" ? <MdEventAvailable /> : link.name === "Past Events" ? <MdOutlineSettingsBackupRestore /> : ""}
                   </button>
                 ) : (
                   <button
@@ -115,16 +118,16 @@ const HeaderMenu = () => {
                         window.location.href = "/pastevents";
                       }
                     }}
-                    className="text-white hover:text-gray-400 duration-500"
+                    className="text-white hover:text-gray-400 duration-500 flex items-center gap-2 justify-center"
                   >
-                    {link.name}
+                    {link.name} {link.name === "Login" ? <CiLogin /> : link.name === "Events" ? <MdEventAvailable /> : link.name === "Past Events" ? <MdOutlineSettingsBackupRestore /> : ""}
                   </button>
                 )}
               </li>
             ))}
           </>
           {!user && (
-            <a href="/login">
+            <a href="/register">
               <Button>Sign Up</Button>
             </a>
           )}
