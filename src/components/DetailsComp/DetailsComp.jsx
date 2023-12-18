@@ -15,7 +15,7 @@ import { Navigation } from "swiper/modules";
 import DetailsSlider from "./DetailsSlider";
 import { useNavigate } from "react-router-dom";
 
-const DetailsComp = ({ id }) => {
+const DetailsComp = ({ id, path }) => {
   const { event, eventPhotos, user } = useSelector((state) => state.data);
   const navigate = useNavigate();
 
@@ -114,22 +114,17 @@ const DetailsComp = ({ id }) => {
                 Event Date:
                 <span className="font-bold"> {event.event.eventDate}</span>
               </h2>
-
               <p className="text-justify"> {event.event.eventDesc}</p>
-
-              {isLoggedIn() ? (
+              {!path && (
                 <button
                   className="bg-[#2fa799] px-6 py-3 text-white border text-lg font-bold rounded-md mt-2 md:mx-0 mx-auto mb-4 md:mb-0 hover:scale-95 transition-all duration-500"
-                  onClick={() => navigate(`/event/tickets/${event.event.id}`)}
+                  onClick={() => {
+                    isLoggedIn()
+                      ? navigate(`/event/tickets/${event.event.id}`)
+                      : navigate(`/login`);
+                  }}
                 >
                   Buy a Ticket
-                </button>
-              ) : (
-                <button
-                  className="bg-[#2fa799] px-6 py-3 text-white border text-lg font-bold rounded-md mt-2 md:mx-0 mx-auto mb-4 md:mb-0 hover:scale-95 transition-all duration-500"
-                  onClick={() => navigate(`/login`)}
-                >
-                  Buy a Ticket{" "}
                 </button>
               )}
             </div>
