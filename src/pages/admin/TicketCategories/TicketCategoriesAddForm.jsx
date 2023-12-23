@@ -38,18 +38,18 @@ function TicketCategoriesAddForm() {
       price: Yup.string().required("Price is required"),
     }),
     onSubmit: (values) => {
-      const { event, name, price } = values;
+      const { name, price } = values;
 
-      console.log("values", values);
-
-      dispatch(
-        createTicketCategoryByEvent({
-          categoryName: name,
-          eventId: !isNew ? selectedEvent.eventId : selectedEventFromForm,
-          price,
-        })
-      );
-      navigate("/admin/TicketCategories");
+      if (isNew ? selectedEventFromForm : selectedEvent) {
+        dispatch(
+          createTicketCategoryByEvent({
+            categoryName: name,
+            eventId: !isNew ? selectedEvent.eventId : selectedEventFromForm,
+            price,
+          })
+        );
+        navigate("/admin/TicketCategories");
+      }
     },
     onReset: () => {
       formik.setValues({ name: "", price: "" });
@@ -82,9 +82,12 @@ function TicketCategoriesAddForm() {
               className="rounded-lg bg-gray-700 mt-2 p-2 focus:border-green-700 focus:bg-gray-800 focus:outline-none"
               onChange={(e) => {
                 const selectedOption = e.target.options[e.target.selectedIndex];
-                setSelectedEventFromForm(selectedOption.value);
+                setSelectedEventFromForm(
+                  selectedOption.value ? selectedOption.value : ""
+                );
               }}
             >
+              <option value="chooseOne">Choose One</option>
               {events.map((event) => (
                 <option value={event.id}>{event.eventName}</option>
               ))}

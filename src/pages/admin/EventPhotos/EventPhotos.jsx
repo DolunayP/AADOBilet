@@ -38,22 +38,19 @@ function EventPhotos() {
   };
   const uniqueEvents = [];
 
-  if (eventPhotos) {
+  if (eventPhotos && eventPhotos.length > 0) {
     eventPhotos.forEach((eventPhoto) => {
       const eventId = eventPhoto.events?.id;
       const eventName = eventPhoto.events?.eventName;
-
       const foundEvent = uniqueEvents.find(
         (event) => event.eventId === eventId
       );
 
-      if (!foundEvent) {
+      if (!foundEvent && eventId && eventName) {
         uniqueEvents.push({ eventId, eventName });
       }
     });
   }
-
-  console.log("selectedEventObj", selectedEventObj);
 
   // const uniqueEventNames = [
   //   ...new Set(ticketCategories.map((item) => item.events.eventName)),
@@ -68,11 +65,15 @@ function EventPhotos() {
             id=""
             onChange={(e) => {
               const selectedOption = e.target.options[e.target.selectedIndex];
-              setSelectedEvent(selectedOption.value);
+
+              setSelectedEvent(
+                selectedOption.value !== "chooseOne" ? selectedOption.value : ""
+              );
               setSelectedEventName(selectedOption.text);
             }}
           >
-            {uniqueEvents.map((event) => (
+            <option value="chooseOne">Choose event</option>
+            {uniqueEvents?.map((event) => (
               <option value={event.eventId}>{event.eventName}</option>
             ))}
           </select>
@@ -132,6 +133,24 @@ function EventPhotos() {
               </table>
             ) : (
               <div>You didn't select event! </div>
+            )}
+          </div>
+
+          <div className="self-end">
+            {!selectedEvent && (
+              <button
+                className="bg-color-primary p-2 rounded-lg hover:bg-opacity-30 transition-all duration-200 mt-2"
+                onClick={() => {
+                  navigate("/admin/addEventPhoto", {
+                    state: {
+                      selectedEventObj,
+                      isNew: true,
+                    },
+                  });
+                }}
+              >
+                Add New Photo
+              </button>
             )}
           </div>
 

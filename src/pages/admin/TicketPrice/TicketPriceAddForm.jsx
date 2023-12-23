@@ -13,11 +13,14 @@ function TicketPriceAddForm() {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState({});
+  const [price, setPrice] = useState(0);
   const [selectedEventFromForm, setSelectedEventFromForm] = useState("");
   const selectedEvent = location.state.selectedEventObj;
   const ticketCategoriesByEvent = location.state.ticketCategoriesByEvent;
   const isNew = location.state.isNew;
   const { events } = useSelector((state) => state.data);
+
+  console.log("price", price);
 
   useEffect(() => {
     dispatch(getEvents());
@@ -26,21 +29,21 @@ function TicketPriceAddForm() {
   const formik = useFormik({
     initialValues: {
       event: selectedEvent.eventName,
+      price,
     },
     validationSchema: Yup.object({
       event: Yup.string().required("Event is required"),
     }),
     onSubmit: (values) => {
-      console.log("sadasdas");
-      console.log("values", selectedCategory.categoryId, selectedEvent.eventId);
-
-      dispatch(
-        addTicket({
-          categoryId: selectedCategory.categoryId,
-          eventId: selectedEvent.eventId,
-        })
-      );
-      navigate("/admin/TicketCategories");
+      if (price) {
+        dispatch(
+          addTicket({
+            categoryId: selectedCategory.categoryId,
+            eventId: selectedEvent.eventId,
+          })
+        );
+        navigate("/admin/TicketCategories");
+      }
     },
   });
 
@@ -60,15 +63,21 @@ function TicketPriceAddForm() {
             className="rounded-lg bg-gray-700 mt-2 p-2 focus:border-green-700 focus:bg-gray-800 focus:outline-none"
             onChange={(e) => {
               const selectedOption = e.target.options[e.target.selectedIndex];
-              const price = selectedOption.getAttribute("data-price");
+              const priceData = selectedOption.getAttribute("data-price");
+
+              setPrice(priceData);
 
               setSelectedCategory({
                 categoryName: selectedOption.text,
-                categoryId: selectedOption.value,
-                price,
+                categoryId:
+                  selectedOption.value !== "chooseOne"
+                    ? selectedOption.value
+                    : "",
+                priceData,
               });
             }}
           >
+            <option value="chooseOne">Choose One</option>
             {ticketCategoriesByEvent &&
               ticketCategoriesByEvent.map((category) => (
                 <option value={category.id} data-price={category.price}>
@@ -82,7 +91,7 @@ function TicketPriceAddForm() {
           type="text"
           name="price"
           formik={formik}
-          value={selectedCategory.price}
+          value={price && price + " ₺"}
           disabled={true}
         />
         {!isNew ? (
@@ -100,7 +109,11 @@ function TicketPriceAddForm() {
               className="rounded-lg bg-gray-700 mt-2 p-2 focus:border-green-700 focus:bg-gray-800 focus:outline-none"
               onChange={(e) => {
                 const selectedOption = e.target.options[e.target.selectedIndex];
-                setSelectedEventFromForm(selectedOption.value);
+                setSelectedEventFromForm(
+                  selectedOption.value === "chooseOne"
+                    ? ""
+                    : selectedOption.value
+                );
               }}
             >
               {events.map((event) => (

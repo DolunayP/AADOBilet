@@ -24,7 +24,7 @@ function EventsAdmin() {
   }, [dispatch]);
 
   return (
-    <div className="flex h-full items-center flex-col p-2 overflow-y-auto">
+    <div className="flex h-full items-center flex-col p-2 overflow-x-hidden">
       <div className="bg-white text-black rounded-lg p-1">
         {Object.keys(eventsWithArtists).length > 0 ? (
           <table className="">
