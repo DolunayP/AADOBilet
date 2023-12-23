@@ -64,10 +64,13 @@ function Seats() {
             id=""
             onChange={(e) => {
               const selectedOption = e.target.options[e.target.selectedIndex];
-              setSelectedEvent(selectedOption.value);
+              setSelectedEvent(
+                selectedOption.value !== "chooseOne" ? selectedOption.value : ""
+              );
               setSelectedEventName(selectedOption.text);
             }}
           >
+            <option value="chooseOne">Choose One</option>
             {uniqueEvents.map((event) => (
               <option key={event.eventId} value={event.eventId}>
                 {event.eventName}

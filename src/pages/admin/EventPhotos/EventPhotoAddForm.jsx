@@ -1,42 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useLocation, useNavigate } from "react-router-dom";
-import { createEventPhoto } from "../../../redux/dataSlice";
+import { createEventPhoto, getEvents } from "../../../redux/dataSlice";
 import Input from "../Category/CategoryFormInput";
 
 function EventPhotoAddForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [selectedEventFromForm, setSelectedEventFromForm] = useState("");
+  const { events } = useSelector((state) => state.data);
+
+  useEffect(() => {
+    dispatch(getEvents());
+  }, [dispatch]);
 
   const location = useLocation();
   const state = location.state;
 
-  const { selectedEventObj } = state;
+  const { selectedEventObj, isNew } = state;
 
   const formik = useFormik({
     initialValues: {
       photo: "",
-      event: selectedEventObj.eventName,
+      event: !isNew ? selectedEventObj.eventName : "",
     },
     validationSchema: Yup.object({
       photo: Yup.string().required("Photo is required"),
     }),
     onSubmit: (values) => {
       const { photo } = values;
-
-      console.log("values", values);
-
-      dispatch(
-        createEventPhoto({
-          eventId: selectedEventObj.eventId,
-          eventPhoto: photo,
-        })
-      );
-      navigate("/admin/EventPhotos");
+      if (isNew ? selectedEventFromForm : selectedEventObj) {
+        dispatch(
+          createEventPhoto({
+            eventId: !isNew ? selectedEventObj.eventId : selectedEventFromForm,
+            eventPhoto: photo,
+          })
+        );
+        navigate("/admin/EventPhotos");
+      }
     },
     onReset: () => {
       formik.setValues({ photo: "" });
@@ -55,13 +60,33 @@ function EventPhotoAddForm() {
 
         <Input label="Event Photo" type="text" name="photo" formik={formik} />
 
-        <Input
-          label="Event Name"
-          type="text"
-          name="event"
-          formik={formik}
-          disabled={true}
-        />
+        {!isNew ? (
+          <Input
+            label="Event"
+            type="text"
+            name="event"
+            formik={formik}
+            disabled={true}
+          />
+        ) : (
+          <div className="flex flex-col text-gray-400 py-2">
+            <label>Event</label>
+            <select
+              className="rounded-lg bg-gray-700 mt-2 p-2 focus:border-green-700 focus:bg-gray-800 focus:outline-none"
+              onChange={(e) => {
+                const selectedOption = e.target.options[e.target.selectedIndex];
+                setSelectedEventFromForm(
+                  selectedOption.value ? selectedOption.value : ""
+                );
+              }}
+            >
+              <option value="chooseEvent">Choose event</option>
+              {events.map((event) => (
+                <option value={event.id}>{event.eventName}</option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <button
           type="submit"

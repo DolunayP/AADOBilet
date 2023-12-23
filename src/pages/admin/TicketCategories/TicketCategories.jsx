@@ -77,10 +77,13 @@ function TicketCategories() {
             id=""
             onChange={(e) => {
               const selectedOption = e.target.options[e.target.selectedIndex];
-              setSelectedEvent(selectedOption.value);
+              setSelectedEvent(
+                selectedOption.value !== "chooseOne" ? selectedOption.value : ""
+              );
               setSelectedEventName(selectedOption.text);
             }}
           >
+            <option value="chooseOne">Choose Event</option>
             {uniqueEvents.map((event) => (
               <option value={event.eventId}>{event.eventName}</option>
             ))}
@@ -188,7 +191,7 @@ function TicketCategories() {
 
           <div className="flex justify-center items-center flex-col ">
             <h1 className="text-4xl mb-6">TICKETS</h1>
-            {eventTicketsAdmin && (
+            {(eventTicketsAdmin && selectedEvent === "") || (
               <div className=" bg-white text-black rounded-lg p-1">
                 {Object.keys(eventTicketsAdmin).length > 0 ? (
                   <table className="w-full ">

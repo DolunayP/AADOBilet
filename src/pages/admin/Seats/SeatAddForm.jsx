@@ -36,13 +36,15 @@ function SeatAddForm() {
 
       console.log("values", values);
 
-      dispatch(
-        createSeat({
-          seatName: name,
-          eventId: !isNew ? selectedEvent.eventId : selectedEventFromForm,
-        })
-      );
-      navigate("/admin/Seats");
+      if (isNew ? selectedEventFromForm : selectedEvent) {
+        dispatch(
+          createSeat({
+            seatName: name,
+            eventId: !isNew ? selectedEvent.eventId : selectedEventFromForm,
+          })
+        );
+        navigate("/admin/Seats");
+      }
     },
     onReset: () => {
       formik.setValues({ name: "" });
@@ -75,9 +77,14 @@ function SeatAddForm() {
               className="rounded-lg bg-gray-700 mt-2 p-2 focus:border-green-700 focus:bg-gray-800 focus:outline-none"
               onChange={(e) => {
                 const selectedOption = e.target.options[e.target.selectedIndex];
-                setSelectedEventFromForm(selectedOption.value);
+                setSelectedEventFromForm(
+                  selectedOption.value !== "chooseOne"
+                    ? selectedOption.value
+                    : ""
+                );
               }}
             >
+              <option value="chooseOne">Choose event</option>
               {events.map((event) => (
                 <option value={event.id}>{event.eventName}</option>
               ))}
