@@ -92,10 +92,7 @@ const DetailsComp = ({ id, path }) => {
             </h2>
             <h2 className="text-xl text-left mb-2">
               Event Ending Time:
-              <span className="font-bold">
-                {" "}
-                {event.event.eventFinishHour}
-              </span>
+              <span className="font-bold"> {event.event.eventFinishHour}</span>
             </h2>
             <h2 className="text-xl text-left mb-2">
               Event Date:
@@ -118,7 +115,7 @@ const DetailsComp = ({ id, path }) => {
         )}
 
         <div className="text-2xl md:flex-[0.33]">
-          <MapsComp location={event?.event?.eventLocation.split(",")[0]} />
+          <MapsComp location={event?.event?.eventLocation} />
         </div>
       </div>
 
