@@ -34,6 +34,7 @@ function App() {
       ) : (
         <>
           <SearchComp word={word} date={date} place={place} />
+          <Footer />
         </>
       )}
     </div>

@@ -67,29 +67,32 @@ const HeaderMenu = () => {
           ></ion-icon>
         </div>
         <ul
-          className={`md:flex md:items-center md:pb-0 py-10 md:w-auto md:static absolute left-0 w-full transition-all duration-500 ease-in ${open ? "top-24 z-100 bg-black bg-opacity-90" : "top-[-490px]"
-            }`}
+          className={`md:flex md:items-center md:pb-0 py-10 md:w-auto md:static absolute left-0 w-full transition-all duration-500 ease-in ${
+            open ? "top-24 z-100 bg-black bg-opacity-90" : "top-[-490px]"
+          }`}
         >
           <>
             {user && (
               <div className="text-white">
                 {Object.keys(user).length > 0 ? (
-                  <div className="flex gap-2 items-center justify-center font-bold text-lg"> <FaUserAlt /> Welcome {" "}
-                    {user.email} </div>
+                  <div className="flex gap-2 items-center justify-center font-bold text-lg">
+                    {" "}
+                    <FaUserAlt /> Welcome {userData.username}{" "}
+                  </div>
                 ) : (
                   <span></span>
                 )}
-
               </div>
             )}
             {Links.map((link) => (
               <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
                 {user ? (
                   <button
-                    className={`hover:text-opacity-60 flex items-center justify-center gap-2 transition-all duration-200 ${link.name === "Admin Panel"
-                      ? "text-green-800"
-                      : "text-white"
-                      }`}
+                    className={`hover:text-opacity-60 flex items-center justify-center gap-2 transition-all duration-200 ${
+                      link.name === "Admin Panel"
+                        ? "text-green-800"
+                        : "text-white"
+                    }`}
                     onClick={() => {
                       if (link.name === "Logout") {
                         dispatch(logoutUser());
@@ -105,7 +108,16 @@ const HeaderMenu = () => {
                       }
                     }}
                   >
-                    {link.name} {link.name === "Logout" ? <CiLogout /> : link.name === "Events" ? <MdEventAvailable /> : link.name === "Past Events" ? <MdOutlineSettingsBackupRestore /> : ""}
+                    {link.name}{" "}
+                    {link.name === "Logout" ? (
+                      <CiLogout />
+                    ) : link.name === "Events" ? (
+                      <MdEventAvailable />
+                    ) : link.name === "Past Events" ? (
+                      <MdOutlineSettingsBackupRestore />
+                    ) : (
+                      ""
+                    )}
                   </button>
                 ) : (
                   <button
@@ -120,7 +132,16 @@ const HeaderMenu = () => {
                     }}
                     className="text-white hover:text-gray-400 duration-500 flex items-center gap-2 justify-center"
                   >
-                    {link.name} {link.name === "Login" ? <CiLogin /> : link.name === "Events" ? <MdEventAvailable /> : link.name === "Past Events" ? <MdOutlineSettingsBackupRestore /> : ""}
+                    {link.name}{" "}
+                    {link.name === "Login" ? (
+                      <CiLogin />
+                    ) : link.name === "Events" ? (
+                      <MdEventAvailable />
+                    ) : link.name === "Past Events" ? (
+                      <MdOutlineSettingsBackupRestore />
+                    ) : (
+                      ""
+                    )}
                   </button>
                 )}
               </li>
