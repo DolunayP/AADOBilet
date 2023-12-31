@@ -74,7 +74,7 @@ function MapsComp({ location }) {
       mapContainerStyle={containerStyle}
       center={center}
       onLoad={onLoad}
-      zoom={19}
+      zoom={16}
     >
       {center && (
         <Marker
