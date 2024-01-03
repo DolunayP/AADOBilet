@@ -40,6 +40,7 @@ import EventPhotoAddForm from "./pages/admin/EventPhotos/EventPhotoAddForm.jsx";
 import EventPhotoUpdateForm from "./pages/admin/EventPhotos/EventPhotoUpdateForm.jsx";
 import TicketPriceAddForm from "./pages/admin/TicketPrice/TicketPriceAddForm.jsx";
 import AssignTicketForm from "./pages/admin/AssignTicket/AssignTicketForm.jsx";
+import Contact from "./pages/Contact.jsx";
 
 const router = createBrowserRouter([
   {
@@ -323,6 +324,10 @@ const router = createBrowserRouter([
         </AdminLayout>
       </ProtectedRouteAdmin>
     ),
+  },
+  {
+    path: "contact",
+    element: <Contact />
   },
 ]);
 
