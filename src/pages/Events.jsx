@@ -24,17 +24,42 @@ const Events = () => {
     return formattedDate.toLocaleDateString("en-GB");
   };
 
+  const compareDates = (date1, date2) => {
+    const [day1, month1, year1] = date1.split("/");
+    const [day2, month2, year2] = date2.split("/");
+
+    if (year1 < year2) {
+      return false;
+    } else if (year1 > year2) {
+      return true;
+    } else {
+      if (month1 < month2) {
+        return false;
+      } else if (month1 > month2) {
+        return true;
+      } else {
+        if (day1 < day2) {
+          return false;
+        } else if (day1 > day2) {
+          return true;
+        } else {
+          return true;
+        }
+      }
+    }
+  };
+
   const checkedData = filteredEvents.filter((event) => {
     const filtered = convertToDate(event.eventDate);
 
-    if (filtered < formattedDate) {
+    if (!compareDates(filtered, formattedDate)) {
       return null;
     }
 
     return filtered;
   });
 
-  console.log("data", checkedData);
+  console.log("data", checkedData.length);
 
   const dispatch = useDispatch();
 
@@ -62,7 +87,7 @@ const Events = () => {
       {eventsWithArtists?.length > 0 ? (
         <>
           <div className="text-[52px] text-white bg-gradient-to-b from-[#173633] to-[#07a696] rounded-b-full shadow-xl py-12 mb-6">
-              INCOMING EVENTS
+            INCOMING EVENTS
           </div>
           <FilterCategories
             events={eventsWithArtists}
