@@ -55,7 +55,7 @@ function Seats() {
   }
 
   return (
-    <div className="min-h-[600px]  flex justify-center overflow-y-auto">
+    <div className="flex h-full items-center flex-col p-2 overflow-x-scroll min-w-[75%] ">
       <div className="grid place-items-center h-10 mt-32 ">
         <h1 className="text-4xl mb-6">SEATS</h1>
         <div className="bg-white text-black rounded-lg p-3 mb-4 ">
@@ -79,12 +79,9 @@ function Seats() {
           </select>
         </div>
         <div className="flex justify-center items-center flex-col ">
-          <div
-            className=" bg-white text-black rounded-lg p-1 "
-            style={{ minWidth: "800px", overflowX: "auto" }}
-          >
+          <div className="bg-white text-black rounded-lg p-1 min-w-[75%] mx-auto  mt-20">
             {selectedEvent ? (
-              <table className="w-full">
+              <table className="min-w-[75%] mx-auto">
                 <thead className="bg-color-primary text-white">
                   <tr>
                     <th className="p-4">Name</th>

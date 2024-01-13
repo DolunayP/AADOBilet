@@ -16,10 +16,10 @@ function Artists() {
   }, [dispatch]);
 
   return (
-    <div className="flex justify-center items-center flex-col min-h-screen max-h-[750px]">
-      <div className="bg-white text-black rounded-lg p-1 overflow-y-auto">
+    <div className="flex h-full items-center flex-col p-2 overflow-x-scroll min-w-[75%] ">
+      <div className="bg-white text-black rounded-lg p-1 min-w-[75%] mx-auto  mt-20">
         {Object.keys(artists).length > 0 ? (
-          <table className="w-[950px] flex flex-col ">
+          <table className="min-w-[75%] mx-auto">
             <thead className="bg-color-primary text-white">
               <tr>
                 <th className="p-4 w-[250px]">Name</th>

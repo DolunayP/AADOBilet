@@ -24,10 +24,10 @@ function EventsAdmin() {
   }, [dispatch]);
 
   return (
-    <div className="flex h-full items-center flex-col p-2 overflow-x-hidden">
-      <div className="bg-white text-black rounded-lg p-1">
+    <div className="flex h-full items-center flex-col p-2 overflow-x-scroll min-w-[75%] ">
+      <div className="bg-white text-black rounded-lg p-1 min-w-[75%] mx-auto  mt-20">
         {Object.keys(eventsWithArtists).length > 0 ? (
-          <table className="">
+          <table className="min-w-[75%] mx-auto">
             <thead className="bg-color-primary text-white">
               <tr>
                 <th className="p-4">Name</th>

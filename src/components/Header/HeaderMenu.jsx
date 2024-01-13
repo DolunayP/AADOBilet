@@ -53,13 +53,13 @@ const HeaderMenu = () => {
 
   return (
     <div className="px-7 font-bold">
-      <div className="md:flex items-center justify-between md:px-10 px-7 font-bold">
+      <div className="lg:flex items-center justify-between lg:px-10 px-7 font-bold">
         <div className="cursor-pointer flex items-center">
           <Logo />
         </div>
         <div
           onClick={toggleMenu}
-          className="text-3xl absolute right-8 top-16 cursor-pointer md:hidden"
+          className="text-3xl absolute right-8 top-16 cursor-pointer lg:hidden"
         >
           <ion-icon
             name={open ? "close" : "menu"}
@@ -67,15 +67,17 @@ const HeaderMenu = () => {
           ></ion-icon>
         </div>
         <ul
-          className={`md:flex md:items-center md:pb-0 py-10 md:w-auto md:static absolute left-0 w-full transition-all duration-500 ease-in ${
-            open ? "top-24 z-100 bg-black bg-opacity-90" : "top-[-490px]"
+          className={`lg:flex lg:items-center lg:pb-0 py-10 lg:w-auto lg:static absolute left-0 w-full transition-all duration-500 ease-in ${
+            open
+              ? "top-24 z-[999999] bg-gradient-to-b from-[#09443e] to-[#031615]"
+              : "top-[-490px] lg:bg-none bg-gradient-to-b from-[#09443e] to-[#031615]"
           }`}
         >
           <>
             {user && (
               <div className="text-white">
                 {Object.keys(user).length > 0 ? (
-                  <div className="flex gap-2 items-center justify-center font-bold text-lg">
+                  <div className="flex gap-2 items-center justify-center font-bold text-2xl ">
                     {" "}
                     <FaUserAlt /> Welcome {userData.username}{" "}
                   </div>
@@ -85,13 +87,16 @@ const HeaderMenu = () => {
               </div>
             )}
             {Links.map((link) => (
-              <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
+              <li
+                key={link.name}
+                className="lg:ml-8 text-xl lg:my-0 my-7 border-b-4 border-b-white lg:bg-transparent bg-white p-2 "
+              >
                 {user ? (
                   <button
-                    className={`hover:text-opacity-60 flex items-center justify-center gap-2 transition-all duration-200 ${
+                    className={`hover:text-opacity-60 flex items-center justify-center gap-2 transition-all duration-200 mx-auto ${
                       link.name === "Admin Panel"
-                        ? "text-green-800"
-                        : "text-white"
+                        ? "text-green-900 lg:text-green-800 font-bold"
+                        : "lg:text-white text-green-700 font-bold"
                     }`}
                     onClick={() => {
                       if (link.name === "Logout") {
