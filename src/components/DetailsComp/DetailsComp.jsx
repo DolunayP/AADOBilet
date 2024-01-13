@@ -69,50 +69,55 @@ const DetailsComp = ({ id, path }) => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between items-center px-[0%] md:px-[8%] gap-6 h-full">
-        <div className=" md:flex-[0.33]">
-          <img
-            className="rounded-lg shadow-2xl w-[320px] h-auto mx-auto"
-            src={artistImg[0]}
-            alt=""
-          />
-        </div>
-        {event.event && (
-          <div className="flex flex-col items-stretch justify-between md:flex-[0.33] h-full">
-            <h2 className="text-xl text-left mb-2">
-              Event:{" "}
-              <span className="font-bold uppercase">
-                {" "}
-                {event.event.eventName}
-              </span>
-            </h2>
-            <h2 className="text-xl text-left mb-2">
-              Event Starting Time:
-              <span className="font-bold"> {event.event.eventHour}</span>
-            </h2>
-            <h2 className="text-xl text-left mb-2">
-              Event Ending Time:
-              <span className="font-bold"> {event.event.eventFinishHour}</span>
-            </h2>
-            <h2 className="text-xl text-left mb-2">
-              Event Date:
-              <span className="font-bold"> {event.event.eventDate}</span>
-            </h2>
-            <p className="text-justify text-lg"> {event.event.eventDesc}</p>
-            {!path && (
-              <button
-                className="bg-[#2fa799] shadow-xl px-6 py-3 text-white border text-lg font-bold rounded-md mt-6 md:mx-0 mb-4 md:mb-0 hover:scale-95 transition-all duration-500"
-                onClick={() => {
-                  isLoggedIn()
-                    ? navigate(`/event/tickets/${event.event.id}`)
-                    : navigate(`/login`);
-                }}
-              >
-                Buy a Ticket
-              </button>
-            )}
+      <div className="xl:flex-row flex flex-col md:flex-col justify-between items-center px-[0%] md:px-[8%] gap-6 h-full">
+        <div className="flex items-center md:flex-row flex-col">
+          <div className=" md:flex-[0.5] flex-[0.5]">
+            <img
+              className="rounded-lg shadow-2xl w-[320px] h-auto mx-auto"
+              src={artistImg[0]}
+              alt=""
+            />
           </div>
-        )}
+          {event.event && (
+            <div className="flex flex-col md:items-stretch items-center p-4 md:p-0 justify-between md:flex-[0.5] h-full pl-4 ">
+              <h2 className="text-xl text-left mb-2">
+                Event:{" "}
+                <span className="font-bold uppercase">
+                  {" "}
+                  {event.event.eventName}
+                </span>
+              </h2>
+              <h2 className="text-xl text-left mb-2">
+                Event Starting Time:
+                <span className="font-bold"> {event.event.eventHour}</span>
+              </h2>
+              <h2 className="text-xl text-left mb-2">
+                Event Ending Time:
+                <span className="font-bold">
+                  {" "}
+                  {event.event.eventFinishHour}
+                </span>
+              </h2>
+              <h2 className="text-xl text-left mb-2">
+                Event Date:
+                <span className="font-bold"> {event.event.eventDate}</span>
+              </h2>
+              <p className="text-justify text-lg"> {event.event.eventDesc}</p>
+              {!path && (
+                <button
+                  className="bg-[#2fa799] shadow-xl px-6 py-3 text-white border text-lg font-bold rounded-md mt-6 md:mx-0 mb-4 md:mb-0 hover:scale-95 transition-all duration-500"
+                  onClick={() => {
+                    isLoggedIn()
+                      ? navigate(`/event/tickets/${event.event.id}`)
+                      : navigate(`/login`);
+                  }}
+                >
+                  Buy a Ticket
+                </button>
+              )}
+            </div>
+          )}
+        </div>
 
         <div className="text-2xl md:flex-[0.33]">
           <MapsComp location={event?.event?.eventLocation} />

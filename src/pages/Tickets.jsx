@@ -98,9 +98,9 @@ const Tickets = () => {
             <h2 className="text-4xl mb-4">Ticket Infos</h2>
           </div>
 
-          <div className="flex justify-center items-center mb-16">
-            <div className="bg-white h-80  items-center">
-              <div className="grid grid-cols-4 col-start-2 col-end-4 items-center p-2 shadow-lg rounded-lg">
+          <div className="flex flex-col-reverse justify-center items-center mb-16 lg:flex-row gap-4">
+            <div className="items-center py-8">
+              <div className="grid grid-cols-3 lg:grid-cols-4 col-start-2 col-end-4 items-center p-2 shadow-lg rounded-lg">
                 <div className="p-3 bg-gray-200 rounded-lg">Selected Seat </div>
                 <div
                   className={`${getBackgroundColor(
@@ -111,7 +111,7 @@ const Tickets = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 col-start-2 col-end-4 justify-center items-center shadow-lg p-2 rounded-lg">
+              <div className="grid grid-cols-3 lg:grid-cols-4 col-start-2 col-end-4 justify-center items-center shadow-lg p-2 rounded-lg">
                 <div className="p-3 bg-gray-200 rounded-lg">Category </div>
                 <div
                   className={`${getBackgroundColor(
@@ -122,7 +122,7 @@ const Tickets = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 col-start-2 col-end-4 items-center shadow-lg p-2 rounded-lg">
+              <div className="grid grid-cols-3 lg:grid-cols-4 col-start-2 col-end-4 items-center shadow-lg p-2 rounded-lg">
                 <div className="p-3 bg-gray-200 rounded-lg">Price </div>
                 <div
                   className={`${getBackgroundColor(
@@ -133,7 +133,7 @@ const Tickets = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 col-start-2 col-end-4 items-center shadow-lg p-2 rounded-lg">
+              <div className="grid grid-cols-3 lg:grid-cols-4 col-start-2 col-end-4 items-center shadow-lg p-2 rounded-lg">
                 <div className="p-3 bg-gray-200 rounded-lg">Event Name </div>
                 <div
                   className={`${getBackgroundColor(

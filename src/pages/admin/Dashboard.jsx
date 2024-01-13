@@ -24,9 +24,9 @@ function Dashboard() {
   return (
     <div>
       <h1 className="text-4xl my-6">DASHBOARD</h1>
-      <div className="box flex flex-row ">
+      <div className="flex flex-col xl:flex-row gap-y-4">
         {soldTickets && (
-          <div className="ml-6 text-4xl w-1/3">
+          <div className="ml-6 text-4xl  xl:w-1/3">
             <div className="bg-white p-3  rounded-t-3xl flex flex-col items-center h-[100px] justify-center">
               <span className=" text-gray-800 rounded-t-3xl flex flex-col-reverse  items-center ">
                 <span> Sold Tickets</span> <AiFillDollarCircle size={50} />
@@ -38,7 +38,7 @@ function Dashboard() {
           </div>
         )}
         {users && (
-          <div className="ml-6 text-4xl w-1/3">
+          <div className="ml-6 text-4xl xl:w-1/3">
             <div className="bg-white p-3  rounded-t-3xl flex flex-col items-center h-[100px] justify-center">
               <span className=" text-gray-800 rounded-t-3xl flex flex-col-reverse  items-center ">
                 <span>Registered Users</span> <FaUsers size={50} />
@@ -50,7 +50,7 @@ function Dashboard() {
           </div>
         )}
         {eventsWithArtists && (
-          <div className="ml-6 text-4xl w-1/3">
+          <div className="ml-6 text-4xl xl:w-1/3">
             <div className="bg-white p-3  rounded-t-3xl flex flex-col items-center h-[100px] justify-center">
               <span className=" text-gray-800 rounded-t-3xl flex flex-col-reverse  items-center ">
                 <span> Active Events</span> <MdEventAvailable size={50} />
