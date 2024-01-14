@@ -18,10 +18,10 @@ function Categories() {
   }, [dispatch]);
 
   return (
-    <div className="flex justify-center h-full items-center flex-col ">
-      <div className="bg-white text-black rounded-lg p-1">
+    <div className="flex h-full items-center flex-col p-2 overflow-x-scroll min-w-[75%] ">
+      <div className="bg-white text-black rounded-lg p-1 min-w-[75%] mx-auto  mt-20">
         {Object.keys(categoriesTest).length > 0 ? (
-          <table className="  w-0">
+          <table className="min-w-[75%] mx-auto">
             <thead className="bg-color-primary text-white">
               <tr>
                 <th className="p-4">Name</th>
@@ -75,10 +75,10 @@ function Categories() {
         )}
       </div>
 
-      <div className="self-end mr-[11.7rem] mt-8">
+      <div className="mt-8">
         {Object.keys(categoriesTest).length > 0 && (
           <button
-            className="bg-color-primary p-4 rounded-lg hover:bg-opacity-30 transition-all duration-200 w-24"
+            className="bg-color-primary p-4 rounded-lg hover:bg-opacity-30 transition-all duration-200 w-64"
             onClick={() => navigate("/admin/addCategory")}
           >
             Add
