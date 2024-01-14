@@ -22,7 +22,7 @@ function MapsComp({ location }) {
   console.log("location", location);
   const { isLoaded, loadError } = useLoadScript({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyBkdS1NftiRN32ZWGnNPL5TWWOWwkyCyDs",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
   });
 
   const [center, setCenter] = useState(null);
