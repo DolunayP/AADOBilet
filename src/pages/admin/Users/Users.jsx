@@ -1,23 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../redux/dataSlice";
-import { useNavigate } from "react-router-dom";
+
 import { HashLoader } from "react-spinners";
 
 function Users() {
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.data);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
   return (
-    <div className="flex justify-center h-full items-center flex-col ">
-      <div className="bg-white text-black rounded-lg p-1 overflow-y-auto">
+    <div className="flex justify-center h-full items-center flex-col min-w-[75%] overflow-x-auto">
+      <div className="bg-white text-black rounded-lg p-1 overflow-y-auto mx-auto  min-w-[75%]">
         {Object.keys(users).length > 0 ? (
-          <table className="w-[900px] flex flex-col">
+          <table className="w-[900px] flex flex-col  min-w-[75%] mx-auto">
             <thead className="bg-color-primary text-white">
               <tr>
                 <th className="p-4 w-[300px]">Username</th>

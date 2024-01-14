@@ -112,9 +112,9 @@ function EventsAdmin() {
         )}
       </div>
       {Object.keys(eventsWithArtists).length > 0 ? (
-        <div className="self-end mt-4">
+        <div className="mt-4">
           <button
-            className="bg-color-primary p-4 rounded-lg hover:bg-opacity-30 transition-all duration-200 w-[100px]"
+            className="bg-color-primary p-4 rounded-lg hover:bg-opacity-30 transition-all duration-200 w-64"
             onClick={() => navigate("/admin/addEvent")}
           >
             Add

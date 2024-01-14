@@ -75,9 +75,9 @@ function Artists() {
         )}
       </div>
 
-      <div className="self-end mr-10 mt-8 mb-8">
+      <div className="mr-10 mt-8 mb-8">
         <button
-          className="bg-color-primary p-4 rounded-lg hover:bg-opacity-30 transition-all duration-200 w-24"
+          className="bg-color-primary p-4 rounded-lg hover:bg-opacity-30 transition-all duration-200 w-64"
           onClick={() => navigate("/admin/addArtist")}
         >
           Add

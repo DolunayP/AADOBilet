@@ -35,7 +35,7 @@ function SignUp({ toggleForm }) {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full">
-      <div className="grid grid-cols-2 sm:grid-cols-2 h-screen w-full">
+      <div className="grid md:grid md:grid-cols-2 h-screen w-full">
         <div className="bg-gray-800 flex flex-col pt-[120px]">
           <form
             onSubmit={formik.handleSubmit}
